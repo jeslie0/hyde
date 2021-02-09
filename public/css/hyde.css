@@ -248,3 +248,12 @@ a.sidebar-nav-item:focus {
 .theme-base-0f .related-posts li a:hover {
   color: #8f5536;
 }
+
+/* Nord */
+.theme-base-NORD .sidebar {
+    background-color: #2E3440;
+}
+.theme-base-NORD .content a,
+.theme-base-NORD .related-posts li a:hover {
+    color: #2E3440;
+}
