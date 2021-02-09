@@ -10,12 +10,12 @@ permalink:        pretty
 title:            James Leslie
 tagline:          Ph.D Candidate
 description:      Ph.D Candidate
-url:              jeslie0.github.io
-baseurl:          jeslie0.github.io
+url:              https://jeslie0.github.io
+baseurl:          ''
 
 author:
   name:           'James Leslie'
-  url:            jeslie0.github.io
+  url:            https://jeslie0.github.io
 
 plugins: [jekyll-paginate]
 paginate:         5
