@@ -72,7 +72,7 @@ html {
 
 /* Sidebar links */
 .sidebar a {
-  color: #fff;
+  color: #D8DEE9;
 }
 
 /* About section */
@@ -85,7 +85,7 @@ html {
 
 /* Sidebar nav */
 .sidebar-nav {
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
 }
 .sidebar-nav-item {
   display: block;
