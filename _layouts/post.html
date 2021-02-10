@@ -2,11 +2,18 @@
 layout: default
 ---
 
+{% include mathjax.html %}
+<link rel="stylesheet" href="/public/css/theorem.css">
+<link rel="alternate" type="application/atom+xml" title="James Leslie's Blog" href="/feed.xml">
+
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-date">{{ page.date | date_to_string }}</span>
   {{ content }}
 </div>
+
+<a class="btn btn-rss" href="/feed.xml" target="_blank">RSS</a>
+
 
 <div class="related">
   <h2>Related Posts</h2>

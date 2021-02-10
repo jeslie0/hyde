@@ -6,9 +6,9 @@ highlighter:      pygments
 permalink:        pretty
 
 # Setup
-title:            James Leslie
-tagline:          Ph.D Candidate
-description:      Ph.D Candidate
+title:            "James Leslie's Blog"
+tagline:          "Ph.D Candidate"
+description:      "Weakly equivalent to abstract nonsense"
 url:              https://jeslie0.github.io
 baseurl:          /
 
@@ -16,7 +16,11 @@ author:
   name:           James Leslie
   url:            https://jeslie0.github.io
 
-plugins: [jekyll-paginate]
+plugins:
+  - jekyll-paginate
+  - jekyll-feed
+
+# Sets blog page to have previews
 paginate:         5
 paginate_path: "blog/page:num"
 
