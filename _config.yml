@@ -29,3 +29,12 @@ version:          2.1.0
 
 github:
   repo:           https://github.com/jeslie0/jeslie0.github.io
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+
+# Social media usernames
+github_username:   jeslie0
+twitter_username:  KanFibration
+

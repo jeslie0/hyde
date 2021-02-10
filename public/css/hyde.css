@@ -85,7 +85,7 @@ html {
 
 /* Sidebar nav */
 .sidebar-nav {
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 .sidebar-nav-item {
   display: block;
@@ -98,6 +98,18 @@ a.sidebar-nav-item:focus {
 .sidebar-nav-item.active {
   font-weight: bold;
 }
+
+.social {
+    display: inline-block;
+    /* width: 30%; */
+    white-space: nowrap;
+    a {
+        text-decoration: none
+    }
+}
+
+
+
 
 /* Sticky sidebar
  *
