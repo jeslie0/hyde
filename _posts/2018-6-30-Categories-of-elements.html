@@ -1,13 +1,15 @@
 ---
 layout: post
 title: Categories of Elements
+categories: [Mathematics, Category Theory]
 usemathjax: true
 ---
 <p>
+EDIT
 When learning about colimits and presheaf categories, one often meets a category of elements. The definition of the category isn't particularly hard to understand or remember; however, I didn't immediately have an intuition for why it is useful or where the definition came from. This has lead me to play with it and try to understand some properties of it.
 </p>
 
-<div class="definition" id="org3a998a4">
+<div class="definition" id="orgf3a38b5">
 <p>
 Given a locally small category \( \mathbb{A}\) and a functor \( X:\mathbb{A}^{op} \rightarrow \mathbf{Set}\), the category of elements of \( X\), denoted \( \mathbb{E}(X)\) or \( \int^\mathbb{A} X\), is defined as follows:
 </p>
@@ -23,20 +25,20 @@ Given a locally small category \( \mathbb{A}\) and a functor \( X:\mathbb{A}^{op
 Every category of elements has a projection functor \( P:\mathbb{E}(x) \rightarrow \mathbb{A}\) associated with it that sends \( (A,x) \mapsto A\) and \( f \mapsto f\). There is a useful property tucked away in the definition: for any \( \mathbb{A}\)-arrow \( f:A' \rightarrow A\), there is a unique element \( x' \in X(A')\) such that there is an \( \mathbb{E}(X)\)-morphism \( f:(A',x') \rightarrow (A, x)\), namely \( x' = (Xf)(x)\). As a result of this, we will often write morphism as \( f:(A', (Xf)(x)) \rightarrow (A,x)\). Another observation is that we can write \( \mathbb{E}(X)\) as a comma category.
 </p>
 
-<div class="lemma" id="orgdd4c107">
+<div class="lemma" id="orgf3a900d">
 <p>
 There is an isomorphism \( \mathbb{E}(X) \cong (1 \Rightarrow X)\).
 </p>
 
 </div>
 
-<div class="proof" id="orgab8b2eb">
+<div class="proof" id="org767c4f8">
 <p>
 We look at the comma category for the following diagram:
 </p>
 
 
-<div id="org02e966f" class="figure">
+<div id="orgb32db00" class="figure">
 <p><img src="./Images/2018/06/comma.png" alt="comma.png" />
 </p>
 </div>
@@ -46,7 +48,7 @@ The double stroke 1 is the terminal category and the functor  1 is the functor 
 </p>
 
 
-<div id="org5c7fa70" class="figure">
+<div id="org4ab7c62" class="figure">
 <p><img src="./Images/2018/06/comma11.png" alt="comma11.png" />
 </p>
 </div>
@@ -61,14 +63,14 @@ That this triangle commutes is the same as stating \( x = (Xf)(x')\), which is t
 We can use the category of elements to relate representablity to the existence of a terminal object.
 </p>
 
-<div class="proposition" id="orgc61c4a4">
+<div class="proposition" id="orgb9364b9">
 <p>
 [1, Exercise 6.2.23] Let \( X\) be a presheaf on a locally small category. \( X\) is representable if and only if \( \mathbb{E}(X)\) has a terminal object.
 </p>
 
 </div>
 
-<div class="proof" id="org62d2c86">
+<div class="proof" id="org4b047f0">
 <p>
 The category \( \mathbb{E}(X)\) has a terminal object if and only if there is an object \( (A, x)\) such that for any \( (A',x')\), there is exactly one morphism \( f:(A',x') \rightarrow (A,x)\). This is equivalent to there being an \( A \in \mathbb{A}\) and \( x \in X(A)\) such that for all \( A' \in \mathbb{A}\), \( x \in X(A')\), there is a unique morphism \( f:A' \rightarrow A\) such that \( (Xf)(x) = x'\). This condition is equivalent to \( X\) being representable, by [Corollary 4.3.2, 1].
 </p>
@@ -79,13 +81,13 @@ The category \( \mathbb{E}(X)\) has a terminal object if and only if there is an
 One of the most important uses of the category of elements is to show that any presheaf is a colimit of a certain diagram, in a canonical way. This is the main purpose of the category of elements in [1, Definition 6.2.16].
 </p>
 
-<div class="proposition" id="org603f95a">
+<div class="proposition" id="orgbcc7156">
 <p>
 [1, Theorem 6.2.17] *Let \( \mathbb{A}\) be small and \( X:\mathbb{A}^{op} \rightarrow \mathbf{Set}\) a presheaf. Then \( X\) is the colimit of the following diagram:
 </p>
 
 
-<div id="org993d992" class="figure">
+<div id="org0b0a82e" class="figure">
 <p><img src="./Images/2018/06/diagram.png" alt="diagram.png" />
 </p>
 </div>
@@ -96,7 +98,7 @@ That is, \( X \cong \lim{\rightarrow \mathbb{E}(X)}(H\bullet \circ P)\).
 
 </div>
 
-<div class="proof" id="org36f1c66">
+<div class="proof" id="orge611228">
 <p>
 We should first note that this does make sense; as \( \mathbb{A}\) is small, so is \( \mathbb{E}(X)\), hence a colimit does indeed exist.
 </p>
@@ -106,7 +108,7 @@ We know that presheaf categories have all (small) limits and colimits, so a coli
 </p>
 
 
-<div id="orgd23f631" class="figure">
+<div id="org1c07c7a" class="figure">
 <p><img src="./Images/2018/06/img1.png" alt="img1.png" />
 </p>
 </div>
@@ -116,7 +118,7 @@ By the Yoneda lemma, every natural transformation \( \alpha_{(A,x)}:H_A \rightar
 </p>
 
 
-<div id="org52d10af" class="figure">
+<div id="orgd0374bc" class="figure">
 <p><img src="./Images/2018/06/img2.png" alt="img2.png" />
 </p>
 </div>
@@ -126,7 +128,7 @@ This gives us \( y_{(A',(Xf)(x))} = (\alpha_{(A,x)})_{A'}(f)\). As \( \alpha_{(A
 </p>
 
 
-<div id="org20ab281" class="figure">
+<div id="org9584052" class="figure">
 <p><img src="./Images/2018/06/img3.png" alt="img3.png" />
 </p>
 </div>
@@ -140,7 +142,7 @@ An equivalent way to write \( y_{(A,x)}\) is \( \overline{\alpha}_A(x):X(A) \rig
 </p>
 
 
-<div id="org0c07e14" class="figure">
+<div id="orgf892d54" class="figure">
 <p><img src="./Images/2018/06/img4.png" alt="img4.png" />
 </p>
 </div>
@@ -167,7 +169,7 @@ The property that morphisms in \( \mathbb{E}(X)\) have is vital to this proof an
 Given a set \( S\), there is an equivalence of categories \( \mathbf{Set}/S \simeq \mathbf{Set}^S\), where the latter has as objects \( S\) indexed tuples of sets. Given \( (A, f:A \rightarrow S) \in \mathbf{Set}/S\), we form the tuple \( (f^{-1}(s))_{s \in S}\) and given a tuple \( (A_s)_{s \in S}\), we form the disjoint union \( \coprod_{s \in S}A_s\) along with the function \( g:\coprod_{s \in S}A_s \rightarrow S\) that sends every element in each \( A_s\) to \( s\). This equivalence can be abstracted to categories by the following theorem.
 </p>
 
-<div class="theorem" id="org645878b">
+<div class="theorem" id="org7bdd4bd">
 <p>
 [2, Proposition 1.1.7] Let \( \mathbb{A}\) be a small category and \( X: \mathbb{A}^{op} \rightarrow \mathbf{Set}\) a presheaf on \( \mathbb{A}\). Then there is an equivalence of categories:
 </p>
@@ -180,13 +182,13 @@ Given a set \( S\), there is an equivalence of categories \( \mathbf{Set}/S \sim
 
 
 
-<div class="proof" id="orge81ae00">
+<div class="proof" id="org4ffcf44">
 <p>
 I will give the functors required and leave the checking of the equivalence out, as it is pretty involved. The definitions of the functors require a proof to show that they are well defined (it needs to be shown that the natural transformations are indeed natural), however as this isn't too hard, we omit it. First, we define the following functor:
 </p>
 
 
-<div id="org4a9809e" class="figure">
+<div id="orgca94b00" class="figure">
 <p><img src="./Images/2018/06/functor.png" alt="functor.png" />
 </p>
 </div>
@@ -196,7 +198,7 @@ The functor \( \widehat{(F,\alpha)}\) is defined as follows:
 </p>
 
 
-<div id="orgd733c96" class="figure">
+<div id="org83efaaf" class="figure">
 <p><img src="./Images/2018/06/functor2.png" alt="functor2.png" />
 </p>
 </div>
@@ -206,7 +208,7 @@ Where \( \widehat{(F,\alpha)}(f)(y) = (Ff)(y)\). The natural transformation \( \
 </p>
 
 
-<div id="org0b7a744" class="figure">
+<div id="org47918e3" class="figure">
 <p><img src="./Images/2018/06/functor3.png" alt="functor3.png" />
 </p>
 </div>

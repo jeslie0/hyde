@@ -6,6 +6,7 @@
 ---
 layout: post
 title: Is zero a natural number?
+categories: [Mathematics, Category Theory]
 usemathjax: true
 ---
 #+END_EXPORT

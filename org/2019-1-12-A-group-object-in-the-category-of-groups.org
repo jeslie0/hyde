@@ -5,6 +5,7 @@
 ---
 layout: post
 title: A group object in the category of groups
+categories: [Mathematics, Category Theory]
 usemathjax: true
 ---
 #+END_EXPORT

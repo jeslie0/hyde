@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Higher category theory - Basic notions
+categories: [Mathematics, Category Theory, Higher Category Theory]
 usemathjax: true
 ---
 
@@ -12,9 +13,7 @@ Since my last post, I have moved from Scotland to Canada to start a PhD at The U
 The main text being used is Cisinski's <a href="http://www.mathematik.uni-regensburg.de/cisinski/CatLR.pdf">Higher Categories and Homotopical Algebra</a>. Another source I might refer to is Rezk's <a href="https://faculty.math.illinois.edu/~rezk/quasicats.pdf">Stuff About Quasi Categories</a>. Without further ado, let us dive in!
 </p>
 
-<p>
-<b>*</b>
-</p>
+<hr />
 
 <p>
 Before we get into higher categories, we should go the very basics of the notion of category that we are familiar with. Recall that a category \(\mathscr{A}\) is a collection of things we call objects and between any two objects \(A\), \(B\), there is a collection of things we call morphisms or maps, which we shall denote \(\mathscr{A}(A,B)\). For any object \(A\) there is a specified map \(1_A \in \mathscr{A}(A,A)\) and there is an associative function, called composition \(-\circ -: \mathscr{A}(A,B) \times \mathscr{A}(B,C) \rightarrow \mathscr{A}(A,C)\), which satisfies \(f \circ 1_A = f\) and \(1_B \circ f = f\), for \(f \in \mathscr{A}(A,B)\). A natural question arises: why stop here? We have defined maps between objects, so what's to stop us adding in maps between maps? Technically nothing is stopping us, however the categories that we know and love only have one level of map. A category that has two levels of maps is known as a 2-category. In a 2-category, we have objects, then morphisms between objects (call these 1-morphisms) then another type of morphism between 1-morphisms (call these 2-morphisms). We also start calling ordinary categories 1-categories. As you can probably guess, we think of an \(n\)-category as a category with \(n\) ``layers'' of maps. With this view point, what do you think a 0-category is? This framework allows us to define what an \(\infty\)-category should be: a higher category with no final level of maps; we can always have another level of map.
@@ -29,5 +28,5 @@ Let's look at an example of something that has the type of structure we have bee
 </p>
 
 <p>
-The above is a very informal way to think about what a higher category. In the next post, we shall start developing the tools to talk about them precisely. For more light reading, I suggest looking at John Baez's <a href="https://arxiv.org/abs/q-alg/9705009">An Introduction to n-Categories</a>, which gives a much broader overview into what higher categories are.
+The above is a very informal way to think about what a higher category. In the next post, we shall start developing the tools to talk about them precisely. For information on a different approach to "higher" categories, I suggest looking at John Baez's <a href="https://arxiv.org/abs/q-alg/9705009">An Introduction to n-Categories</a>, which describes a different approach an view to defining a notion of higher category.
 </p>

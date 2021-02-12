@@ -6,6 +6,7 @@
 ---
 layout: post
 title: Monoidal Categories
+categories: [Mathematics, Category Theory]
 usemathjax: true
 ---
 #+END_EXPORT

@@ -5,6 +5,7 @@
 ---
 layout: post
 title: Categories of Elements
+categories: [Mathematics, Category Theory]
 usemathjax: true
 ---
 #+END_EXPORT
