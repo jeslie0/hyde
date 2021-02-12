@@ -6,7 +6,7 @@ usemathjax: true
 <p>
 In mathematics, we are familiar with putting structure on sets, for example a group is a set with a binary operation satisfying certain properties. We can extend this notion to categories. The first examples I came across in my studies were monoidal categories, which are used to abstract the notion of a tensor product, and have deep ties to quantum mechanics and physics.
 </p>
-<div class="definition" id="org5d1f99c">
+<div class="definition" id="orga5490dc">
 <p>
 A <i>monoidal category</i> is a category \(\mathcal{C}\) with a functor \( \otimes: \mathcal{C} \times \mathcal{C} \rightarrow \mathcal{C}\), an object \( I \in \mathcal{C}\) called the unit and the following natural isomorphisms, written in terms of their components:
 </p>
@@ -17,20 +17,20 @@ A <i>monoidal category</i> is a category \(\mathcal{C}\) with a functor \( \otim
 <li>A right unitor \(\rho_A: A \otimes I \rightarrow A\).</li>
 </ol>
 
+
 <p>
 These maps all have to satisfy the following diagrams, aptly named the triangle and pentagon identities.
 </p>
 
-<div id="orge99c980" class="figure">
-<p><img src="../images/unity-pentagon.png" alt="unity-pentagon.png" width="900px" />
-</p>
-</div>
-
-</div>
-
 
 <p>
-These two diagrams remarkably lead to a coherence theorem which states that every well formed formula built from \( \alpha, \lambda, \rho\) and their inverses holds. This gives us for free that \( \rho_I = \lambda_I\), which would otherwise be very painful to prove.
+    <img src="/images/monoidal-penta.svg">
+</p>
+
+</div>
+
+<p>
+These two diagrams remarkably lead to a coherence theorem which states that every well formed formula built from \(\alpha, \lambda, \rho\) and their inverses holds. This gives us for free that \( \rho_I = \lambda_I\), which would otherwise be very painful to prove.
 </p>
 
 <p>
@@ -51,10 +51,8 @@ We have the following unique arrows: \( f: I \rightarrow 0\) and \( g:0 \rightar
 
 <ol class="org-ol">
 <li>\( 0 \xrightarrow{\lambda_0^{-1}} I \otimes 0 \xrightarrow{f \otimes 1_0} 0 \otimes 0\),</li>
+<li>\(0 \otimes 0 \xrightarrow{g \otimes 1_0} I \otimes 0 \xrightarrow{\lambda_0} 0\).</li>
 </ol>
-<p>
-2.\(0 \otimes 0 \xrightarrow{g \otimes 1_0} I \otimes 0 \xrightarrow{\lambda_0} 0\).
-</p>
 
 
 <p>
@@ -69,30 +67,22 @@ As \( 0\) is a zero-object, there is only one map \( 0 \rightarrow 0\), namely t
 We also see that \( f \circ g:0 \rightarrow 0\), so \( f \circ g = 1_0\). We can then build the following commuting square:
 </p>
 
-<div id="org2d02b2a" class="figure">
-<p><img src="./images/monoidalcat-1.png" alt="monoidalcat-1.png" width="200px" />
+<p>
+    <img src="/images/monoidal-1.svg" >
 </p>
-</div>
 
 <p>
 We can apply the functor \( - \otimes 0\) to this square to get the following square:
+    <img src="/images/monoidal-2.svg" >
 </p>
-
-<div id="orgf0929bf" class="figure">
-<p><img src="../images/monoidalcat-2.png" alt="monoidalcat-2.png" width="200px" />
-</p>
-</div>
 
 <p>
 Factoring \( 1_{I \otimes 0} = \lambda_0^{-1} \circ \lambda_0\) gives the following diagram:
 </p>
 
-
-<div id="org3672c52" class="figure">
-<p><img src="../images/monoidalcat-3.png" alt="monoidalcat-3.png" width="400px" />
+<p>
+    <img src="/images/monoidal-3.svg" >
 </p>
-</div>
-
 
 <p>
 We also know that \( 1_0 \otimes 1_0 = 1_{0 \otimes0}\), from the tensor product functor. As this commutes, we have \( \left((f \otimes 1_0) \circ \lambda_0^{-1} \right) \circ  \left(\lambda_0 \circ (g \otimes 1_0)\right) = 1_{0\otimes0}\). This results in the maps (1) and (2) being mutual inverses, hence \( 0 \cong 0 \otimes 0\), as required.

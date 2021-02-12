@@ -75,6 +75,7 @@ html {
   color: #D8DEE9;
 }
 
+
 /* About section */
 .sidebar-about h1 {
   color: #fff;
@@ -97,15 +98,6 @@ a.sidebar-nav-item:focus {
 }
 .sidebar-nav-item.active {
   font-weight: bold;
-}
-
-.social {
-    display: inline-block;
-    /* width: 30%; */
-    white-space: nowrap;
-    a {
-        text-decoration: none
-    }
 }
 
 

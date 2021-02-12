@@ -8,6 +8,7 @@ title: Categories of Elements
 usemathjax: true
 ---
 #+END_EXPORT
+EDIT
 When learning about colimits and presheaf categories, one often meets a category of elements. The definition of the category isn't particularly hard to understand or remember; however, I didn't immediately have an intuition for why it is useful or where the definition came from. This has lead me to play with it and try to understand some properties of it.
 
 #+BEGIN_definition
