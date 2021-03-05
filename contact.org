@@ -1,0 +1,12 @@
+#+title: Contact
+#+options: num:nil toc:nil timestamp:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://jeslie0.github.io/CSS/page.css" />
+#+BEGIN_EXPORT html
+<ul class="bar">
+  <li class="bEntry"><a href="#blog">Blog</a></li>
+  <li class="bEntry"><a href="https://jeslie0.github.io/contact.html">Contact</a></li>
+  <li class="bEntry"><a class="active" href="https://jeslie0.github.io">Home</a></li>
+</ul>
+#+END_EXPORT
+You can email me at jlesli25@uwo.ca, or "FIRST NAME"+"LASTNAME"@posteo.net. I use PGP/MIME to sign and encrypt email. You can download my public key [[https://github.com/jeslie0.gpg][here]]. A tutorial for email encryption can be found [[https://emailselfdefense.fsf.org/en/][here]].
+

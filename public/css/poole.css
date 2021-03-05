@@ -378,6 +378,10 @@ tbody tr:nth-child(odd) th {
   color: inherit;
 }
 
+/* Categories */
+.post-categories {
+    padding-top: 2rem;
+}
 
 /*
  * Pagination
