@@ -11,7 +11,7 @@ usemathjax: true
 ---
 #+END_EXPORT
 
-When one first starts studying category theory, they learn that the correct notion of "the same" for categories is that of equivalence, rather than the stronger notion isomorphism. For those that have studied some algebraic topology, the situation is very similar to identifying spaces if they are homotopic, rather than homeomorphic. This is often given as an analogy, but the two notions can be reconciled by giving model structures where the weaker form of identification forms the subcategory of weak equivalences. Here, we define and present the so called canonical model structure on the category of categories. The proof of each step given can also be applied to the category of groupoids. This model structure on the category of groupoids turns out to be Quillen equivalent to the Quillen-Kan model structure on simplicial sets, meaning that they present the same homotopy theory.
+When one first starts studying category theory, they learn that the correct notion of "the same" for categories is that of equivalence, rather than the stronger notion isomorphism. For those that have studied some algebraic topology, the situation is very similar to identifying spaces if they are homotopic, rather than homeomorphic. This is often given as an analogy, but the two notions can be reconciled by giving model structures where the weaker form of identification forms the subcategory of weak equivalences. Here, we define and present the so called canonical model structure on the category of categories. The proof of each step given can also be applied to the category of groupoids. 
 
 We denote the category of (small) categories by \(\Cat\) and the category of (small) groupoids \(\Gpd\).
 
