@@ -18,7 +18,7 @@ Currently, I do not have any office hours. I am a teaching assistant for:
 |---------------+------------------------------------------------------------------+-------------|
 | March 2021    | The Canonical Model Structure on Cat/Gpd                         | Coming soon |
 | June 2020     | Homotopy Theory in Contextual Categories                         |             |
-| June 200      | Modelling Dependent Type Theories                                |             |
+| June 2020     | Modelling Dependent Type Theories                                |             |
 | April 2020    | The HoTT Book - 8.2 and 8.3                                      | [[file:files/Connectedness.pdf][Notes]]       |
 | December 2019 | A survey of Infinity Toposes                                     |             |
 | November 2019 | Toposes and their logic                                          |             |
