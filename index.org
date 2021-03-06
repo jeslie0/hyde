@@ -14,16 +14,16 @@ Currently, I do not have any office hours. I am a teaching assistant for:
 - [[https://owl.uwo.ca/access/content/group/bddc1e91-8e9d-476a-9c14-3f53b467905f/outline.html][Math 1600]] under [[https://www.math.uwo.ca/faculty/franz/][Matthias Franz]] and [[https://www.uwo.ca/math/faculty/khalkhali/][Masoud Khalkhali]], with tutorials on Wednesday 1330 and Thursday 1430;
 - [[https://www.math.uwo.ca/undergraduate/course_outlines_pdf/2021/2021-MATH-2156-Outline.pdf][Math 2516 B]] under [[http://fisher.stats.uwo.ca/faculty/hssendov/Main.html][Hristo Sendov]].
 * Talks
-| Date          | Title                                                            | Resources   |
-|---------------+------------------------------------------------------------------+-------------|
-| March 2021    | The Canonical Model Structure on Cat/Gpd                         | Coming soon |
-| June 2020     | Homotopy Theory in Contextual Categories                         |             |
-| June 2020     | Modelling Dependent Type Theories                                |             |
-| April 2020    | The HoTT Book - 8.2 and 8.3                                      | [[file:files/Connectedness.pdf][Notes]]       |
-| December 2019 | A survey of Infinity Toposes                                     |             |
-| November 2019 | Toposes and their logic                                          |             |
-| April 2018    | Toposes (Masters thesis talk)                                    | [[file:files/Toposes.pdf][Slides]]      |
-| April 2017    | Mathematics and Logic: A theory of Sets (Bachelors project talk) | [[file:files/A_Theory_of_Sets.pdf][Slides]]      |
+| Date          | Title                                                            | Resources |
+|---------------+------------------------------------------------------------------+-----------|
+| March 2021    | The Canonical Model Structure on Cat/Gpd                         | [[file:files/groupoid.pdf][Notes]]     |
+| June 2020     | Homotopy Theory in Contextual Categories                         |           |
+| June 2020     | Modelling Dependent Type Theories                                |           |
+| April 2020    | The HoTT Book - 8.2 and 8.3                                      | [[file:files/Connectedness.pdf][Notes]]     |
+| December 2019 | A survey of Infinity Toposes                                     |           |
+| November 2019 | Toposes and their logic                                          |           |
+| April 2018    | Toposes (Masters thesis talk)                                    | [[file:files/Toposes.pdf][Slides]]    |
+| April 2017    | Mathematics and Logic: A theory of Sets (Bachelors project talk) | [[file:files/A_Theory_of_Sets.pdf][Slides]]    |
 * Conferences
 | Date           | Conference                                             | Location   |
 |----------------+--------------------------------------------------------+------------|
