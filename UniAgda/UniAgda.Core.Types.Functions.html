@@ -1,0 +1,305 @@
+---
+layout: agda
+---
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-23 Tue 13:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniAgda.Core.Types.Functions</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="James Leslie" />
+<meta name="description" content="Functions"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UniAgda.Core.Types.Functions</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgbcec282">1. Prelude</a></li>
+<li><a href="#org725ea4f">2. Functions</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgbcec282" class="outline-2">
+<h2 id="orgbcec282"><span class="section-number-2">1</span> Prelude</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="Agda">
+<a id="176" class="Symbol">{-#</a> <a id="180" class="Keyword">OPTIONS</a> <a id="188" class="Pragma">--without-K</a> <a id="200" class="Pragma">--no-import-sorts</a> <a id="218" class="Pragma">--safe</a> <a id="225" class="Symbol">#-}</a>
+<a id="229" class="Keyword">module</a> <a id="236" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a> <a id="265" class="Keyword">where</a>
+
+<a id="272" class="Keyword">open</a> <a id="277" class="Keyword">import</a> <a id="284" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-org725ea4f" class="outline-2">
+<h2 id="org725ea4f"><span class="section-number-2">2</span> Functions</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Agda introduces most of the required function types already. This means we don't need to define \(\Pi\) types or \(\to\) types, just their basic operations.
+</p>
+<pre class="Agda">
+<a id="_o_"></a><a id="530" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">_o_</a> <a id="534" class="Symbol">:</a> <a id="536" class="Symbol">∀</a> <a id="538" class="Symbol">{</a><a id="539" href="UniAgda.Core.Types.Functions.html#539" class="Bound">i₁</a> <a id="542" href="UniAgda.Core.Types.Functions.html#542" class="Bound">i₂</a> <a id="545" href="UniAgda.Core.Types.Functions.html#545" class="Bound">i₃</a><a id="547" class="Symbol">}</a> <a id="549" class="Symbol">{</a><a id="550" href="UniAgda.Core.Types.Functions.html#550" class="Bound">A</a> <a id="552" class="Symbol">:</a> <a id="554" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="559" href="UniAgda.Core.Types.Functions.html#539" class="Bound">i₁</a><a id="561" class="Symbol">}</a> <a id="563" class="Symbol">{</a><a id="564" href="UniAgda.Core.Types.Functions.html#564" class="Bound">B</a> <a id="566" class="Symbol">:</a> <a id="568" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="573" href="UniAgda.Core.Types.Functions.html#542" class="Bound">i₂</a><a id="575" class="Symbol">}</a> <a id="577" class="Symbol">{</a><a id="578" href="UniAgda.Core.Types.Functions.html#578" class="Bound">C</a> <a id="580" class="Symbol">:</a> <a id="582" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="587" href="UniAgda.Core.Types.Functions.html#545" class="Bound">i₃</a><a id="589" class="Symbol">}</a>
+      <a id="597" class="Symbol">(</a><a id="598" href="UniAgda.Core.Types.Functions.html#598" class="Bound">g</a> <a id="600" class="Symbol">:</a> <a id="602" href="UniAgda.Core.Types.Functions.html#564" class="Bound">B</a> <a id="604" class="Symbol">→</a> <a id="606" href="UniAgda.Core.Types.Functions.html#578" class="Bound">C</a><a id="607" class="Symbol">)</a> <a id="609" class="Symbol">(</a><a id="610" href="UniAgda.Core.Types.Functions.html#610" class="Bound">f</a> <a id="612" class="Symbol">:</a> <a id="614" href="UniAgda.Core.Types.Functions.html#550" class="Bound">A</a> <a id="616" class="Symbol">→</a> <a id="618" href="UniAgda.Core.Types.Functions.html#564" class="Bound">B</a><a id="619" class="Symbol">)</a>
+      <a id="627" class="Symbol">→</a> <a id="629" href="UniAgda.Core.Types.Functions.html#550" class="Bound">A</a> <a id="631" class="Symbol">→</a> <a id="633" href="UniAgda.Core.Types.Functions.html#578" class="Bound">C</a>
+<a id="635" class="Symbol">(</a><a id="636" href="UniAgda.Core.Types.Functions.html#636" class="Bound">g</a> <a id="638" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="640" href="UniAgda.Core.Types.Functions.html#640" class="Bound">f</a><a id="641" class="Symbol">)</a> <a id="643" href="UniAgda.Core.Types.Functions.html#643" class="Bound">a</a> <a id="645" class="Symbol">=</a> <a id="647" href="UniAgda.Core.Types.Functions.html#636" class="Bound">g</a> <a id="649" class="Symbol">(</a><a id="650" href="UniAgda.Core.Types.Functions.html#640" class="Bound">f</a> <a id="652" href="UniAgda.Core.Types.Functions.html#643" class="Bound">a</a><a id="653" class="Symbol">)</a>
+<a id="655" class="Keyword">infixr</a> <a id="662" class="Number">9</a> <a id="664" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">_o_</a>
+</pre>
+<pre class="Agda">
+<a id="id"></a><a id="696" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a> <a id="699" class="Symbol">:</a> <a id="701" class="Symbol">∀</a> <a id="703" class="Symbol">{</a><a id="704" href="UniAgda.Core.Types.Functions.html#704" class="Bound">i</a><a id="705" class="Symbol">}</a> <a id="707" class="Symbol">{</a><a id="708" href="UniAgda.Core.Types.Functions.html#708" class="Bound">A</a> <a id="710" class="Symbol">:</a> <a id="712" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="717" href="UniAgda.Core.Types.Functions.html#704" class="Bound">i</a><a id="718" class="Symbol">}</a>
+     <a id="725" class="Symbol">→</a> <a id="727" href="UniAgda.Core.Types.Functions.html#708" class="Bound">A</a> <a id="729" class="Symbol">→</a> <a id="731" href="UniAgda.Core.Types.Functions.html#708" class="Bound">A</a>
+<a id="733" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a> <a id="736" href="UniAgda.Core.Types.Functions.html#736" class="Bound">a</a> <a id="738" class="Symbol">=</a> <a id="740" href="UniAgda.Core.Types.Functions.html#736" class="Bound">a</a>
+</pre>
+
+<p>
+We introduce Haskell notation for function application.
+</p>
+<pre class="Agda">
+<a id="_$_"></a><a id="827" href="UniAgda.Core.Types.Functions.html#827" class="Function Operator">_$_</a> <a id="831" class="Symbol">:</a> <a id="833" class="Symbol">∀</a> <a id="835" class="Symbol">{</a><a id="836" href="UniAgda.Core.Types.Functions.html#836" class="Bound">i</a> <a id="838" href="UniAgda.Core.Types.Functions.html#838" class="Bound">j</a><a id="839" class="Symbol">}</a> <a id="841" class="Symbol">{</a><a id="842" href="UniAgda.Core.Types.Functions.html#842" class="Bound">A</a> <a id="844" class="Symbol">:</a> <a id="846" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="851" href="UniAgda.Core.Types.Functions.html#836" class="Bound">i</a><a id="852" class="Symbol">}</a> <a id="854" class="Symbol">{</a><a id="855" href="UniAgda.Core.Types.Functions.html#855" class="Bound">B</a> <a id="857" class="Symbol">:</a> <a id="859" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="864" href="UniAgda.Core.Types.Functions.html#838" class="Bound">j</a><a id="865" class="Symbol">}</a>
+     <a id="872" class="Symbol">→</a> <a id="874" class="Symbol">(</a><a id="875" href="UniAgda.Core.Types.Functions.html#842" class="Bound">A</a> <a id="877" class="Symbol">→</a> <a id="879" href="UniAgda.Core.Types.Functions.html#855" class="Bound">B</a><a id="880" class="Symbol">)</a> <a id="882" class="Symbol">→</a> <a id="884" href="UniAgda.Core.Types.Functions.html#842" class="Bound">A</a> <a id="886" class="Symbol">→</a> <a id="888" href="UniAgda.Core.Types.Functions.html#855" class="Bound">B</a>
+<a id="890" href="UniAgda.Core.Types.Functions.html#890" class="Bound">f</a> <a id="892" href="UniAgda.Core.Types.Functions.html#827" class="Function Operator">$</a> <a id="894" href="UniAgda.Core.Types.Functions.html#894" class="Bound">a</a> <a id="896" class="Symbol">=</a> <a id="898" href="UniAgda.Core.Types.Functions.html#890" class="Bound">f</a> <a id="900" href="UniAgda.Core.Types.Functions.html#894" class="Bound">a</a>
+<a id="902" class="Keyword">infixr</a> <a id="909" class="Number">0</a> <a id="911" href="UniAgda.Core.Types.Functions.html#827" class="Function Operator">_$_</a>
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: James Leslie</p>
+<p class="date">Created: 2021-03-23 Tue 13:12</p>
+</div>
+</body>
+</html>

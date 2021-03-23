@@ -1,0 +1,295 @@
+---
+layout: agda
+---
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-23 Tue 13:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniAgda.HITs.Pushouts</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="James Leslie" />
+<meta name="description" content="Pushouts"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UniAgda.HITs.Pushouts</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgd0e650a">1. Prelude</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgd0e650a" class="outline-2">
+<h2 id="orgd0e650a"><span class="section-number-2">1</span> Prelude</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="Agda">
+<a id="168" class="Symbol">{-#</a> <a id="172" class="Keyword">OPTIONS</a> <a id="180" class="Pragma">--without-K</a> <a id="192" class="Pragma">--rewriting</a> <a id="204" class="Symbol">#-}</a>
+<a id="208" class="Keyword">module</a> <a id="215" href="UniAgda.HITs.Pushouts.html" class="Module">UniAgda.HITs.Pushouts</a> <a id="237" class="Keyword">where</a>
+
+<a id="244" class="Keyword">open</a> <a id="249" class="Keyword">import</a> <a id="256" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="285" class="Keyword">open</a> <a id="290" class="Keyword">import</a> <a id="297" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a>
+<a id="325" class="Keyword">open</a> <a id="330" class="Keyword">import</a> <a id="337" href="UniAgda.HITs.Core.html" class="Module">UniAgda.HITs.Core</a> <a id="355" class="Keyword">public</a>
+
+<a id="363" class="Keyword">postulate</a>
+  <a id="pushout"></a><a id="375" href="UniAgda.HITs.Pushouts.html#375" class="Postulate">pushout</a> <a id="383" class="Symbol">:</a> <a id="385" class="Symbol">{</a><a id="386" href="UniAgda.HITs.Pushouts.html#386" class="Bound">i₁</a> <a id="389" href="UniAgda.HITs.Pushouts.html#389" class="Bound">i₂</a> <a id="392" href="UniAgda.HITs.Pushouts.html#392" class="Bound">i₃</a> <a id="395" class="Symbol">:</a> <a id="397" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="402" class="Symbol">}</a> <a id="404" class="Symbol">{</a><a id="405" href="UniAgda.HITs.Pushouts.html#405" class="Bound">A</a> <a id="407" class="Symbol">:</a> <a id="409" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="414" href="UniAgda.HITs.Pushouts.html#386" class="Bound">i₁</a><a id="416" class="Symbol">}</a> <a id="418" class="Symbol">{</a><a id="419" href="UniAgda.HITs.Pushouts.html#419" class="Bound">B</a> <a id="421" class="Symbol">:</a> <a id="423" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="428" href="UniAgda.HITs.Pushouts.html#389" class="Bound">i₂</a><a id="430" class="Symbol">}</a> <a id="432" class="Symbol">{</a><a id="433" href="UniAgda.HITs.Pushouts.html#433" class="Bound">C</a> <a id="435" class="Symbol">:</a> <a id="437" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="442" href="UniAgda.HITs.Pushouts.html#392" class="Bound">i₃</a><a id="444" class="Symbol">}</a>
+            <a id="458" class="Symbol">(</a><a id="459" href="UniAgda.HITs.Pushouts.html#459" class="Bound">f</a> <a id="461" class="Symbol">:</a> <a id="463" href="UniAgda.HITs.Pushouts.html#433" class="Bound">C</a> <a id="465" class="Symbol">→</a> <a id="467" href="UniAgda.HITs.Pushouts.html#405" class="Bound">A</a><a id="468" class="Symbol">)</a> <a id="470" class="Symbol">(</a><a id="471" href="UniAgda.HITs.Pushouts.html#471" class="Bound">g</a> <a id="473" class="Symbol">:</a> <a id="475" href="UniAgda.HITs.Pushouts.html#433" class="Bound">C</a> <a id="477" class="Symbol">→</a> <a id="479" href="UniAgda.HITs.Pushouts.html#419" class="Bound">B</a><a id="480" class="Symbol">)</a>
+            <a id="494" class="Symbol">→</a> <a id="496" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="501" class="Symbol">(</a><a id="502" href="UniAgda.HITs.Pushouts.html#386" class="Bound">i₁</a> <a id="505" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="507" href="UniAgda.HITs.Pushouts.html#389" class="Bound">i₂</a> <a id="510" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="512" href="UniAgda.HITs.Pushouts.html#392" class="Bound">i₃</a><a id="514" class="Symbol">)</a>
+  <a id="left"></a><a id="518" href="UniAgda.HITs.Pushouts.html#518" class="Postulate">left</a> <a id="523" class="Symbol">:</a> <a id="525" class="Symbol">{</a><a id="526" href="UniAgda.HITs.Pushouts.html#526" class="Bound">i₁</a> <a id="529" href="UniAgda.HITs.Pushouts.html#529" class="Bound">i₂</a> <a id="532" href="UniAgda.HITs.Pushouts.html#532" class="Bound">i₃</a> <a id="535" class="Symbol">:</a> <a id="537" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="542" class="Symbol">}</a> <a id="544" class="Symbol">{</a><a id="545" href="UniAgda.HITs.Pushouts.html#545" class="Bound">A</a> <a id="547" class="Symbol">:</a> <a id="549" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="554" href="UniAgda.HITs.Pushouts.html#526" class="Bound">i₁</a><a id="556" class="Symbol">}</a> <a id="558" class="Symbol">{</a><a id="559" href="UniAgda.HITs.Pushouts.html#559" class="Bound">B</a> <a id="561" class="Symbol">:</a> <a id="563" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="568" href="UniAgda.HITs.Pushouts.html#529" class="Bound">i₂</a><a id="570" class="Symbol">}</a> <a id="572" class="Symbol">{</a><a id="573" href="UniAgda.HITs.Pushouts.html#573" class="Bound">C</a> <a id="575" class="Symbol">:</a> <a id="577" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="582" href="UniAgda.HITs.Pushouts.html#532" class="Bound">i₃</a><a id="584" class="Symbol">}</a>
+         <a id="595" class="Symbol">(</a><a id="596" href="UniAgda.HITs.Pushouts.html#596" class="Bound">f</a> <a id="598" class="Symbol">:</a> <a id="600" href="UniAgda.HITs.Pushouts.html#573" class="Bound">C</a> <a id="602" class="Symbol">→</a> <a id="604" href="UniAgda.HITs.Pushouts.html#545" class="Bound">A</a><a id="605" class="Symbol">)</a> <a id="607" class="Symbol">(</a><a id="608" href="UniAgda.HITs.Pushouts.html#608" class="Bound">g</a> <a id="610" class="Symbol">:</a> <a id="612" href="UniAgda.HITs.Pushouts.html#573" class="Bound">C</a> <a id="614" class="Symbol">→</a> <a id="616" href="UniAgda.HITs.Pushouts.html#559" class="Bound">B</a><a id="617" class="Symbol">)</a>
+         <a id="628" class="Symbol">→</a> <a id="630" href="UniAgda.HITs.Pushouts.html#545" class="Bound">A</a> <a id="632" class="Symbol">→</a> <a id="634" href="UniAgda.HITs.Pushouts.html#375" class="Postulate">pushout</a> <a id="642" href="UniAgda.HITs.Pushouts.html#596" class="Bound">f</a> <a id="644" href="UniAgda.HITs.Pushouts.html#608" class="Bound">g</a>
+
+  <a id="right"></a><a id="649" href="UniAgda.HITs.Pushouts.html#649" class="Postulate">right</a> <a id="655" class="Symbol">:</a> <a id="657" class="Symbol">{</a><a id="658" href="UniAgda.HITs.Pushouts.html#658" class="Bound">i₁</a> <a id="661" href="UniAgda.HITs.Pushouts.html#661" class="Bound">i₂</a> <a id="664" href="UniAgda.HITs.Pushouts.html#664" class="Bound">i₃</a> <a id="667" class="Symbol">:</a> <a id="669" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="674" class="Symbol">}</a> <a id="676" class="Symbol">{</a><a id="677" href="UniAgda.HITs.Pushouts.html#677" class="Bound">A</a> <a id="679" class="Symbol">:</a> <a id="681" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="686" href="UniAgda.HITs.Pushouts.html#658" class="Bound">i₁</a><a id="688" class="Symbol">}</a> <a id="690" class="Symbol">{</a><a id="691" href="UniAgda.HITs.Pushouts.html#691" class="Bound">B</a> <a id="693" class="Symbol">:</a> <a id="695" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="700" href="UniAgda.HITs.Pushouts.html#661" class="Bound">i₂</a><a id="702" class="Symbol">}</a> <a id="704" class="Symbol">{</a><a id="705" href="UniAgda.HITs.Pushouts.html#705" class="Bound">C</a> <a id="707" class="Symbol">:</a> <a id="709" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="714" href="UniAgda.HITs.Pushouts.html#664" class="Bound">i₃</a><a id="716" class="Symbol">}</a>
+          <a id="728" class="Symbol">(</a><a id="729" href="UniAgda.HITs.Pushouts.html#729" class="Bound">f</a> <a id="731" class="Symbol">:</a> <a id="733" href="UniAgda.HITs.Pushouts.html#705" class="Bound">C</a> <a id="735" class="Symbol">→</a> <a id="737" href="UniAgda.HITs.Pushouts.html#677" class="Bound">A</a><a id="738" class="Symbol">)</a> <a id="740" class="Symbol">(</a><a id="741" href="UniAgda.HITs.Pushouts.html#741" class="Bound">g</a> <a id="743" class="Symbol">:</a> <a id="745" href="UniAgda.HITs.Pushouts.html#705" class="Bound">C</a> <a id="747" class="Symbol">→</a> <a id="749" href="UniAgda.HITs.Pushouts.html#691" class="Bound">B</a><a id="750" class="Symbol">)</a>
+          <a id="762" class="Symbol">→</a> <a id="764" href="UniAgda.HITs.Pushouts.html#691" class="Bound">B</a> <a id="766" class="Symbol">→</a> <a id="768" href="UniAgda.HITs.Pushouts.html#375" class="Postulate">pushout</a> <a id="776" href="UniAgda.HITs.Pushouts.html#729" class="Bound">f</a> <a id="778" href="UniAgda.HITs.Pushouts.html#741" class="Bound">g</a>
+
+  <a id="glue"></a><a id="783" href="UniAgda.HITs.Pushouts.html#783" class="Postulate">glue</a> <a id="788" class="Symbol">:</a> <a id="790" class="Symbol">{</a><a id="791" href="UniAgda.HITs.Pushouts.html#791" class="Bound">i₁</a> <a id="794" href="UniAgda.HITs.Pushouts.html#794" class="Bound">i₂</a> <a id="797" href="UniAgda.HITs.Pushouts.html#797" class="Bound">i₃</a> <a id="800" class="Symbol">:</a> <a id="802" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="807" class="Symbol">}</a> <a id="809" class="Symbol">{</a><a id="810" href="UniAgda.HITs.Pushouts.html#810" class="Bound">A</a> <a id="812" class="Symbol">:</a> <a id="814" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="819" href="UniAgda.HITs.Pushouts.html#791" class="Bound">i₁</a><a id="821" class="Symbol">}</a> <a id="823" class="Symbol">{</a><a id="824" href="UniAgda.HITs.Pushouts.html#824" class="Bound">B</a> <a id="826" class="Symbol">:</a> <a id="828" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="833" href="UniAgda.HITs.Pushouts.html#794" class="Bound">i₂</a><a id="835" class="Symbol">}</a> <a id="837" class="Symbol">{</a><a id="838" href="UniAgda.HITs.Pushouts.html#838" class="Bound">C</a> <a id="840" class="Symbol">:</a> <a id="842" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="847" href="UniAgda.HITs.Pushouts.html#797" class="Bound">i₃</a><a id="849" class="Symbol">}</a>
+         <a id="860" class="Symbol">(</a><a id="861" href="UniAgda.HITs.Pushouts.html#861" class="Bound">f</a> <a id="863" class="Symbol">:</a> <a id="865" href="UniAgda.HITs.Pushouts.html#838" class="Bound">C</a> <a id="867" class="Symbol">→</a> <a id="869" href="UniAgda.HITs.Pushouts.html#810" class="Bound">A</a><a id="870" class="Symbol">)</a> <a id="872" class="Symbol">(</a><a id="873" href="UniAgda.HITs.Pushouts.html#873" class="Bound">g</a> <a id="875" class="Symbol">:</a> <a id="877" href="UniAgda.HITs.Pushouts.html#838" class="Bound">C</a> <a id="879" class="Symbol">→</a> <a id="881" href="UniAgda.HITs.Pushouts.html#824" class="Bound">B</a><a id="882" class="Symbol">)</a>
+         <a id="893" class="Symbol">→</a> <a id="895" class="Symbol">(</a><a id="896" href="UniAgda.HITs.Pushouts.html#896" class="Bound">c</a> <a id="898" class="Symbol">:</a> <a id="900" href="UniAgda.HITs.Pushouts.html#838" class="Bound">C</a><a id="901" class="Symbol">)</a> <a id="903" class="Symbol">→</a> <a id="905" href="UniAgda.HITs.Pushouts.html#518" class="Postulate">left</a> <a id="910" href="UniAgda.HITs.Pushouts.html#861" class="Bound">f</a> <a id="912" href="UniAgda.HITs.Pushouts.html#873" class="Bound">g</a> <a id="914" class="Symbol">(</a><a id="915" href="UniAgda.HITs.Pushouts.html#861" class="Bound">f</a> <a id="917" href="UniAgda.HITs.Pushouts.html#896" class="Bound">c</a><a id="918" class="Symbol">)</a> <a id="920" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="922" href="UniAgda.HITs.Pushouts.html#649" class="Postulate">right</a> <a id="928" href="UniAgda.HITs.Pushouts.html#861" class="Bound">f</a> <a id="930" href="UniAgda.HITs.Pushouts.html#873" class="Bound">g</a> <a id="932" class="Symbol">(</a><a id="933" href="UniAgda.HITs.Pushouts.html#873" class="Bound">g</a> <a id="935" href="UniAgda.HITs.Pushouts.html#896" class="Bound">c</a><a id="936" class="Symbol">)</a>
+
+
+  <a id="pushout-rec"></a><a id="942" href="UniAgda.HITs.Pushouts.html#942" class="Postulate">pushout-rec</a> <a id="954" class="Symbol">:</a> <a id="956" class="Symbol">{</a><a id="957" href="UniAgda.HITs.Pushouts.html#957" class="Bound">i₁</a> <a id="960" href="UniAgda.HITs.Pushouts.html#960" class="Bound">i₂</a> <a id="963" href="UniAgda.HITs.Pushouts.html#963" class="Bound">i₃</a> <a id="966" href="UniAgda.HITs.Pushouts.html#966" class="Bound">i₄</a> <a id="969" class="Symbol">:</a> <a id="971" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="976" class="Symbol">}</a> <a id="978" class="Symbol">{</a><a id="979" href="UniAgda.HITs.Pushouts.html#979" class="Bound">A</a> <a id="981" class="Symbol">:</a> <a id="983" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="988" href="UniAgda.HITs.Pushouts.html#957" class="Bound">i₁</a><a id="990" class="Symbol">}</a> <a id="992" class="Symbol">{</a><a id="993" href="UniAgda.HITs.Pushouts.html#993" class="Bound">B</a> <a id="995" class="Symbol">:</a> <a id="997" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1002" href="UniAgda.HITs.Pushouts.html#960" class="Bound">i₂</a><a id="1004" class="Symbol">}</a> <a id="1006" class="Symbol">{</a><a id="1007" href="UniAgda.HITs.Pushouts.html#1007" class="Bound">C</a> <a id="1009" class="Symbol">:</a> <a id="1011" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1016" href="UniAgda.HITs.Pushouts.html#963" class="Bound">i₃</a><a id="1018" class="Symbol">}</a> <a id="1020" class="Symbol">{</a><a id="1021" href="UniAgda.HITs.Pushouts.html#1021" class="Bound">D</a> <a id="1023" class="Symbol">:</a> <a id="1025" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1030" href="UniAgda.HITs.Pushouts.html#966" class="Bound">i₄</a><a id="1032" class="Symbol">}</a>
+                <a id="1050" class="Symbol">{</a> <a id="1052" href="UniAgda.HITs.Pushouts.html#1052" class="Bound">f</a> <a id="1054" class="Symbol">:</a> <a id="1056" href="UniAgda.HITs.Pushouts.html#1007" class="Bound">C</a> <a id="1058" class="Symbol">→</a> <a id="1060" href="UniAgda.HITs.Pushouts.html#979" class="Bound">A</a> <a id="1062" class="Symbol">}</a> <a id="1064" class="Symbol">{</a> <a id="1066" href="UniAgda.HITs.Pushouts.html#1066" class="Bound">g</a> <a id="1068" class="Symbol">:</a> <a id="1070" href="UniAgda.HITs.Pushouts.html#1007" class="Bound">C</a> <a id="1072" class="Symbol">→</a> <a id="1074" href="UniAgda.HITs.Pushouts.html#993" class="Bound">B</a> <a id="1076" class="Symbol">}</a>
+                <a id="1094" class="Symbol">(</a><a id="1095" href="UniAgda.HITs.Pushouts.html#1095" class="Bound">h₁</a> <a id="1098" class="Symbol">:</a> <a id="1100" href="UniAgda.HITs.Pushouts.html#979" class="Bound">A</a> <a id="1102" class="Symbol">→</a> <a id="1104" href="UniAgda.HITs.Pushouts.html#1021" class="Bound">D</a><a id="1105" class="Symbol">)</a> <a id="1107" class="Symbol">(</a><a id="1108" href="UniAgda.HITs.Pushouts.html#1108" class="Bound">h₂</a> <a id="1111" class="Symbol">:</a> <a id="1113" href="UniAgda.HITs.Pushouts.html#993" class="Bound">B</a> <a id="1115" class="Symbol">→</a> <a id="1117" href="UniAgda.HITs.Pushouts.html#1021" class="Bound">D</a><a id="1118" class="Symbol">)</a> <a id="1120" class="Symbol">→</a> <a id="1122" class="Symbol">(</a><a id="1123" href="UniAgda.HITs.Pushouts.html#1123" class="Bound">c</a> <a id="1125" class="Symbol">:</a> <a id="1127" href="UniAgda.HITs.Pushouts.html#1007" class="Bound">C</a><a id="1128" class="Symbol">)</a> <a id="1130" class="Symbol">→</a> <a id="1132" class="Symbol">(</a><a id="1133" href="UniAgda.HITs.Pushouts.html#1133" class="Bound">p</a> <a id="1135" class="Symbol">:</a> <a id="1137" href="UniAgda.HITs.Pushouts.html#1095" class="Bound">h₁</a> <a id="1140" class="Symbol">(</a><a id="1141" href="UniAgda.HITs.Pushouts.html#1052" class="Bound">f</a> <a id="1143" href="UniAgda.HITs.Pushouts.html#1123" class="Bound">c</a><a id="1144" class="Symbol">)</a> <a id="1146" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1148" href="UniAgda.HITs.Pushouts.html#1108" class="Bound">h₂</a> <a id="1151" class="Symbol">(</a><a id="1152" href="UniAgda.HITs.Pushouts.html#1066" class="Bound">g</a> <a id="1154" href="UniAgda.HITs.Pushouts.html#1123" class="Bound">c</a><a id="1155" class="Symbol">))</a>
+                <a id="1174" class="Symbol">→</a> <a id="1176" href="UniAgda.HITs.Pushouts.html#375" class="Postulate">pushout</a> <a id="1184" href="UniAgda.HITs.Pushouts.html#1052" class="Bound">f</a> <a id="1186" href="UniAgda.HITs.Pushouts.html#1066" class="Bound">g</a> <a id="1188" class="Symbol">→</a> <a id="1190" href="UniAgda.HITs.Pushouts.html#1021" class="Bound">D</a>
+
+  <a id="βpushout-rec-left"></a><a id="1195" href="UniAgda.HITs.Pushouts.html#1195" class="Postulate">βpushout-rec-left</a> <a id="1213" class="Symbol">:</a> <a id="1215" class="Symbol">{</a><a id="1216" href="UniAgda.HITs.Pushouts.html#1216" class="Bound">i₁</a> <a id="1219" href="UniAgda.HITs.Pushouts.html#1219" class="Bound">i₂</a> <a id="1222" href="UniAgda.HITs.Pushouts.html#1222" class="Bound">i₃</a> <a id="1225" href="UniAgda.HITs.Pushouts.html#1225" class="Bound">i₄</a> <a id="1228" class="Symbol">:</a> <a id="1230" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="1235" class="Symbol">}</a> <a id="1237" class="Symbol">{</a><a id="1238" href="UniAgda.HITs.Pushouts.html#1238" class="Bound">A</a> <a id="1240" class="Symbol">:</a> <a id="1242" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1247" href="UniAgda.HITs.Pushouts.html#1216" class="Bound">i₁</a><a id="1249" class="Symbol">}</a> <a id="1251" class="Symbol">{</a><a id="1252" href="UniAgda.HITs.Pushouts.html#1252" class="Bound">B</a> <a id="1254" class="Symbol">:</a> <a id="1256" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1261" href="UniAgda.HITs.Pushouts.html#1219" class="Bound">i₂</a><a id="1263" class="Symbol">}</a> <a id="1265" class="Symbol">{</a><a id="1266" href="UniAgda.HITs.Pushouts.html#1266" class="Bound">C</a> <a id="1268" class="Symbol">:</a> <a id="1270" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1275" href="UniAgda.HITs.Pushouts.html#1222" class="Bound">i₃</a><a id="1277" class="Symbol">}</a> <a id="1279" class="Symbol">{</a><a id="1280" href="UniAgda.HITs.Pushouts.html#1280" class="Bound">D</a> <a id="1282" class="Symbol">:</a> <a id="1284" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1289" href="UniAgda.HITs.Pushouts.html#1225" class="Bound">i₄</a><a id="1291" class="Symbol">}</a>
+                      <a id="1315" class="Symbol">{</a><a id="1316" href="UniAgda.HITs.Pushouts.html#1316" class="Bound">f</a> <a id="1318" class="Symbol">:</a> <a id="1320" href="UniAgda.HITs.Pushouts.html#1266" class="Bound">C</a> <a id="1322" class="Symbol">→</a> <a id="1324" href="UniAgda.HITs.Pushouts.html#1238" class="Bound">A</a><a id="1325" class="Symbol">}</a> <a id="1327" class="Symbol">{</a><a id="1328" href="UniAgda.HITs.Pushouts.html#1328" class="Bound">g</a> <a id="1330" class="Symbol">:</a> <a id="1332" href="UniAgda.HITs.Pushouts.html#1266" class="Bound">C</a> <a id="1334" class="Symbol">→</a> <a id="1336" href="UniAgda.HITs.Pushouts.html#1252" class="Bound">B</a><a id="1337" class="Symbol">}</a>
+                      <a id="1361" class="Symbol">(</a><a id="1362" href="UniAgda.HITs.Pushouts.html#1362" class="Bound">h₁</a> <a id="1365" class="Symbol">:</a> <a id="1367" href="UniAgda.HITs.Pushouts.html#1238" class="Bound">A</a> <a id="1369" class="Symbol">→</a> <a id="1371" href="UniAgda.HITs.Pushouts.html#1280" class="Bound">D</a><a id="1372" class="Symbol">)</a> <a id="1374" class="Symbol">(</a><a id="1375" href="UniAgda.HITs.Pushouts.html#1375" class="Bound">h₂</a> <a id="1378" class="Symbol">:</a> <a id="1380" href="UniAgda.HITs.Pushouts.html#1252" class="Bound">B</a> <a id="1382" class="Symbol">→</a> <a id="1384" href="UniAgda.HITs.Pushouts.html#1280" class="Bound">D</a><a id="1385" class="Symbol">)</a> <a id="1387" class="Symbol">→</a> <a id="1389" class="Symbol">(</a><a id="1390" href="UniAgda.HITs.Pushouts.html#1390" class="Bound">c</a> <a id="1392" class="Symbol">:</a> <a id="1394" href="UniAgda.HITs.Pushouts.html#1266" class="Bound">C</a><a id="1395" class="Symbol">)</a> <a id="1397" class="Symbol">→</a> <a id="1399" class="Symbol">(</a><a id="1400" href="UniAgda.HITs.Pushouts.html#1400" class="Bound">p</a> <a id="1402" class="Symbol">:</a> <a id="1404" href="UniAgda.HITs.Pushouts.html#1362" class="Bound">h₁</a> <a id="1407" class="Symbol">(</a><a id="1408" href="UniAgda.HITs.Pushouts.html#1316" class="Bound">f</a> <a id="1410" href="UniAgda.HITs.Pushouts.html#1390" class="Bound">c</a><a id="1411" class="Symbol">)</a> <a id="1413" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1415" href="UniAgda.HITs.Pushouts.html#1375" class="Bound">h₂</a> <a id="1418" class="Symbol">(</a><a id="1419" href="UniAgda.HITs.Pushouts.html#1328" class="Bound">g</a> <a id="1421" href="UniAgda.HITs.Pushouts.html#1390" class="Bound">c</a><a id="1422" class="Symbol">))</a>
+                      <a id="1447" class="Symbol">→</a> <a id="1449" href="UniAgda.HITs.Pushouts.html#942" class="Postulate">pushout-rec</a> <a id="1461" href="UniAgda.HITs.Pushouts.html#1362" class="Bound">h₁</a> <a id="1464" href="UniAgda.HITs.Pushouts.html#1375" class="Bound">h₂</a> <a id="1467" href="UniAgda.HITs.Pushouts.html#1390" class="Bound">c</a> <a id="1469" href="UniAgda.HITs.Pushouts.html#1400" class="Bound">p</a> <a id="1471" class="Symbol">(</a><a id="1472" href="UniAgda.HITs.Pushouts.html#518" class="Postulate">left</a> <a id="1477" href="UniAgda.HITs.Pushouts.html#1316" class="Bound">f</a> <a id="1479" href="UniAgda.HITs.Pushouts.html#1328" class="Bound">g</a> <a id="1481" class="Symbol">(</a><a id="1482" href="UniAgda.HITs.Pushouts.html#1316" class="Bound">f</a> <a id="1484" href="UniAgda.HITs.Pushouts.html#1390" class="Bound">c</a><a id="1485" class="Symbol">))</a> <a id="1488" href="UniAgda.HITs.Core.html#284" class="Postulate Operator">↦</a> <a id="1490" href="UniAgda.HITs.Pushouts.html#1362" class="Bound">h₁</a> <a id="1493" class="Symbol">(</a><a id="1494" href="UniAgda.HITs.Pushouts.html#1316" class="Bound">f</a> <a id="1496" href="UniAgda.HITs.Pushouts.html#1390" class="Bound">c</a><a id="1497" class="Symbol">)</a>
+
+
+  <a id="βpushout-rec-right"></a><a id="1503" href="UniAgda.HITs.Pushouts.html#1503" class="Postulate">βpushout-rec-right</a> <a id="1522" class="Symbol">:</a> <a id="1524" class="Symbol">{</a><a id="1525" href="UniAgda.HITs.Pushouts.html#1525" class="Bound">i₁</a> <a id="1528" href="UniAgda.HITs.Pushouts.html#1528" class="Bound">i₂</a> <a id="1531" href="UniAgda.HITs.Pushouts.html#1531" class="Bound">i₃</a> <a id="1534" href="UniAgda.HITs.Pushouts.html#1534" class="Bound">i₄</a> <a id="1537" class="Symbol">:</a> <a id="1539" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="1544" class="Symbol">}</a> <a id="1546" class="Symbol">{</a><a id="1547" href="UniAgda.HITs.Pushouts.html#1547" class="Bound">A</a> <a id="1549" class="Symbol">:</a> <a id="1551" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1556" href="UniAgda.HITs.Pushouts.html#1525" class="Bound">i₁</a><a id="1558" class="Symbol">}</a> <a id="1560" class="Symbol">{</a><a id="1561" href="UniAgda.HITs.Pushouts.html#1561" class="Bound">B</a> <a id="1563" class="Symbol">:</a> <a id="1565" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1570" href="UniAgda.HITs.Pushouts.html#1528" class="Bound">i₂</a><a id="1572" class="Symbol">}</a> <a id="1574" class="Symbol">{</a><a id="1575" href="UniAgda.HITs.Pushouts.html#1575" class="Bound">C</a> <a id="1577" class="Symbol">:</a> <a id="1579" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1584" href="UniAgda.HITs.Pushouts.html#1531" class="Bound">i₃</a><a id="1586" class="Symbol">}</a> <a id="1588" class="Symbol">{</a><a id="1589" href="UniAgda.HITs.Pushouts.html#1589" class="Bound">D</a> <a id="1591" class="Symbol">:</a> <a id="1593" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1598" href="UniAgda.HITs.Pushouts.html#1534" class="Bound">i₄</a><a id="1600" class="Symbol">}</a>
+                       <a id="1625" class="Symbol">{</a><a id="1626" href="UniAgda.HITs.Pushouts.html#1626" class="Bound">f</a> <a id="1628" class="Symbol">:</a> <a id="1630" href="UniAgda.HITs.Pushouts.html#1575" class="Bound">C</a> <a id="1632" class="Symbol">→</a> <a id="1634" href="UniAgda.HITs.Pushouts.html#1547" class="Bound">A</a><a id="1635" class="Symbol">}</a> <a id="1637" class="Symbol">{</a><a id="1638" href="UniAgda.HITs.Pushouts.html#1638" class="Bound">g</a> <a id="1640" class="Symbol">:</a> <a id="1642" href="UniAgda.HITs.Pushouts.html#1575" class="Bound">C</a> <a id="1644" class="Symbol">→</a> <a id="1646" href="UniAgda.HITs.Pushouts.html#1561" class="Bound">B</a><a id="1647" class="Symbol">}</a>
+                       <a id="1672" class="Symbol">(</a><a id="1673" href="UniAgda.HITs.Pushouts.html#1673" class="Bound">h₁</a> <a id="1676" class="Symbol">:</a> <a id="1678" href="UniAgda.HITs.Pushouts.html#1547" class="Bound">A</a> <a id="1680" class="Symbol">→</a> <a id="1682" href="UniAgda.HITs.Pushouts.html#1589" class="Bound">D</a><a id="1683" class="Symbol">)</a> <a id="1685" class="Symbol">(</a><a id="1686" href="UniAgda.HITs.Pushouts.html#1686" class="Bound">h₂</a> <a id="1689" class="Symbol">:</a> <a id="1691" href="UniAgda.HITs.Pushouts.html#1561" class="Bound">B</a> <a id="1693" class="Symbol">→</a> <a id="1695" href="UniAgda.HITs.Pushouts.html#1589" class="Bound">D</a><a id="1696" class="Symbol">)</a> <a id="1698" class="Symbol">→</a> <a id="1700" class="Symbol">(</a><a id="1701" href="UniAgda.HITs.Pushouts.html#1701" class="Bound">c</a> <a id="1703" class="Symbol">:</a> <a id="1705" href="UniAgda.HITs.Pushouts.html#1575" class="Bound">C</a><a id="1706" class="Symbol">)</a> <a id="1708" class="Symbol">→</a> <a id="1710" class="Symbol">(</a><a id="1711" href="UniAgda.HITs.Pushouts.html#1711" class="Bound">p</a> <a id="1713" class="Symbol">:</a> <a id="1715" href="UniAgda.HITs.Pushouts.html#1673" class="Bound">h₁</a> <a id="1718" class="Symbol">(</a><a id="1719" href="UniAgda.HITs.Pushouts.html#1626" class="Bound">f</a> <a id="1721" href="UniAgda.HITs.Pushouts.html#1701" class="Bound">c</a><a id="1722" class="Symbol">)</a> <a id="1724" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1726" href="UniAgda.HITs.Pushouts.html#1686" class="Bound">h₂</a> <a id="1729" class="Symbol">(</a><a id="1730" href="UniAgda.HITs.Pushouts.html#1638" class="Bound">g</a> <a id="1732" href="UniAgda.HITs.Pushouts.html#1701" class="Bound">c</a><a id="1733" class="Symbol">))</a>
+                       <a id="1759" class="Symbol">→</a> <a id="1761" href="UniAgda.HITs.Pushouts.html#942" class="Postulate">pushout-rec</a> <a id="1773" href="UniAgda.HITs.Pushouts.html#1673" class="Bound">h₁</a> <a id="1776" href="UniAgda.HITs.Pushouts.html#1686" class="Bound">h₂</a> <a id="1779" href="UniAgda.HITs.Pushouts.html#1701" class="Bound">c</a> <a id="1781" href="UniAgda.HITs.Pushouts.html#1711" class="Bound">p</a> <a id="1783" class="Symbol">(</a><a id="1784" href="UniAgda.HITs.Pushouts.html#649" class="Postulate">right</a> <a id="1790" href="UniAgda.HITs.Pushouts.html#1626" class="Bound">f</a> <a id="1792" href="UniAgda.HITs.Pushouts.html#1638" class="Bound">g</a> <a id="1794" class="Symbol">(</a><a id="1795" href="UniAgda.HITs.Pushouts.html#1638" class="Bound">g</a> <a id="1797" href="UniAgda.HITs.Pushouts.html#1701" class="Bound">c</a><a id="1798" class="Symbol">))</a> <a id="1801" href="UniAgda.HITs.Core.html#284" class="Postulate Operator">↦</a> <a id="1803" href="UniAgda.HITs.Pushouts.html#1686" class="Bound">h₂</a> <a id="1806" class="Symbol">(</a><a id="1807" href="UniAgda.HITs.Pushouts.html#1638" class="Bound">g</a> <a id="1809" href="UniAgda.HITs.Pushouts.html#1701" class="Bound">c</a><a id="1810" class="Symbol">)</a>
+
+<a id="1813" class="Symbol">{-#</a> <a id="1817" class="Keyword">REWRITE</a> <a id="1825" href="UniAgda.HITs.Pushouts.html#1195" class="Postulate">βpushout-rec-left</a> <a id="1843" class="Symbol">#-}</a>
+<a id="1847" class="Symbol">{-#</a> <a id="1851" class="Keyword">REWRITE</a> <a id="1859" href="UniAgda.HITs.Pushouts.html#1503" class="Postulate">βpushout-rec-right</a> <a id="1878" class="Symbol">#-}</a>
+<a id="1882" class="Keyword">postulate</a>
+  <a id="βpushout-rec-glue"></a><a id="1894" href="UniAgda.HITs.Pushouts.html#1894" class="Postulate">βpushout-rec-glue</a> <a id="1912" class="Symbol">:</a> <a id="1914" class="Symbol">{</a><a id="1915" href="UniAgda.HITs.Pushouts.html#1915" class="Bound">i₁</a> <a id="1918" href="UniAgda.HITs.Pushouts.html#1918" class="Bound">i₂</a> <a id="1921" href="UniAgda.HITs.Pushouts.html#1921" class="Bound">i₃</a> <a id="1924" href="UniAgda.HITs.Pushouts.html#1924" class="Bound">i₄</a> <a id="1927" class="Symbol">:</a> <a id="1929" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="1934" class="Symbol">}</a> <a id="1936" class="Symbol">{</a><a id="1937" href="UniAgda.HITs.Pushouts.html#1937" class="Bound">A</a> <a id="1939" class="Symbol">:</a> <a id="1941" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1946" href="UniAgda.HITs.Pushouts.html#1915" class="Bound">i₁</a><a id="1948" class="Symbol">}</a> <a id="1950" class="Symbol">{</a><a id="1951" href="UniAgda.HITs.Pushouts.html#1951" class="Bound">B</a> <a id="1953" class="Symbol">:</a> <a id="1955" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1960" href="UniAgda.HITs.Pushouts.html#1918" class="Bound">i₂</a><a id="1962" class="Symbol">}</a> <a id="1964" class="Symbol">{</a><a id="1965" href="UniAgda.HITs.Pushouts.html#1965" class="Bound">C</a> <a id="1967" class="Symbol">:</a> <a id="1969" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1974" href="UniAgda.HITs.Pushouts.html#1921" class="Bound">i₃</a><a id="1976" class="Symbol">}</a> <a id="1978" class="Symbol">{</a><a id="1979" href="UniAgda.HITs.Pushouts.html#1979" class="Bound">D</a> <a id="1981" class="Symbol">:</a> <a id="1983" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1988" href="UniAgda.HITs.Pushouts.html#1924" class="Bound">i₄</a><a id="1990" class="Symbol">}</a>
+                      <a id="2014" class="Symbol">{</a><a id="2015" href="UniAgda.HITs.Pushouts.html#2015" class="Bound">f</a> <a id="2017" class="Symbol">:</a> <a id="2019" href="UniAgda.HITs.Pushouts.html#1965" class="Bound">C</a> <a id="2021" class="Symbol">→</a> <a id="2023" href="UniAgda.HITs.Pushouts.html#1937" class="Bound">A</a><a id="2024" class="Symbol">}</a> <a id="2026" class="Symbol">{</a><a id="2027" href="UniAgda.HITs.Pushouts.html#2027" class="Bound">g</a> <a id="2029" class="Symbol">:</a> <a id="2031" href="UniAgda.HITs.Pushouts.html#1965" class="Bound">C</a> <a id="2033" class="Symbol">→</a> <a id="2035" href="UniAgda.HITs.Pushouts.html#1951" class="Bound">B</a><a id="2036" class="Symbol">}</a>
+                      <a id="2060" class="Symbol">(</a><a id="2061" href="UniAgda.HITs.Pushouts.html#2061" class="Bound">h₁</a> <a id="2064" class="Symbol">:</a> <a id="2066" href="UniAgda.HITs.Pushouts.html#1937" class="Bound">A</a> <a id="2068" class="Symbol">→</a> <a id="2070" href="UniAgda.HITs.Pushouts.html#1979" class="Bound">D</a><a id="2071" class="Symbol">)</a> <a id="2073" class="Symbol">(</a><a id="2074" href="UniAgda.HITs.Pushouts.html#2074" class="Bound">h₂</a> <a id="2077" class="Symbol">:</a> <a id="2079" href="UniAgda.HITs.Pushouts.html#1951" class="Bound">B</a> <a id="2081" class="Symbol">→</a> <a id="2083" href="UniAgda.HITs.Pushouts.html#1979" class="Bound">D</a><a id="2084" class="Symbol">)</a> <a id="2086" class="Symbol">→</a> <a id="2088" class="Symbol">(</a><a id="2089" href="UniAgda.HITs.Pushouts.html#2089" class="Bound">c</a> <a id="2091" class="Symbol">:</a> <a id="2093" href="UniAgda.HITs.Pushouts.html#1965" class="Bound">C</a><a id="2094" class="Symbol">)</a> <a id="2096" class="Symbol">→</a> <a id="2098" class="Symbol">(</a><a id="2099" href="UniAgda.HITs.Pushouts.html#2099" class="Bound">p</a> <a id="2101" class="Symbol">:</a> <a id="2103" href="UniAgda.HITs.Pushouts.html#2061" class="Bound">h₁</a> <a id="2106" class="Symbol">(</a><a id="2107" href="UniAgda.HITs.Pushouts.html#2015" class="Bound">f</a> <a id="2109" href="UniAgda.HITs.Pushouts.html#2089" class="Bound">c</a><a id="2110" class="Symbol">)</a> <a id="2112" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="2114" href="UniAgda.HITs.Pushouts.html#2074" class="Bound">h₂</a> <a id="2117" class="Symbol">(</a><a id="2118" href="UniAgda.HITs.Pushouts.html#2027" class="Bound">g</a> <a id="2120" href="UniAgda.HITs.Pushouts.html#2089" class="Bound">c</a><a id="2121" class="Symbol">))</a>
+                      <a id="2146" class="Symbol">→</a> <a id="2148" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2151" class="Symbol">(</a><a id="2152" href="UniAgda.HITs.Pushouts.html#942" class="Postulate">pushout-rec</a> <a id="2164" href="UniAgda.HITs.Pushouts.html#2061" class="Bound">h₁</a> <a id="2167" href="UniAgda.HITs.Pushouts.html#2074" class="Bound">h₂</a> <a id="2170" href="UniAgda.HITs.Pushouts.html#2089" class="Bound">c</a> <a id="2172" href="UniAgda.HITs.Pushouts.html#2099" class="Bound">p</a><a id="2173" class="Symbol">)</a> <a id="2175" class="Symbol">(</a><a id="2176" href="UniAgda.HITs.Pushouts.html#783" class="Postulate">glue</a> <a id="2181" href="UniAgda.HITs.Pushouts.html#2015" class="Bound">f</a> <a id="2183" href="UniAgda.HITs.Pushouts.html#2027" class="Bound">g</a> <a id="2185" href="UniAgda.HITs.Pushouts.html#2089" class="Bound">c</a><a id="2186" class="Symbol">)</a> <a id="2188" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="2190" href="UniAgda.HITs.Pushouts.html#2099" class="Bound">p</a>
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: James Leslie</p>
+<p class="date">Created: 2021-03-23 Tue 13:12</p>
+</div>
+</body>
+</html>

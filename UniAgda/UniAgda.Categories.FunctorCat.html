@@ -1,0 +1,377 @@
+---
+layout: agda
+---
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-23 Tue 13:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniAgda.Categories.FunctorCat</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="James Leslie" />
+<meta name="description" content="Functor Categories"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UniAgda.Categories.FunctorCat</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org2ca9256">1. Prelude</a></li>
+<li><a href="#org41290be">2. Functor Precategories</a></li>
+<li><a href="#org830e508">3. Natural isomorphisms</a></li>
+<li><a href="#orgaa103f9">4. Functor Categories</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2ca9256" class="outline-2">
+<h2 id="org2ca9256"><span class="section-number-2">1</span> Prelude</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="Agda">
+<a id="165" class="Symbol">{-#</a> <a id="169" class="Keyword">OPTIONS</a> <a id="177" class="Pragma">--without-K</a>  <a id="190" class="Symbol">#-}</a>
+<a id="194" class="Keyword">module</a> <a id="201" href="UniAgda.Categories.FunctorCat.html" class="Module">UniAgda.Categories.FunctorCat</a> <a id="231" class="Keyword">where</a>
+
+<a id="238" class="Keyword">open</a> <a id="243" class="Keyword">import</a> <a id="250" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="279" class="Keyword">open</a> <a id="284" class="Keyword">import</a> <a id="291" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
+<a id="320" class="Keyword">open</a> <a id="325" class="Keyword">import</a> <a id="332" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a>
+<a id="360" class="Keyword">open</a> <a id="365" class="Keyword">import</a> <a id="372" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
+
+<a id="398" class="Keyword">open</a> <a id="403" class="Keyword">import</a> <a id="410" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a>
+<a id="438" class="Keyword">open</a> <a id="443" class="Keyword">import</a> <a id="450" href="UniAgda.Categories.Functor.html" class="Module">UniAgda.Categories.Functor</a>
+<a id="477" class="Keyword">open</a> <a id="482" class="Keyword">import</a> <a id="489" href="UniAgda.Categories.Natural-Transformation.html" class="Module">UniAgda.Categories.Natural-Transformation</a>
+
+<a id="532" class="Keyword">open</a> <a id="537" class="Keyword">import</a> <a id="544" href="UniAgda.Core.PathSpaces.Sigma.html" class="Module">UniAgda.Core.PathSpaces.Sigma</a>
+
+<a id="575" class="Keyword">open</a> <a id="580" class="Keyword">import</a> <a id="587" href="UniAgda.Core.Axioms.html" class="Module">UniAgda.Core.Axioms</a>
+
+<a id="608" class="Keyword">open</a> <a id="613" href="UniAgda.Categories.Category.html#1465" class="Module">Precategory</a>
+<a id="625" class="Keyword">open</a> <a id="630" href="UniAgda.Categories.Category.html#8265" class="Module">Category</a>
+<a id="639" class="Keyword">open</a> <a id="644" href="UniAgda.Categories.Functor.html#753" class="Module">Functor</a>
+<a id="652" class="Keyword">open</a> <a id="657" href="UniAgda.Categories.Natural-Transformation.html#935" class="Module">NaturalTransformation</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-org41290be" class="outline-2">
+<h2 id="org41290be"><span class="section-number-2">2</span> Functor Precategories</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Given two precategories, there is a precategory of functors between them, with natural transformations as morphisms.
+</p>
+<pre class="Agda">
+<a id="_^_"></a><a id="848" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">_^_</a> <a id="852" class="Symbol">:</a> <a id="854" class="Symbol">∀</a> <a id="856" class="Symbol">{</a><a id="857" href="UniAgda.Categories.FunctorCat.html#857" class="Bound">i₁</a> <a id="860" href="UniAgda.Categories.FunctorCat.html#860" class="Bound">i₂</a> <a id="863" href="UniAgda.Categories.FunctorCat.html#863" class="Bound">i₃</a> <a id="866" href="UniAgda.Categories.FunctorCat.html#866" class="Bound">i₄</a><a id="868" class="Symbol">}</a> <a id="870" class="Symbol">(</a><a id="871" href="UniAgda.Categories.FunctorCat.html#871" class="Bound">A</a> <a id="873" class="Symbol">:</a> <a id="875" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="887" href="UniAgda.Categories.FunctorCat.html#857" class="Bound">i₁</a> <a id="890" href="UniAgda.Categories.FunctorCat.html#860" class="Bound">i₂</a><a id="892" class="Symbol">)</a> <a id="894" class="Symbol">(</a><a id="895" href="UniAgda.Categories.FunctorCat.html#895" class="Bound">B</a> <a id="897" class="Symbol">:</a> <a id="899" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="911" href="UniAgda.Categories.FunctorCat.html#863" class="Bound">i₃</a> <a id="914" href="UniAgda.Categories.FunctorCat.html#866" class="Bound">i₄</a><a id="916" class="Symbol">)</a>
+      <a id="924" class="Symbol">→</a> <a id="926" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="938" class="Symbol">(</a><a id="939" href="UniAgda.Categories.FunctorCat.html#857" class="Bound">i₁</a> <a id="942" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="944" href="UniAgda.Categories.FunctorCat.html#860" class="Bound">i₂</a> <a id="947" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="949" href="UniAgda.Categories.FunctorCat.html#863" class="Bound">i₃</a> <a id="952" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="954" href="UniAgda.Categories.FunctorCat.html#866" class="Bound">i₄</a><a id="956" class="Symbol">)</a> <a id="958" class="Symbol">(</a><a id="959" href="UniAgda.Categories.FunctorCat.html#860" class="Bound">i₂</a> <a id="962" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="964" href="UniAgda.Categories.FunctorCat.html#863" class="Bound">i₃</a> <a id="967" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="969" href="UniAgda.Categories.FunctorCat.html#866" class="Bound">i₄</a><a id="971" class="Symbol">)</a>
+<a id="973" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a> <a id="976" class="Symbol">(</a><a id="977" href="UniAgda.Categories.FunctorCat.html#977" class="Bound">A</a> <a id="979" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="981" href="UniAgda.Categories.FunctorCat.html#981" class="Bound">B</a><a id="982" class="Symbol">)</a> <a id="984" class="Symbol">=</a> <a id="986" href="UniAgda.Categories.Functor.html#753" class="Record">Functor</a> <a id="994" href="UniAgda.Categories.FunctorCat.html#981" class="Bound">B</a> <a id="996" href="UniAgda.Categories.FunctorCat.html#977" class="Bound">A</a>
+<a id="998" href="UniAgda.Categories.Category.html#1562" class="Field">hom</a> <a id="1002" class="Symbol">(</a><a id="1003" href="UniAgda.Categories.FunctorCat.html#1003" class="Bound">A</a> <a id="1005" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1007" href="UniAgda.Categories.FunctorCat.html#1007" class="Bound">B</a><a id="1008" class="Symbol">)</a> <a id="1010" href="UniAgda.Categories.FunctorCat.html#1010" class="Bound">F</a> <a id="1012" href="UniAgda.Categories.FunctorCat.html#1012" class="Bound">G</a> <a id="1014" class="Symbol">=</a> <a id="1016" href="UniAgda.Categories.Natural-Transformation.html#935" class="Record">NaturalTransformation</a> <a id="1038" href="UniAgda.Categories.FunctorCat.html#1010" class="Bound">F</a> <a id="1040" href="UniAgda.Categories.FunctorCat.html#1012" class="Bound">G</a>
+<a id="1042" href="UniAgda.Categories.Category.html#1592" class="Field">hom-set</a> <a id="1050" class="Symbol">(</a><a id="1051" href="UniAgda.Categories.FunctorCat.html#1051" class="Bound">A</a> <a id="1053" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1055" href="UniAgda.Categories.FunctorCat.html#1055" class="Bound">B</a><a id="1056" class="Symbol">)</a> <a id="1058" class="Symbol">=</a> <a id="1060" href="UniAgda.Categories.Natural-Transformation.html#4771" class="Function">Nat-trans-is-set</a>
+<a id="1077" href="UniAgda.Categories.Category.html#1635" class="Field">Id</a> <a id="1080" class="Symbol">(</a><a id="1081" href="UniAgda.Categories.FunctorCat.html#1081" class="Bound">A</a> <a id="1083" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1085" href="UniAgda.Categories.FunctorCat.html#1085" class="Bound">B</a><a id="1086" class="Symbol">)</a> <a id="1088" class="Symbol">=</a> <a id="1090" href="UniAgda.Categories.Natural-Transformation.html#5486" class="Function">idⁿ</a>
+<a id="1094" href="UniAgda.Categories.Category.html#1665" class="Field">comp</a> <a id="1099" class="Symbol">(</a><a id="1100" href="UniAgda.Categories.FunctorCat.html#1100" class="Bound">A</a> <a id="1102" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1104" href="UniAgda.Categories.FunctorCat.html#1104" class="Bound">B</a><a id="1105" class="Symbol">)</a> <a id="1107" class="Symbol">=</a> <a id="1109" href="UniAgda.Categories.Natural-Transformation.html#5824" class="Function">nat-trans-compᵛ</a>
+<a id="1125" href="UniAgda.Categories.Category.html#1721" class="Field">IdL</a> <a id="1129" class="Symbol">(</a><a id="1130" href="UniAgda.Categories.FunctorCat.html#1130" class="Bound">A</a> <a id="1132" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1134" href="UniAgda.Categories.FunctorCat.html#1134" class="Bound">B</a><a id="1135" class="Symbol">)</a> <a id="1137" class="Symbol">=</a> <a id="1139" href="UniAgda.Categories.Natural-Transformation.html#6920" class="Function">nat-trans-compᵛ-id</a>
+<a id="1158" href="UniAgda.Categories.Category.html#1772" class="Field">IdR</a> <a id="1162" class="Symbol">(</a><a id="1163" href="UniAgda.Categories.FunctorCat.html#1163" class="Bound">A</a> <a id="1165" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1167" href="UniAgda.Categories.FunctorCat.html#1167" class="Bound">B</a><a id="1168" class="Symbol">)</a> <a id="1170" class="Symbol">=</a> <a id="1172" href="UniAgda.Categories.Natural-Transformation.html#6611" class="Function">nat-trans-id-compᵛ</a>
+<a id="1191" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="1197" class="Symbol">(</a><a id="1198" href="UniAgda.Categories.FunctorCat.html#1198" class="Bound">A</a> <a id="1200" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1202" href="UniAgda.Categories.FunctorCat.html#1202" class="Bound">B</a><a id="1203" class="Symbol">)</a> <a id="1205" class="Symbol">=</a> <a id="1207" href="UniAgda.Categories.Natural-Transformation.html#7273" class="Function">nat-trans-comp-assoc</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-org830e508" class="outline-2">
+<h2 id="org830e508"><span class="section-number-2">3</span> Natural isomorphisms</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+One of the first results about natural transformations that one proves, is that a natural transformation is an isomorphism if and only if each component is an isomorphism. We prove that now, hiding each direction in a "private" environment. The forward direction is straightforward, we just need to convert the paths between records into a path between Σ types. Then it is easy to show that we do have an isomorphism.
+</p>
+<pre class="Agda">
+<a id="1697" class="Keyword">private</a>
+  <a id="lemma9-2-4i"></a><a id="1707" href="UniAgda.Categories.FunctorCat.html#1707" class="Function">lemma9-2-4i</a> <a id="1719" class="Symbol">:</a> <a id="1721" class="Symbol">∀</a> <a id="1723" class="Symbol">{</a><a id="1724" href="UniAgda.Categories.FunctorCat.html#1724" class="Bound">i₁</a> <a id="1727" href="UniAgda.Categories.FunctorCat.html#1727" class="Bound">i₂</a> <a id="1730" href="UniAgda.Categories.FunctorCat.html#1730" class="Bound">i₃</a> <a id="1733" href="UniAgda.Categories.FunctorCat.html#1733" class="Bound">i₄</a><a id="1735" class="Symbol">}</a> <a id="1737" class="Symbol">{</a><a id="1738" href="UniAgda.Categories.FunctorCat.html#1738" class="Bound">A</a> <a id="1740" class="Symbol">:</a> <a id="1742" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="1754" href="UniAgda.Categories.FunctorCat.html#1724" class="Bound">i₁</a> <a id="1757" href="UniAgda.Categories.FunctorCat.html#1727" class="Bound">i₂</a><a id="1759" class="Symbol">}</a> <a id="1761" class="Symbol">{</a><a id="1762" href="UniAgda.Categories.FunctorCat.html#1762" class="Bound">B</a> <a id="1764" class="Symbol">:</a> <a id="1766" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="1778" href="UniAgda.Categories.FunctorCat.html#1730" class="Bound">i₃</a> <a id="1781" href="UniAgda.Categories.FunctorCat.html#1733" class="Bound">i₄</a><a id="1783" class="Symbol">}</a> <a id="1785" class="Symbol">{</a><a id="1786" href="UniAgda.Categories.FunctorCat.html#1786" class="Bound">F</a> <a id="1788" href="UniAgda.Categories.FunctorCat.html#1788" class="Bound">G</a> <a id="1790" class="Symbol">:</a> <a id="1792" class="Symbol">(</a><a id="1793" href="UniAgda.Categories.FunctorCat.html#1762" class="Bound">B</a> <a id="1795" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1797" href="UniAgda.Categories.FunctorCat.html#1738" class="Bound">A</a><a id="1798" class="Symbol">)</a> <a id="1800" class="Symbol">.</a><a id="1801" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a><a id="1803" class="Symbol">}</a>
+                  <a id="1823" class="Symbol">(</a><a id="1824" href="UniAgda.Categories.FunctorCat.html#1824" class="Bound">γ</a> <a id="1826" class="Symbol">:</a> <a id="1828" class="Symbol">(</a><a id="1829" href="UniAgda.Categories.FunctorCat.html#1762" class="Bound">B</a> <a id="1831" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1833" href="UniAgda.Categories.FunctorCat.html#1738" class="Bound">A</a><a id="1834" class="Symbol">)</a> <a id="1836" class="Symbol">.</a><a id="1837" href="UniAgda.Categories.Category.html#1562" class="Field">hom</a> <a id="1841" href="UniAgda.Categories.FunctorCat.html#1786" class="Bound">F</a> <a id="1843" href="UniAgda.Categories.FunctorCat.html#1788" class="Bound">G</a><a id="1844" class="Symbol">)</a>
+                  <a id="1864" class="Symbol">→</a> <a id="1866" href="UniAgda.Categories.Category.html#2069" class="Function">isIso</a> <a id="1872" class="Symbol">(</a><a id="1873" href="UniAgda.Categories.FunctorCat.html#1762" class="Bound">B</a> <a id="1875" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="1877" href="UniAgda.Categories.FunctorCat.html#1738" class="Bound">A</a><a id="1878" class="Symbol">)</a> <a id="1880" href="UniAgda.Categories.FunctorCat.html#1824" class="Bound">γ</a> <a id="1882" class="Symbol">→</a> <a id="1884" class="Symbol">((</a><a id="1886" href="UniAgda.Categories.FunctorCat.html#1886" class="Bound">a</a> <a id="1888" class="Symbol">:</a> <a id="1890" href="UniAgda.Categories.FunctorCat.html#1738" class="Bound">A</a> <a id="1892" class="Symbol">.</a><a id="1893" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a><a id="1895" class="Symbol">)</a> <a id="1897" class="Symbol">→</a> <a id="1899" href="UniAgda.Categories.Category.html#2069" class="Function">isIso</a> <a id="1905" href="UniAgda.Categories.FunctorCat.html#1762" class="Bound">B</a> <a id="1907" class="Symbol">(</a><a id="1908" href="UniAgda.Categories.FunctorCat.html#1824" class="Bound">γ</a> <a id="1910" class="Symbol">.</a><a id="1911" href="UniAgda.Categories.Natural-Transformation.html#1137" class="Field">α-ob</a> <a id="1916" href="UniAgda.Categories.FunctorCat.html#1886" class="Bound">a</a><a id="1917" class="Symbol">))</a>
+  <a id="1922" href="UniAgda.Categories.FunctorCat.html#1707" class="Function">lemma9-2-4i</a> <a id="1934" class="Symbol">{</a><a id="1935" class="Argument">B</a> <a id="1937" class="Symbol">=</a> <a id="1939" href="UniAgda.Categories.FunctorCat.html#1939" class="Bound">B</a><a id="1940" class="Symbol">}</a> <a id="1942" class="Symbol">{</a><a id="1943" class="Argument">F</a> <a id="1945" class="Symbol">=</a> <a id="1947" href="UniAgda.Categories.FunctorCat.html#1947" class="Bound">F</a><a id="1948" class="Symbol">}</a> <a id="1950" class="Symbol">{</a><a id="1951" class="Argument">G</a> <a id="1953" class="Symbol">=</a> <a id="1955" href="UniAgda.Categories.FunctorCat.html#1955" class="Bound">G</a><a id="1956" class="Symbol">}</a> <a id="1958" href="UniAgda.Categories.FunctorCat.html#1958" class="Bound">γ</a> <a id="1960" class="Symbol">(</a><a id="1961" href="UniAgda.Categories.FunctorCat.html#1961" class="Bound">α</a> <a id="1963" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1965" href="UniAgda.Categories.FunctorCat.html#1965" class="Bound">p</a> <a id="1967" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1969" href="UniAgda.Categories.FunctorCat.html#1969" class="Bound">q</a><a id="1970" class="Symbol">)</a> <a id="1972" href="UniAgda.Categories.FunctorCat.html#1972" class="Bound">a</a> <a id="1974" class="Symbol">=</a>
+    <a id="1980" class="Keyword">let</a> <a id="1984" href="UniAgda.Categories.FunctorCat.html#1984" class="Bound">q&#39;</a> <a id="1987" class="Symbol">=</a> <a id="1989" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="1992" class="Symbol">(</a><a id="1993" href="UniAgda.Categories.Natural-Transformation.html#2692" class="Function">nat-trans-rec→sig</a> <a id="2011" href="UniAgda.Categories.FunctorCat.html#1947" class="Bound">F</a> <a id="2013" href="UniAgda.Categories.FunctorCat.html#1947" class="Bound">F</a><a id="2014" class="Symbol">)</a> <a id="2016" href="UniAgda.Categories.FunctorCat.html#1969" class="Bound">q</a>
+        <a id="2026" href="UniAgda.Categories.FunctorCat.html#2026" class="Bound">p&#39;</a> <a id="2029" class="Symbol">=</a> <a id="2031" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2034" class="Symbol">(</a><a id="2035" href="UniAgda.Categories.Natural-Transformation.html#2692" class="Function">nat-trans-rec→sig</a> <a id="2053" href="UniAgda.Categories.FunctorCat.html#1955" class="Bound">G</a> <a id="2055" href="UniAgda.Categories.FunctorCat.html#1955" class="Bound">G</a><a id="2056" class="Symbol">)</a> <a id="2058" href="UniAgda.Categories.FunctorCat.html#1965" class="Bound">p</a> <a id="2060" class="Keyword">in</a>
+    <a id="2067" class="Symbol">(</a><a id="2068" href="UniAgda.Categories.FunctorCat.html#1961" class="Bound">α</a> <a id="2070" class="Symbol">.</a><a id="2071" href="UniAgda.Categories.Natural-Transformation.html#1137" class="Field">α-ob</a> <a id="2076" href="UniAgda.Categories.FunctorCat.html#1972" class="Bound">a</a><a id="2077" class="Symbol">)</a> <a id="2079" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+    <a id="2085" href="UniAgda.Core.Axioms.html#1824" class="Function">happlyD</a> <a id="2093" class="Symbol">(</a><a id="2094" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2098" class="Symbol">(</a><a id="2099" href="UniAgda.Core.PathSpaces.Sigma.html#550" class="Function">path-sigma</a> <a id="2110" href="UniAgda.Categories.FunctorCat.html#2026" class="Bound">p&#39;</a><a id="2112" class="Symbol">))</a> <a id="2115" href="UniAgda.Categories.FunctorCat.html#1972" class="Bound">a</a> <a id="2117" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+    <a id="2123" href="UniAgda.Core.Axioms.html#1824" class="Function">happlyD</a> <a id="2131" class="Symbol">(</a><a id="2132" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2136" class="Symbol">(</a><a id="2137" href="UniAgda.Core.PathSpaces.Sigma.html#550" class="Function">path-sigma</a> <a id="2148" href="UniAgda.Categories.FunctorCat.html#1984" class="Bound">q&#39;</a><a id="2150" class="Symbol">))</a> <a id="2153" href="UniAgda.Categories.FunctorCat.html#1972" class="Bound">a</a>
+</pre>
+
+<p>
+The reverse direction mainly consists of some path algebra. It is mathematically straightforward, but due to associativity, can be unsightly in the details.
+</p>
+<pre class="Agda">
+  <a id="lemma9-2-4ii"></a><a id="2343" href="UniAgda.Categories.FunctorCat.html#2343" class="Function">lemma9-2-4ii</a> <a id="2356" class="Symbol">:</a> <a id="2358" class="Symbol">∀</a> <a id="2360" class="Symbol">{</a><a id="2361" href="UniAgda.Categories.FunctorCat.html#2361" class="Bound">i₁</a> <a id="2364" href="UniAgda.Categories.FunctorCat.html#2364" class="Bound">i₂</a> <a id="2367" href="UniAgda.Categories.FunctorCat.html#2367" class="Bound">i₃</a> <a id="2370" href="UniAgda.Categories.FunctorCat.html#2370" class="Bound">i₄</a><a id="2372" class="Symbol">}</a> <a id="2374" class="Symbol">{</a><a id="2375" href="UniAgda.Categories.FunctorCat.html#2375" class="Bound">A</a> <a id="2377" class="Symbol">:</a> <a id="2379" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="2391" href="UniAgda.Categories.FunctorCat.html#2361" class="Bound">i₁</a> <a id="2394" href="UniAgda.Categories.FunctorCat.html#2364" class="Bound">i₂</a><a id="2396" class="Symbol">}</a> <a id="2398" class="Symbol">{</a><a id="2399" href="UniAgda.Categories.FunctorCat.html#2399" class="Bound">B</a> <a id="2401" class="Symbol">:</a> <a id="2403" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="2415" href="UniAgda.Categories.FunctorCat.html#2367" class="Bound">i₃</a> <a id="2418" href="UniAgda.Categories.FunctorCat.html#2370" class="Bound">i₄</a><a id="2420" class="Symbol">}</a> <a id="2422" class="Symbol">{</a><a id="2423" href="UniAgda.Categories.FunctorCat.html#2423" class="Bound">F</a> <a id="2425" href="UniAgda.Categories.FunctorCat.html#2425" class="Bound">G</a> <a id="2427" class="Symbol">:</a> <a id="2429" class="Symbol">(</a><a id="2430" href="UniAgda.Categories.FunctorCat.html#2399" class="Bound">B</a> <a id="2432" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="2434" href="UniAgda.Categories.FunctorCat.html#2375" class="Bound">A</a><a id="2435" class="Symbol">)</a> <a id="2437" class="Symbol">.</a><a id="2438" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a><a id="2440" class="Symbol">}</a>
+                  <a id="2460" class="Symbol">(</a><a id="2461" href="UniAgda.Categories.FunctorCat.html#2461" class="Bound">γ</a> <a id="2463" class="Symbol">:</a> <a id="2465" class="Symbol">(</a><a id="2466" href="UniAgda.Categories.FunctorCat.html#2399" class="Bound">B</a> <a id="2468" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="2470" href="UniAgda.Categories.FunctorCat.html#2375" class="Bound">A</a><a id="2471" class="Symbol">)</a> <a id="2473" class="Symbol">.</a><a id="2474" href="UniAgda.Categories.Category.html#1562" class="Field">hom</a> <a id="2478" href="UniAgda.Categories.FunctorCat.html#2423" class="Bound">F</a> <a id="2480" href="UniAgda.Categories.FunctorCat.html#2425" class="Bound">G</a><a id="2481" class="Symbol">)</a>
+                   <a id="2502" class="Symbol">→</a> <a id="2504" class="Symbol">((</a><a id="2506" href="UniAgda.Categories.FunctorCat.html#2506" class="Bound">a</a> <a id="2508" class="Symbol">:</a> <a id="2510" href="UniAgda.Categories.FunctorCat.html#2375" class="Bound">A</a> <a id="2512" class="Symbol">.</a><a id="2513" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a><a id="2515" class="Symbol">)</a> <a id="2517" class="Symbol">→</a> <a id="2519" href="UniAgda.Categories.Category.html#2069" class="Function">isIso</a> <a id="2525" href="UniAgda.Categories.FunctorCat.html#2399" class="Bound">B</a> <a id="2527" class="Symbol">(</a><a id="2528" href="UniAgda.Categories.FunctorCat.html#2461" class="Bound">γ</a> <a id="2530" class="Symbol">.</a><a id="2531" href="UniAgda.Categories.Natural-Transformation.html#1137" class="Field">α-ob</a> <a id="2536" href="UniAgda.Categories.FunctorCat.html#2506" class="Bound">a</a><a id="2537" class="Symbol">))</a> <a id="2540" class="Symbol">→</a> <a id="2542" href="UniAgda.Categories.Category.html#2069" class="Function">isIso</a> <a id="2548" class="Symbol">(</a><a id="2549" href="UniAgda.Categories.FunctorCat.html#2399" class="Bound">B</a> <a id="2551" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="2553" href="UniAgda.Categories.FunctorCat.html#2375" class="Bound">A</a><a id="2554" class="Symbol">)</a> <a id="2556" href="UniAgda.Categories.FunctorCat.html#2461" class="Bound">γ</a>
+  <a id="2560" href="UniAgda.Categories.FunctorCat.html#2343" class="Function">lemma9-2-4ii</a> <a id="2573" class="Symbol">{</a><a id="2574" class="Argument">B</a> <a id="2576" class="Symbol">=</a> <a id="2578" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a><a id="2579" class="Symbol">}</a> <a id="2581" class="Symbol">{</a><a id="2582" class="Argument">F</a> <a id="2584" class="Symbol">=</a> <a id="2586" href="UniAgda.Categories.FunctorCat.html#2586" class="Bound">F</a><a id="2587" class="Symbol">}</a> <a id="2589" class="Symbol">{</a><a id="2590" class="Argument">G</a> <a id="2592" class="Symbol">=</a> <a id="2594" href="UniAgda.Categories.FunctorCat.html#2594" class="Bound">G</a><a id="2595" class="Symbol">}</a> <a id="2597" class="Keyword">record</a> <a id="2604" class="Symbol">{</a> <a id="2606" href="UniAgda.Categories.Natural-Transformation.html#1137" class="Field">α-ob</a> <a id="2611" class="Symbol">=</a> <a id="2613" href="UniAgda.Categories.FunctorCat.html#2613" class="Bound">γ₁</a> <a id="2616" class="Symbol">;</a> <a id="2618" href="UniAgda.Categories.Natural-Transformation.html#1185" class="Field">α-nat</a> <a id="2624" class="Symbol">=</a> <a id="2626" href="UniAgda.Categories.FunctorCat.html#2626" class="Bound">γ₂</a> <a id="2629" class="Symbol">}</a> <a id="2631" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2633" class="Symbol">=</a>
+    <a id="2639" class="Keyword">record</a> <a id="2646" class="Symbol">{</a> <a id="2648" href="UniAgda.Categories.Natural-Transformation.html#1137" class="Field">α-ob</a> <a id="2653" class="Symbol">=</a> <a id="2655" class="Symbol">λ</a> <a id="2657" href="UniAgda.Categories.FunctorCat.html#2657" class="Bound">a</a> <a id="2659" class="Symbol">→</a> <a id="2661" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2665" class="Symbol">(</a><a id="2666" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2668" href="UniAgda.Categories.FunctorCat.html#2657" class="Bound">a</a><a id="2669" class="Symbol">)</a> <a id="2671" class="Symbol">;</a>
+             <a id="2686" href="UniAgda.Categories.Natural-Transformation.html#1185" class="Field">α-nat</a> <a id="2692" class="Symbol">=</a> <a id="2694" class="Symbol">λ</a> <a id="2696" class="Symbol">{</a> <a id="2698" class="Symbol">{</a><a id="2699" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="2700" class="Symbol">}</a> <a id="2702" class="Symbol">{</a><a id="2703" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="2704" class="Symbol">}</a> <a id="2706" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a> <a id="2708" class="Symbol">→</a>
+               <a id="2725" class="Symbol">(((((((</a><a id="2732" href="UniAgda.Categories.Category.html#1721" class="Field">IdL</a> <a id="2736" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2738" class="Symbol">(</a><a id="2739" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2743" class="Symbol">(</a><a id="2744" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2746" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="2747" class="Symbol">)</a> <a id="2749" href="UniAgda.Categories.Category.html#7588" class="Function">o⟨</a> <a id="2752" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2754" href="UniAgda.Categories.Category.html#7588" class="Function">⟩</a> <a id="2756" href="UniAgda.Categories.FunctorCat.html#2594" class="Bound">G</a> <a id="2758" class="Symbol">.</a><a id="2759" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="2762" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="2763" class="Symbol">)</a> <a id="2765" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a>
+                 <a id="2784" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2786" href="UniAgda.Categories.Category.html#4255" class="Function">precat-whiskerL</a> <a id="2802" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2804" class="Symbol">(</a><a id="2805" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2809" class="Symbol">(</a><a id="2810" href="UniAgda.Core.Types.Sigma.html#744" class="Function">pr₂</a> <a id="2814" class="Symbol">(</a><a id="2815" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2817" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="2818" class="Symbol">))</a> <a id="2821" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="2822" class="Symbol">)</a> <a id="2824" class="Symbol">(</a><a id="2825" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2829" class="Symbol">(</a><a id="2830" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2832" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="2833" class="Symbol">)</a> <a id="2835" href="UniAgda.Categories.Category.html#7588" class="Function">o⟨</a> <a id="2838" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2840" href="UniAgda.Categories.Category.html#7588" class="Function">⟩</a> <a id="2842" href="UniAgda.Categories.FunctorCat.html#2594" class="Bound">G</a> <a id="2844" class="Symbol">.</a><a id="2845" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="2848" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="2849" class="Symbol">))</a>
+                 <a id="2869" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2871" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="2877" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2879" class="Symbol">(</a><a id="2880" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2884" class="Symbol">(</a><a id="2885" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2887" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="2888" class="Symbol">))</a> <a id="2891" class="Symbol">(</a><a id="2892" href="UniAgda.Categories.FunctorCat.html#2613" class="Bound">γ₁</a> <a id="2895" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="2896" class="Symbol">)</a> <a id="2898" class="Symbol">(</a><a id="2899" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2903" class="Symbol">(</a><a id="2904" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2906" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="2907" class="Symbol">)</a> <a id="2909" href="UniAgda.Categories.Category.html#7588" class="Function">o⟨</a> <a id="2912" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2914" href="UniAgda.Categories.Category.html#7588" class="Function">⟩</a> <a id="2916" href="UniAgda.Categories.FunctorCat.html#2594" class="Bound">G</a> <a id="2918" class="Symbol">.</a><a id="2919" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="2922" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="2923" class="Symbol">))</a>
+                 <a id="2943" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2945" href="UniAgda.Categories.Category.html#4432" class="Function">precat-whiskerR</a> <a id="2961" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2963" class="Symbol">(</a><a id="2964" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="2970" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="2972" class="Symbol">(</a><a id="2973" href="UniAgda.Categories.FunctorCat.html#2613" class="Bound">γ₁</a> <a id="2976" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="2977" class="Symbol">)</a> <a id="2979" class="Symbol">(</a><a id="2980" href="UniAgda.Categories.FunctorCat.html#2594" class="Bound">G</a> <a id="2982" class="Symbol">.</a><a id="2983" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="2986" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="2987" class="Symbol">)</a> <a id="2989" class="Symbol">(</a><a id="2990" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2994" class="Symbol">(</a><a id="2995" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="2997" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="2998" class="Symbol">))</a> <a id="3001" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3002" class="Symbol">)</a> <a id="3004" class="Symbol">(</a><a id="3005" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3009" class="Symbol">(</a><a id="3010" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3012" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="3013" class="Symbol">)))</a>
+                 <a id="3034" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3036" href="UniAgda.Categories.Category.html#4432" class="Function">precat-whiskerR</a> <a id="3052" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3054" class="Symbol">(</a><a id="3055" href="UniAgda.Categories.Category.html#4255" class="Function">precat-whiskerL</a> <a id="3071" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3073" class="Symbol">(</a><a id="3074" href="UniAgda.Categories.FunctorCat.html#2626" class="Bound">γ₂</a> <a id="3077" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a> <a id="3079" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3080" class="Symbol">)</a> <a id="3082" class="Symbol">(</a><a id="3083" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3087" class="Symbol">(</a><a id="3088" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3090" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="3091" class="Symbol">)))</a> <a id="3095" class="Symbol">(</a><a id="3096" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3100" class="Symbol">(</a><a id="3101" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3103" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="3104" class="Symbol">)))</a>
+                 <a id="3125" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3127" href="UniAgda.Categories.Category.html#4432" class="Function">precat-whiskerR</a> <a id="3143" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3145" class="Symbol">(</a><a id="3146" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="3152" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3154" class="Symbol">(</a><a id="3155" href="UniAgda.Categories.FunctorCat.html#2586" class="Bound">F</a> <a id="3157" class="Symbol">.</a><a id="3158" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="3161" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="3162" class="Symbol">)</a> <a id="3164" class="Symbol">(</a><a id="3165" href="UniAgda.Categories.FunctorCat.html#2613" class="Bound">γ₁</a> <a id="3168" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="3169" class="Symbol">)</a> <a id="3171" class="Symbol">(</a><a id="3172" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3176" class="Symbol">(</a><a id="3177" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3179" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="3180" class="Symbol">))</a> <a id="3183" class="Symbol">)</a> <a id="3185" class="Symbol">(</a><a id="3186" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3190" class="Symbol">(</a><a id="3191" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3193" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="3194" class="Symbol">)))</a>
+                 <a id="3215" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3217" class="Symbol">(</a><a id="3218" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="3224" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3226" class="Symbol">(</a><a id="3227" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3231" class="Symbol">(</a><a id="3232" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3234" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="3235" class="Symbol">))</a> <a id="3238" class="Symbol">(</a><a id="3239" href="UniAgda.Categories.FunctorCat.html#2586" class="Bound">F</a> <a id="3241" class="Symbol">.</a><a id="3242" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="3245" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="3246" class="Symbol">)</a> <a id="3248" class="Symbol">((</a><a id="3250" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3254" class="Symbol">(</a><a id="3255" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3257" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="3258" class="Symbol">))</a> <a id="3261" href="UniAgda.Categories.Category.html#7588" class="Function">o⟨</a> <a id="3264" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3266" href="UniAgda.Categories.Category.html#7588" class="Function">⟩</a> <a id="3268" class="Symbol">(</a><a id="3269" href="UniAgda.Categories.FunctorCat.html#2613" class="Bound">γ₁</a> <a id="3272" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="3273" class="Symbol">))</a> <a id="3276" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3277" class="Symbol">))</a>
+               <a id="3295" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3297" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3300" class="Symbol">(λ</a> <a id="3303" href="UniAgda.Categories.FunctorCat.html#3303" class="Bound">Z</a> <a id="3305" class="Symbol">→</a> <a id="3307" href="UniAgda.Categories.Category.html#1665" class="Field">comp</a> <a id="3312" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3314" class="Symbol">(</a><a id="3315" href="UniAgda.Categories.FunctorCat.html#3303" class="Bound">Z</a><a id="3316" class="Symbol">)</a> <a id="3318" class="Symbol">(</a><a id="3319" href="UniAgda.Categories.Category.html#7588" class="Function">comp&#39;</a> <a id="3325" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3327" class="Symbol">(</a><a id="3328" href="UniAgda.Categories.FunctorCat.html#2586" class="Bound">F</a> <a id="3330" class="Symbol">.</a><a id="3331" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="3334" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a><a id="3335" class="Symbol">)</a> <a id="3337" class="Symbol">(</a><a id="3338" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3342" class="Symbol">(</a><a id="3343" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3345" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="3346" class="Symbol">))))</a> <a id="3351" class="Symbol">(</a><a id="3352" href="UniAgda.Core.Types.Sigma.html#744" class="Function">pr₂</a> <a id="3356" class="Symbol">(</a><a id="3357" href="UniAgda.Core.Types.Sigma.html#744" class="Function">pr₂</a> <a id="3361" class="Symbol">(</a><a id="3362" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3364" href="UniAgda.Categories.FunctorCat.html#2703" class="Bound">b</a><a id="3365" class="Symbol">))))</a>
+               <a id="3385" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3387" href="UniAgda.Categories.Category.html#1772" class="Field">IdR</a> <a id="3391" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3393" class="Symbol">(</a><a id="3394" href="UniAgda.Categories.FunctorCat.html#2586" class="Bound">F</a> <a id="3396" class="Symbol">.</a><a id="3397" href="UniAgda.Categories.Functor.html#964" class="Field">F₁</a> <a id="3400" href="UniAgda.Categories.FunctorCat.html#2706" class="Bound">f</a> <a id="3402" href="UniAgda.Categories.Category.html#7588" class="Function">o⟨</a> <a id="3405" href="UniAgda.Categories.FunctorCat.html#2578" class="Bound">B</a> <a id="3407" href="UniAgda.Categories.Category.html#7588" class="Function">⟩</a> <a id="3409" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3413" class="Symbol">(</a><a id="3414" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3416" href="UniAgda.Categories.FunctorCat.html#2699" class="Bound">a</a><a id="3417" class="Symbol">))}</a> <a id="3421" class="Symbol">}</a> <a id="3423" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+    <a id="3429" class="Symbol">(</a><a id="3430" href="UniAgda.Categories.Natural-Transformation.html#4148" class="Function">nat-trans-id</a> <a id="3443" class="Symbol">(</a><a id="3444" href="UniAgda.Core.Axioms.html#2123" class="Function">funextD</a> <a id="3452" class="Symbol">λ</a> <a id="3454" href="UniAgda.Categories.FunctorCat.html#3454" class="Bound">x</a> <a id="3456" class="Symbol">→</a> <a id="3458" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3462" class="Symbol">(</a><a id="3463" href="UniAgda.Core.Types.Sigma.html#744" class="Function">pr₂</a> <a id="3467" class="Symbol">(</a><a id="3468" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3470" href="UniAgda.Categories.FunctorCat.html#3454" class="Bound">x</a><a id="3471" class="Symbol">))))</a> <a id="3476" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+    <a id="3482" class="Symbol">(</a><a id="3483" href="UniAgda.Categories.Natural-Transformation.html#4148" class="Function">nat-trans-id</a> <a id="3496" class="Symbol">(</a><a id="3497" href="UniAgda.Core.Axioms.html#2123" class="Function">funextD</a> <a id="3505" class="Symbol">λ</a> <a id="3507" href="UniAgda.Categories.FunctorCat.html#3507" class="Bound">x</a> <a id="3509" class="Symbol">→</a> <a id="3511" href="UniAgda.Core.Types.Sigma.html#744" class="Function">pr₂</a> <a id="3515" class="Symbol">(</a><a id="3516" href="UniAgda.Core.Types.Sigma.html#744" class="Function">pr₂</a> <a id="3520" class="Symbol">(</a><a id="3521" href="UniAgda.Categories.FunctorCat.html#2631" class="Bound">δ</a> <a id="3523" href="UniAgda.Categories.FunctorCat.html#3507" class="Bound">x</a><a id="3524" class="Symbol">))))</a>
+</pre>
+
+<p>
+Combining the above results, we get the desired proof.
+</p>
+<pre class="Agda">
+<a id="nat-trans-iso-components"></a><a id="3613" href="UniAgda.Categories.FunctorCat.html#3613" class="Function">nat-trans-iso-components</a> <a id="3638" class="Symbol">:</a> <a id="3640" class="Symbol">∀</a> <a id="3642" class="Symbol">{</a><a id="3643" href="UniAgda.Categories.FunctorCat.html#3643" class="Bound">i₁</a> <a id="3646" href="UniAgda.Categories.FunctorCat.html#3646" class="Bound">i₂</a> <a id="3649" href="UniAgda.Categories.FunctorCat.html#3649" class="Bound">i₃</a> <a id="3652" href="UniAgda.Categories.FunctorCat.html#3652" class="Bound">i₄</a><a id="3654" class="Symbol">}</a> <a id="3656" class="Symbol">{</a><a id="3657" href="UniAgda.Categories.FunctorCat.html#3657" class="Bound">A</a> <a id="3659" class="Symbol">:</a> <a id="3661" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="3673" href="UniAgda.Categories.FunctorCat.html#3643" class="Bound">i₁</a> <a id="3676" href="UniAgda.Categories.FunctorCat.html#3646" class="Bound">i₂</a><a id="3678" class="Symbol">}</a> <a id="3680" class="Symbol">{</a><a id="3681" href="UniAgda.Categories.FunctorCat.html#3681" class="Bound">B</a> <a id="3683" class="Symbol">:</a> <a id="3685" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="3697" href="UniAgda.Categories.FunctorCat.html#3649" class="Bound">i₃</a> <a id="3700" href="UniAgda.Categories.FunctorCat.html#3652" class="Bound">i₄</a><a id="3702" class="Symbol">}</a> <a id="3704" class="Symbol">{</a><a id="3705" href="UniAgda.Categories.FunctorCat.html#3705" class="Bound">F</a> <a id="3707" href="UniAgda.Categories.FunctorCat.html#3707" class="Bound">G</a> <a id="3709" class="Symbol">:</a> <a id="3711" class="Symbol">(</a><a id="3712" href="UniAgda.Categories.FunctorCat.html#3681" class="Bound">B</a> <a id="3714" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="3716" href="UniAgda.Categories.FunctorCat.html#3657" class="Bound">A</a><a id="3717" class="Symbol">)</a> <a id="3719" class="Symbol">.</a><a id="3720" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a><a id="3722" class="Symbol">}</a>
+                             <a id="3753" class="Symbol">(</a><a id="3754" href="UniAgda.Categories.FunctorCat.html#3754" class="Bound">γ</a> <a id="3756" class="Symbol">:</a> <a id="3758" class="Symbol">(</a><a id="3759" href="UniAgda.Categories.FunctorCat.html#3681" class="Bound">B</a> <a id="3761" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="3763" href="UniAgda.Categories.FunctorCat.html#3657" class="Bound">A</a><a id="3764" class="Symbol">)</a> <a id="3766" class="Symbol">.</a><a id="3767" href="UniAgda.Categories.Category.html#1562" class="Field">hom</a> <a id="3771" href="UniAgda.Categories.FunctorCat.html#3705" class="Bound">F</a> <a id="3773" href="UniAgda.Categories.FunctorCat.html#3707" class="Bound">G</a><a id="3774" class="Symbol">)</a>
+                             <a id="3805" class="Symbol">→</a> <a id="3807" href="UniAgda.Categories.Category.html#2069" class="Function">isIso</a> <a id="3813" class="Symbol">(</a><a id="3814" href="UniAgda.Categories.FunctorCat.html#3681" class="Bound">B</a> <a id="3816" href="UniAgda.Categories.FunctorCat.html#848" class="Function Operator">^</a> <a id="3818" href="UniAgda.Categories.FunctorCat.html#3657" class="Bound">A</a><a id="3819" class="Symbol">)</a> <a id="3821" href="UniAgda.Categories.FunctorCat.html#3754" class="Bound">γ</a> <a id="3823" href="UniAgda.Core.Types.Sigma.html#1204" class="Function Operator">↔</a> <a id="3825" class="Symbol">((</a><a id="3827" href="UniAgda.Categories.FunctorCat.html#3827" class="Bound">a</a> <a id="3829" class="Symbol">:</a> <a id="3831" href="UniAgda.Categories.FunctorCat.html#3657" class="Bound">A</a> <a id="3833" class="Symbol">.</a><a id="3834" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a><a id="3836" class="Symbol">)</a> <a id="3838" class="Symbol">→</a> <a id="3840" href="UniAgda.Categories.Category.html#2069" class="Function">isIso</a> <a id="3846" href="UniAgda.Categories.FunctorCat.html#3681" class="Bound">B</a> <a id="3848" class="Symbol">(</a><a id="3849" href="UniAgda.Categories.FunctorCat.html#3754" class="Bound">γ</a> <a id="3851" class="Symbol">.</a><a id="3852" href="UniAgda.Categories.Natural-Transformation.html#1137" class="Field">α-ob</a> <a id="3857" href="UniAgda.Categories.FunctorCat.html#3827" class="Bound">a</a><a id="3858" class="Symbol">))</a>
+<a id="3861" href="UniAgda.Categories.FunctorCat.html#3613" class="Function">nat-trans-iso-components</a> <a id="3886" href="UniAgda.Categories.FunctorCat.html#3886" class="Bound">γ</a> <a id="3888" class="Symbol">=</a>
+  <a id="3892" class="Symbol">(</a><a id="3893" href="UniAgda.Categories.FunctorCat.html#1707" class="Function">lemma9-2-4i</a> <a id="3905" href="UniAgda.Categories.FunctorCat.html#3886" class="Bound">γ</a><a id="3906" class="Symbol">)</a> <a id="3908" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+  <a id="3912" class="Symbol">(</a><a id="3913" href="UniAgda.Categories.FunctorCat.html#2343" class="Function">lemma9-2-4ii</a> <a id="3926" href="UniAgda.Categories.FunctorCat.html#3886" class="Bound">γ</a><a id="3927" class="Symbol">)</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-orgaa103f9" class="outline-2">
+<h2 id="orgaa103f9"><span class="section-number-2">4</span> Functor Categories</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+A result which will be central to the study of categories is the following: if A is a precategory and B is a category, then B ^ A is also a category. We need to show that id-to-iso in B ^ A is an equivalence, so first, we define a quasi-inverse to it.
+</p>
+<pre class="Agda">
+<a id="4230" class="Comment">-- private</a>
+<a id="4241" class="Comment">--   functor-cat-γ&#39; : ∀ {i₁ i₂ i₃ i₄} {A : Precategory i₁ i₂} {B : Precategory i₃ i₄}</a>
+<a id="4327" class="Comment">--                      (univB : isCategory B) (F G : (B ^ A) .ob)</a>
+<a id="4394" class="Comment">--                      → iso (B ^ A) F G → F ≡ G</a>
+<a id="4444" class="Comment">--   functor-cat-γ&#39; univB F G x =</a>
+<a id="4478" class="Comment">--     Functor-path</a>
+<a id="4498" class="Comment">--       {!pr₁ (pr₂ x)!}</a>
+<a id="4523" class="Comment">--       {!!}</a>
+</pre>
+<pre class="Agda">
+<a id="4565" class="Comment">-- functor-cat-condition : ∀ {i₁ i₂ i₃ i₄} {A : Precategory i₁ i₂} {B : Precategory i₃ i₄}</a>
+<a id="4656" class="Comment">--                         → isCategory B</a>
+<a id="4698" class="Comment">--                         → isCategory (B ^ A)</a>
+<a id="4746" class="Comment">-- functor-cat-condition {A = A} {B = B} univB F G =</a>
+<a id="4799" class="Comment">--   isequiv-adjointify</a>
+<a id="4823" class="Comment">--     ((λ { γ → Functor-path</a>
+<a id="4853" class="Comment">--         (funext (λ a → pr₁ (univB (F .F₀ a) (G .F₀ a)) (((pr₁ γ) .α-ob a ) , (lemma9-2-4i (pr₁ γ) (pr₂ γ) a))) )</a>
+<a id="4969" class="Comment">--         {!!}}) ,</a>
+<a id="4989" class="Comment">--     (λ { (γ , γiso) → fibres-props-eq (isIso-is-prop (B ^ A)) _ _</a>
+<a id="5058" class="Comment">--        (nat-trans-id (funextD λ a → {!re!}))}) ,</a>
+<a id="5110" class="Comment">--     λ x → {!!})</a>
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: James Leslie</p>
+<p class="date">Created: 2021-03-23 Tue 13:12</p>
+</div>
+</body>
+</html>

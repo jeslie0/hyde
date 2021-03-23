@@ -1,0 +1,346 @@
+---
+layout: agda
+---
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-23 Tue 13:12 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniAgda.Core.PathSpaces.Nat</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="James Leslie" />
+<meta name="description" content="Paths in the Natural Numbers"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UniAgda.Core.PathSpaces.Nat</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgf7442e5">1. Prelude</a></li>
+<li><a href="#org7c8b37f">2. Paths in Nat</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf7442e5" class="outline-2">
+<h2 id="orgf7442e5"><span class="section-number-2">1</span> Prelude</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="Agda">
+<a id="194" class="Symbol">{-#</a> <a id="198" class="Keyword">OPTIONS</a> <a id="206" class="Pragma">--without-K</a> <a id="218" class="Pragma">--safe</a> <a id="225" class="Symbol">#-}</a>
+<a id="229" class="Keyword">module</a> <a id="236" href="UniAgda.Core.PathSpaces.Nat.html" class="Module">UniAgda.Core.PathSpaces.Nat</a> <a id="264" class="Keyword">where</a>
+
+<a id="271" class="Keyword">open</a> <a id="276" class="Keyword">import</a> <a id="283" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="312" class="Keyword">open</a> <a id="317" class="Keyword">import</a> <a id="324" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
+<a id="353" class="Keyword">open</a> <a id="358" class="Keyword">import</a> <a id="365" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a>
+<a id="393" class="Keyword">open</a> <a id="398" class="Keyword">import</a> <a id="405" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
+<a id="430" class="Keyword">open</a> <a id="435" class="Keyword">import</a> <a id="442" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a>
+<a id="465" class="Keyword">open</a> <a id="470" class="Keyword">import</a> <a id="477" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a>
+<a id="501" class="Keyword">open</a> <a id="506" class="Keyword">import</a> <a id="513" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
+
+<a id="539" class="Keyword">open</a> <a id="544" class="Keyword">import</a> <a id="551" href="UniAgda.Core.PathAlgebra.html" class="Module">UniAgda.Core.PathAlgebra</a>
+<a id="576" class="Keyword">open</a> <a id="581" class="Keyword">import</a> <a id="588" href="UniAgda.Core.Homotopy.html" class="Module">UniAgda.Core.Homotopy</a>
+<a id="610" class="Keyword">open</a> <a id="615" class="Keyword">import</a> <a id="622" href="UniAgda.Core.Equivalences.html" class="Module">UniAgda.Core.Equivalences</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-org7c8b37f" class="outline-2">
+<h2 id="org7c8b37f"><span class="section-number-2">2</span> Paths in Nat</h2>
+<div class="outline-text-2" id="text-2">
+<pre class="Agda">
+<a id="nat-code"></a><a id="691" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="700" class="Symbol">:</a> <a id="702" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="704" class="Symbol">→</a> <a id="706" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="708" class="Symbol">→</a> <a id="710" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="715" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
+<a id="721" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="730" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="735" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="740" class="Symbol">=</a> <a id="742" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a>
+<a id="747" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="756" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="761" class="Symbol">(</a><a id="762" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="766" href="UniAgda.Core.PathSpaces.Nat.html#766" class="Bound">m</a><a id="767" class="Symbol">)</a> <a id="769" class="Symbol">=</a> <a id="771" href="UniAgda.Core.Types.Empty.html#414" class="Datatype">Empty</a>
+<a id="777" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="786" class="Symbol">(</a><a id="787" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="791" href="UniAgda.Core.PathSpaces.Nat.html#791" class="Bound">n</a><a id="792" class="Symbol">)</a> <a id="794" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="799" class="Symbol">=</a> <a id="801" href="UniAgda.Core.Types.Empty.html#414" class="Datatype">Empty</a>
+<a id="807" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="816" class="Symbol">(</a><a id="817" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="821" href="UniAgda.Core.PathSpaces.Nat.html#821" class="Bound">n</a><a id="822" class="Symbol">)</a> <a id="824" class="Symbol">(</a><a id="825" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="829" href="UniAgda.Core.PathSpaces.Nat.html#829" class="Bound">m</a><a id="830" class="Symbol">)</a> <a id="832" class="Symbol">=</a> <a id="834" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="843" href="UniAgda.Core.PathSpaces.Nat.html#821" class="Bound">n</a> <a id="845" href="UniAgda.Core.PathSpaces.Nat.html#829" class="Bound">m</a>
+
+<a id="nat-r"></a><a id="848" href="UniAgda.Core.PathSpaces.Nat.html#848" class="Function">nat-r</a> <a id="854" class="Symbol">:</a> <a id="856" class="Symbol">(</a><a id="857" href="UniAgda.Core.PathSpaces.Nat.html#857" class="Bound">n</a> <a id="859" class="Symbol">:</a> <a id="861" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a><a id="862" class="Symbol">)</a> <a id="864" class="Symbol">→</a> <a id="866" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="875" href="UniAgda.Core.PathSpaces.Nat.html#857" class="Bound">n</a> <a id="877" href="UniAgda.Core.PathSpaces.Nat.html#857" class="Bound">n</a>
+<a id="879" href="UniAgda.Core.PathSpaces.Nat.html#848" class="Function">nat-r</a> <a id="885" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="890" class="Symbol">=</a> <a id="892" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a>
+<a id="895" href="UniAgda.Core.PathSpaces.Nat.html#848" class="Function">nat-r</a> <a id="901" class="Symbol">(</a><a id="902" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="906" href="UniAgda.Core.PathSpaces.Nat.html#906" class="Bound">n</a><a id="907" class="Symbol">)</a> <a id="909" class="Symbol">=</a> <a id="911" href="UniAgda.Core.PathSpaces.Nat.html#848" class="Function">nat-r</a> <a id="917" href="UniAgda.Core.PathSpaces.Nat.html#906" class="Bound">n</a>
+
+<a id="nat-encode"></a><a id="920" href="UniAgda.Core.PathSpaces.Nat.html#920" class="Function">nat-encode</a> <a id="931" class="Symbol">:</a> <a id="933" class="Symbol">(</a><a id="934" href="UniAgda.Core.PathSpaces.Nat.html#934" class="Bound">m</a> <a id="936" href="UniAgda.Core.PathSpaces.Nat.html#936" class="Bound">n</a> <a id="938" class="Symbol">:</a> <a id="940" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a><a id="941" class="Symbol">)</a> <a id="943" class="Symbol">→</a> <a id="945" href="UniAgda.Core.PathSpaces.Nat.html#934" class="Bound">m</a> <a id="947" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="949" href="UniAgda.Core.PathSpaces.Nat.html#936" class="Bound">n</a> <a id="951" class="Symbol">→</a> <a id="953" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="962" href="UniAgda.Core.PathSpaces.Nat.html#934" class="Bound">m</a> <a id="964" href="UniAgda.Core.PathSpaces.Nat.html#936" class="Bound">n</a>
+<a id="966" href="UniAgda.Core.PathSpaces.Nat.html#920" class="Function">nat-encode</a> <a id="977" href="UniAgda.Core.PathSpaces.Nat.html#977" class="Bound">m</a> <a id="979" href="UniAgda.Core.PathSpaces.Nat.html#979" class="Bound">n</a> <a id="981" href="UniAgda.Core.PathSpaces.Nat.html#981" class="Bound">p</a> <a id="983" class="Symbol">=</a> <a id="985" href="UniAgda.Core.Types.Identity.html#1969" class="Function">transport</a> <a id="995" class="Symbol">(</a><a id="996" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="1005" href="UniAgda.Core.PathSpaces.Nat.html#977" class="Bound">m</a><a id="1006" class="Symbol">)</a> <a id="1008" href="UniAgda.Core.PathSpaces.Nat.html#981" class="Bound">p</a> <a id="1010" class="Symbol">(</a><a id="1011" href="UniAgda.Core.PathSpaces.Nat.html#848" class="Function">nat-r</a> <a id="1017" href="UniAgda.Core.PathSpaces.Nat.html#977" class="Bound">m</a><a id="1018" class="Symbol">)</a>
+
+<a id="nat-decode"></a><a id="1021" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1032" class="Symbol">:</a> <a id="1034" class="Symbol">(</a><a id="1035" href="UniAgda.Core.PathSpaces.Nat.html#1035" class="Bound">m</a> <a id="1037" href="UniAgda.Core.PathSpaces.Nat.html#1037" class="Bound">n</a> <a id="1039" class="Symbol">:</a> <a id="1041" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a><a id="1042" class="Symbol">)</a> <a id="1044" class="Symbol">→</a> <a id="1046" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="1055" href="UniAgda.Core.PathSpaces.Nat.html#1035" class="Bound">m</a> <a id="1057" href="UniAgda.Core.PathSpaces.Nat.html#1037" class="Bound">n</a> <a id="1059" class="Symbol">→</a> <a id="1061" href="UniAgda.Core.PathSpaces.Nat.html#1035" class="Bound">m</a> <a id="1063" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1065" href="UniAgda.Core.PathSpaces.Nat.html#1037" class="Bound">n</a>
+<a id="1067" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1078" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="1083" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="1088" href="UniAgda.Core.PathSpaces.Nat.html#1088" class="Bound">x</a> <a id="1090" class="Symbol">=</a> <a id="1092" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+<a id="1097" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1108" class="Symbol">(</a><a id="1109" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1113" href="UniAgda.Core.PathSpaces.Nat.html#1113" class="Bound">m</a><a id="1114" class="Symbol">)</a> <a id="1116" class="Symbol">(</a><a id="1117" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1121" href="UniAgda.Core.PathSpaces.Nat.html#1121" class="Bound">n</a><a id="1122" class="Symbol">)</a> <a id="1124" href="UniAgda.Core.PathSpaces.Nat.html#1124" class="Bound">x</a> <a id="1126" class="Symbol">=</a> <a id="1128" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="1131" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1135" class="Symbol">(</a><a id="1136" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1147" href="UniAgda.Core.PathSpaces.Nat.html#1113" class="Bound">m</a> <a id="1149" href="UniAgda.Core.PathSpaces.Nat.html#1121" class="Bound">n</a> <a id="1151" href="UniAgda.Core.PathSpaces.Nat.html#1124" class="Bound">x</a><a id="1152" class="Symbol">)</a>
+
+<a id="nat-decode-encode-id"></a><a id="1155" href="UniAgda.Core.PathSpaces.Nat.html#1155" class="Function">nat-decode-encode-id</a> <a id="1176" class="Symbol">:</a> <a id="1178" class="Symbol">(</a><a id="1179" href="UniAgda.Core.PathSpaces.Nat.html#1179" class="Bound">m</a> <a id="1181" href="UniAgda.Core.PathSpaces.Nat.html#1181" class="Bound">n</a> <a id="1183" class="Symbol">:</a> <a id="1185" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a><a id="1186" class="Symbol">)</a> <a id="1188" class="Symbol">→</a> <a id="1190" href="UniAgda.Core.PathSpaces.Nat.html#920" class="Function">nat-encode</a> <a id="1201" href="UniAgda.Core.PathSpaces.Nat.html#1179" class="Bound">m</a> <a id="1203" href="UniAgda.Core.PathSpaces.Nat.html#1181" class="Bound">n</a> <a id="1205" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="1207" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1218" href="UniAgda.Core.PathSpaces.Nat.html#1179" class="Bound">m</a> <a id="1220" href="UniAgda.Core.PathSpaces.Nat.html#1181" class="Bound">n</a> <a id="1222" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="1224" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
+<a id="1227" href="UniAgda.Core.PathSpaces.Nat.html#1155" class="Function">nat-decode-encode-id</a> <a id="1248" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="1253" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="1258" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="1261" class="Symbol">=</a> <a id="1263" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+<a id="1268" href="UniAgda.Core.PathSpaces.Nat.html#1155" class="Function">nat-decode-encode-id</a> <a id="1289" class="Symbol">(</a><a id="1290" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1294" href="UniAgda.Core.PathSpaces.Nat.html#1294" class="Bound">m</a><a id="1295" class="Symbol">)</a> <a id="1297" class="Symbol">(</a><a id="1298" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1302" href="UniAgda.Core.PathSpaces.Nat.html#1302" class="Bound">n</a><a id="1303" class="Symbol">)</a> <a id="1305" href="UniAgda.Core.PathSpaces.Nat.html#1305" class="Bound">c</a> <a id="1307" class="Symbol">=</a> <a id="1309" class="Symbol">(</a><a id="1310" href="UniAgda.Core.PathAlgebra.html#8667" class="Function">tr-Pf</a> <a id="1316" class="Symbol">(λ</a> <a id="1319" href="UniAgda.Core.PathSpaces.Nat.html#1319" class="Bound">x</a> <a id="1321" class="Symbol">→</a> <a id="1323" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="1332" class="Symbol">(</a><a id="1333" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1337" href="UniAgda.Core.PathSpaces.Nat.html#1294" class="Bound">m</a><a id="1338" class="Symbol">)</a> <a id="1340" href="UniAgda.Core.PathSpaces.Nat.html#1319" class="Bound">x</a><a id="1341" class="Symbol">)</a> <a id="1343" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1347" class="Symbol">(</a><a id="1348" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1359" href="UniAgda.Core.PathSpaces.Nat.html#1294" class="Bound">m</a> <a id="1361" href="UniAgda.Core.PathSpaces.Nat.html#1302" class="Bound">n</a> <a id="1363" href="UniAgda.Core.PathSpaces.Nat.html#1305" class="Bound">c</a><a id="1364" class="Symbol">)</a> <a id="1366" class="Symbol">(</a><a id="1367" href="UniAgda.Core.PathSpaces.Nat.html#848" class="Function">nat-r</a> <a id="1373" href="UniAgda.Core.PathSpaces.Nat.html#1294" class="Bound">m</a><a id="1374" class="Symbol">))</a> <a id="1377" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a> <a id="1379" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="1381" href="UniAgda.Core.PathSpaces.Nat.html#1155" class="Function">nat-decode-encode-id</a> <a id="1402" href="UniAgda.Core.PathSpaces.Nat.html#1294" class="Bound">m</a> <a id="1404" href="UniAgda.Core.PathSpaces.Nat.html#1302" class="Bound">n</a> <a id="1406" href="UniAgda.Core.PathSpaces.Nat.html#1305" class="Bound">c</a>
+
+
+<a id="nat-encode-decode-id"></a><a id="1410" href="UniAgda.Core.PathSpaces.Nat.html#1410" class="Function">nat-encode-decode-id</a> <a id="1431" class="Symbol">:</a> <a id="1433" class="Symbol">(</a><a id="1434" href="UniAgda.Core.PathSpaces.Nat.html#1434" class="Bound">m</a> <a id="1436" href="UniAgda.Core.PathSpaces.Nat.html#1436" class="Bound">n</a> <a id="1438" class="Symbol">:</a> <a id="1440" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a><a id="1441" class="Symbol">)</a> <a id="1443" class="Symbol">→</a> <a id="1445" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1456" href="UniAgda.Core.PathSpaces.Nat.html#1434" class="Bound">m</a> <a id="1458" href="UniAgda.Core.PathSpaces.Nat.html#1436" class="Bound">n</a> <a id="1460" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="1462" href="UniAgda.Core.PathSpaces.Nat.html#920" class="Function">nat-encode</a> <a id="1473" href="UniAgda.Core.PathSpaces.Nat.html#1434" class="Bound">m</a> <a id="1475" href="UniAgda.Core.PathSpaces.Nat.html#1436" class="Bound">n</a> <a id="1477" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="1479" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
+<a id="1482" href="UniAgda.Core.PathSpaces.Nat.html#1410" class="Function">nat-encode-decode-id</a> <a id="1503" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="1508" class="DottedPattern Symbol">.</a><a id="1509" href="UniAgda.Core.Types.Nat.html#452" class="DottedPattern InductiveConstructor">zero</a> <a id="1514" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a> <a id="1519" class="Symbol">=</a> <a id="1521" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+<a id="1526" href="UniAgda.Core.PathSpaces.Nat.html#1410" class="Function">nat-encode-decode-id</a> <a id="1547" class="Symbol">(</a><a id="1548" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1552" href="UniAgda.Core.PathSpaces.Nat.html#1552" class="Bound">m</a><a id="1553" class="Symbol">)</a> <a id="1555" class="DottedPattern Symbol">.(</a><a id="1557" href="UniAgda.Core.Types.Nat.html#463" class="DottedPattern InductiveConstructor">suc</a> <a id="1561" href="UniAgda.Core.PathSpaces.Nat.html#1552" class="DottedPattern Bound">m</a><a id="1562" class="DottedPattern Symbol">)</a> <a id="1564" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a> <a id="1569" class="Symbol">=</a> <a id="1571" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="1574" class="Symbol">(</a><a id="1575" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="1578" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1582" class="Symbol">)</a> <a id="1584" class="Symbol">(</a><a id="1585" href="UniAgda.Core.PathSpaces.Nat.html#1410" class="Function">nat-encode-decode-id</a> <a id="1606" href="UniAgda.Core.PathSpaces.Nat.html#1552" class="Bound">m</a> <a id="1608" href="UniAgda.Core.PathSpaces.Nat.html#1552" class="Bound">m</a> <a id="1610" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a><a id="1614" class="Symbol">)</a>
+
+<a id="thm2-13-1"></a><a id="1617" href="UniAgda.Core.PathSpaces.Nat.html#1617" class="Function">thm2-13-1</a> <a id="1627" class="Symbol">:</a> <a id="1629" class="Symbol">(</a><a id="1630" href="UniAgda.Core.PathSpaces.Nat.html#1630" class="Bound">m</a> <a id="1632" href="UniAgda.Core.PathSpaces.Nat.html#1632" class="Bound">n</a> <a id="1634" class="Symbol">:</a> <a id="1636" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a><a id="1637" class="Symbol">)</a> <a id="1639" class="Symbol">→</a> <a id="1641" class="Symbol">(</a><a id="1642" href="UniAgda.Core.PathSpaces.Nat.html#1630" class="Bound">m</a> <a id="1644" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1646" href="UniAgda.Core.PathSpaces.Nat.html#1632" class="Bound">n</a><a id="1647" class="Symbol">)</a> <a id="1649" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="1651" href="UniAgda.Core.PathSpaces.Nat.html#691" class="Function">nat-code</a> <a id="1660" href="UniAgda.Core.PathSpaces.Nat.html#1630" class="Bound">m</a> <a id="1662" href="UniAgda.Core.PathSpaces.Nat.html#1632" class="Bound">n</a>
+<a id="1664" href="UniAgda.Core.PathSpaces.Nat.html#1617" class="Function">thm2-13-1</a> <a id="1674" href="UniAgda.Core.PathSpaces.Nat.html#1674" class="Bound">m</a> <a id="1676" href="UniAgda.Core.PathSpaces.Nat.html#1676" class="Bound">n</a> <a id="1678" class="Symbol">=</a> <a id="1680" href="UniAgda.Core.Equivalences.html#5719" class="Function">equiv-adjointify</a> <a id="1697" class="Symbol">(</a><a id="1698" href="UniAgda.Core.PathSpaces.Nat.html#920" class="Function">nat-encode</a> <a id="1709" href="UniAgda.Core.PathSpaces.Nat.html#1674" class="Bound">m</a> <a id="1711" href="UniAgda.Core.PathSpaces.Nat.html#1676" class="Bound">n</a> <a id="1713" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1715" class="Symbol">(</a><a id="1716" href="UniAgda.Core.PathSpaces.Nat.html#1021" class="Function">nat-decode</a> <a id="1727" href="UniAgda.Core.PathSpaces.Nat.html#1674" class="Bound">m</a> <a id="1729" href="UniAgda.Core.PathSpaces.Nat.html#1676" class="Bound">n</a><a id="1730" class="Symbol">)</a> <a id="1732" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+                                 <a id="1767" href="UniAgda.Core.PathSpaces.Nat.html#1155" class="Function">nat-decode-encode-id</a> <a id="1788" href="UniAgda.Core.PathSpaces.Nat.html#1674" class="Bound">m</a> <a id="1790" href="UniAgda.Core.PathSpaces.Nat.html#1676" class="Bound">n</a> <a id="1792" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1794" href="UniAgda.Core.PathSpaces.Nat.html#1410" class="Function">nat-encode-decode-id</a> <a id="1815" href="UniAgda.Core.PathSpaces.Nat.html#1674" class="Bound">m</a> <a id="1817" href="UniAgda.Core.PathSpaces.Nat.html#1676" class="Bound">n</a><a id="1818" class="Symbol">)</a>
+</pre>
+
+<p>
+coprod-code : {i j : Level} {A : Type i} {B : Type j}
+              (a₀ : A)
+              → A + B → Type (i ⊔ j)
+coprod-code {i} {j} a₀ (inl a) = raise j (a₀ ≡ a)
+coprod-code {i} {j} a₀ (inr b) = raise _ Empty
+</p>
+
+<p>
+coprod-encode : {i j : Level} {A : Type i} {B : Type j}
+                (a₀ : A)
+                → (x : A + B) (p : inl a₀ ≡ x) → coprod-code a₀ x
+coprod-encode a₀ x p = transport (coprod-code a₀) p (map-raise refl)
+</p>
+
+<p>
+coprod-decode : {i j : Level} {A : Type i} {B : Type j}
+                (a₀ : A)
+                → (x : A + B) (c : coprod-code a₀ x) → (inl a₀ ≡ x)
+coprod-decode a₀ (inl x) c = ap inl (map-inv-raise c)
+coprod-decode a₀ (inr x) (map-raise ())
+</p>
+
+<p>
+coprod-encode-decode-id : {i j : Level} {A : Type i} {B : Type j}
+                          (a₀ : A)
+                          → (x : A + B) → coprod-encode a₀ x o coprod-decode a₀ x ~ id
+coprod-encode-decode-id a₀ (inl a) = λ { (map-raise refl) → refl}
+coprod-encode-decode-id a₀ (inr b) = λ { (map-raise ())}
+</p>
+
+<p>
+coprod-decode-encode-id : {i j : Level} {A : Type i} {B : Type j}
+                          (a₀ : A)
+                          → (x : A + B) → coprod-decode a₀ x o coprod-encode a₀ x ~ id
+coprod-decode-encode-id a₀ (inl a) = λ { refl → refl}
+coprod-decode-encode-id a₀ (inr b) = λ { ()}
+</p>
+
+
+<p>
+thm2-12-5 : {i j : Level} {A : Type i} {B : Type j}
+            (a₀ : A)
+            → (x : A + B) → (inl a₀ ≡ x) ≃ coprod-code a₀ x
+thm2-12-5 a₀ x = equiv-adjointify (coprod-encode a₀ x , coprod-decode a₀ x , coprod-encode-decode-id a₀ x , coprod-decode-encode-id a₀ x)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: James Leslie</p>
+<p class="date">Created: 2021-03-23 Tue 13:12</p>
+</div>
+</body>
+</html>
