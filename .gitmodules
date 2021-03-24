@@ -1,0 +1,3 @@
+[submodule "public/css/org-html-themes"]
+	path = public/css/org-html-themes
+	url = git@github.com:fniessen/org-html-themes.git

@@ -1,16 +1,17 @@
+---
+layout: page
+---
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-24 Wed 09:50 -->
+<!-- 2021-03-24 Wed 10:01 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>UniAgda.Core.Types.Universes</title>
+<title>Univalent-Agda</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="James Leslie" />
-<meta name="description" content="Universes"
- />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -195,13 +196,6 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -227,50 +221,19 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">UniAgda.Core.Types.Universes</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#org76bf167">1. Prelude</a></li>
-<li><a href="#org04ef44c">2. Universes</a></li>
-</ul>
-</div>
-</div>
-<div id="outline-container-org76bf167" class="outline-2">
-<h2 id="org76bf167"><span class="section-number-2">1</span> Prelude</h2>
-<div class="outline-text-2" id="text-1">
-<pre class="Agda">
-<a id="164" class="Symbol">{-#</a> <a id="168" class="Keyword">OPTIONS</a> <a id="176" class="Pragma">--without-K</a> <a id="188" class="Pragma">--no-import-sorts</a> <a id="206" class="Pragma">--safe</a> <a id="213" class="Symbol">#-}</a>
-<a id="217" class="Keyword">module</a> <a id="224" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a> <a id="253" class="Keyword">where</a>
-</pre>
-</div>
-</div>
-<div id="outline-container-org04ef44c" class="outline-2">
-<h2 id="org04ef44c"><span class="section-number-2">2</span> Universes</h2>
-<div class="outline-text-2" id="text-2">
+<h1 class="title">Univalent-Agda</h1>
+
 <p>
-This is mostly taken from the Cubical library and Egbert Rijke's HoTT library.
+This is the source code for my <a href="https://github.com/jeslie0/Univalent-Agda">Univalent-Agda</a> project. It is mostly following the <a href="https://homotopytypetheory.org/book/">HoTT Book</a>, but I will hopefully add in more results about classical mathematics and algebra. It is on GitHub and is written in literate Agda, using Emacs' org-mode.
 </p>
-<pre class="Agda">
-<a id="378" class="Keyword">open</a> <a id="383" class="Keyword">import</a> <a id="390" href="Agda.Primitive.html" class="Module">Agda.Primitive</a> <a id="405" class="Keyword">public</a>
-  <a id="414" class="Keyword">using</a>    <a id="423" class="Symbol">(</a> <a id="425" href="Agda.Primitive.html#597" class="Postulate">Level</a> <a id="431" class="Symbol">;</a> <a id="433" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="439" class="Symbol">;</a> <a id="441" href="Agda.Primitive.html#780" class="Primitive">lsuc</a> <a id="446" class="Symbol">;</a> <a id="448" href="Agda.Primitive.html#810" class="Primitive Operator">_⊔_</a><a id="451" class="Symbol">)</a>
-  <a id="455" class="Keyword">renaming</a> <a id="464" class="Symbol">(</a> <a id="466" href="Agda.Primitive.html#326" class="Primitive">Set</a>  <a id="471" class="Symbol">to</a> <a id="474" class="Primitive">Type</a>
-           <a id="490" class="Symbol">;</a> <a id="492" href="Agda.Primitive.html#381" class="Primitive">Setω</a> <a id="497" class="Symbol">to</a> <a id="500" class="Primitive">Typeω</a> <a id="506" class="Symbol">)</a>
 
-<a id="509" class="Keyword">data</a> <a id="raise"></a><a id="514" href="UniAgda.Core.Types.Universes.html#514" class="Datatype">raise</a> <a id="520" class="Symbol">(</a><a id="521" href="UniAgda.Core.Types.Universes.html#521" class="Bound">l</a> <a id="523" class="Symbol">:</a> <a id="525" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="530" class="Symbol">)</a> <a id="532" class="Symbol">{</a><a id="533" href="UniAgda.Core.Types.Universes.html#533" class="Bound">l1</a> <a id="536" class="Symbol">:</a> <a id="538" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="543" class="Symbol">}</a> <a id="545" class="Symbol">(</a><a id="546" href="UniAgda.Core.Types.Universes.html#546" class="Bound">A</a> <a id="548" class="Symbol">:</a> <a id="550" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="555" href="UniAgda.Core.Types.Universes.html#533" class="Bound">l1</a><a id="557" class="Symbol">)</a> <a id="559" class="Symbol">:</a> <a id="561" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="566" class="Symbol">(</a><a id="567" href="UniAgda.Core.Types.Universes.html#533" class="Bound">l1</a> <a id="570" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="572" href="UniAgda.Core.Types.Universes.html#521" class="Bound">l</a><a id="573" class="Symbol">)</a> <a id="575" class="Keyword">where</a>
-  <a id="raise.map-raise"></a><a id="583" href="UniAgda.Core.Types.Universes.html#583" class="InductiveConstructor">map-raise</a> <a id="593" class="Symbol">:</a> <a id="595" href="UniAgda.Core.Types.Universes.html#546" class="Bound">A</a> <a id="597" class="Symbol">→</a> <a id="599" href="UniAgda.Core.Types.Universes.html#514" class="Datatype">raise</a> <a id="605" href="UniAgda.Core.Types.Universes.html#521" class="Bound">l</a> <a id="607" href="UniAgda.Core.Types.Universes.html#546" class="Bound">A</a>
-
-<a id="map-inv-raise"></a><a id="610" href="UniAgda.Core.Types.Universes.html#610" class="Function">map-inv-raise</a> <a id="624" class="Symbol">:</a>
-  <a id="628" class="Symbol">{</a><a id="629" href="UniAgda.Core.Types.Universes.html#629" class="Bound">l</a> <a id="631" href="UniAgda.Core.Types.Universes.html#631" class="Bound">l1</a> <a id="634" class="Symbol">:</a> <a id="636" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="641" class="Symbol">}</a> <a id="643" class="Symbol">{</a><a id="644" href="UniAgda.Core.Types.Universes.html#644" class="Bound">A</a> <a id="646" class="Symbol">:</a> <a id="648" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="653" href="UniAgda.Core.Types.Universes.html#631" class="Bound">l1</a><a id="655" class="Symbol">}</a> <a id="657" class="Symbol">→</a> <a id="659" href="UniAgda.Core.Types.Universes.html#514" class="Datatype">raise</a> <a id="665" href="UniAgda.Core.Types.Universes.html#629" class="Bound">l</a> <a id="667" href="UniAgda.Core.Types.Universes.html#644" class="Bound">A</a> <a id="669" class="Symbol">→</a> <a id="671" href="UniAgda.Core.Types.Universes.html#644" class="Bound">A</a>
-<a id="673" href="UniAgda.Core.Types.Universes.html#610" class="Function">map-inv-raise</a> <a id="687" class="Symbol">(</a><a id="688" href="UniAgda.Core.Types.Universes.html#583" class="InductiveConstructor">map-raise</a> <a id="698" href="UniAgda.Core.Types.Universes.html#698" class="Bound">x</a><a id="699" class="Symbol">)</a> <a id="701" class="Symbol">=</a> <a id="703" href="UniAgda.Core.Types.Universes.html#698" class="Bound">x</a>
-</pre>
-</div>
-</div>
+<p>
+This is still a work in progress. To browse the code here, currently, the best thing to do is start <a href="/UniAgda/UniAgda.Everything">here</a>. It should link to every (non-experimental) file in the repository.
+</p>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-24 Wed 09:50</p>
+<p class="date">Created: 2021-03-24 Wed 10:01</p>
 </div>
 </body>
 </html>

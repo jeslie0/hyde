@@ -1,12 +1,9 @@
----
-layout: agda
----
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-23 Tue 13:12 -->
+<!-- 2021-03-24 Wed 09:50 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Core.Equivalences</title>
@@ -198,6 +195,13 @@ layout: agda
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -231,26 +235,26 @@ layout: agda
 <li><a href="#orga3482c2">1. Prelude</a></li>
 <li><a href="#org6527fe3">2. Quasi-inverses</a>
 <ul>
-<li><a href="#org9d2674f">2.1. Definition</a></li>
+<li><a href="#org20c6104">2.1. Definition</a></li>
 <li><a href="#org4717c81">2.2. Equivalence Relation</a></li>
 </ul>
 </li>
 <li><a href="#orgc3a9120">3. Half adjoint equivalences</a>
 <ul>
-<li><a href="#org2f61e1e">3.1. Definition</a></li>
-<li><a href="#org3aea75e">3.2. Relation to qinv</a></li>
-<li><a href="#org4c7d576">3.3. Equivalence relation</a></li>
+<li><a href="#orga43435d">3.1. Definition</a></li>
+<li><a href="#orge26921e">3.2. Relation to qinv</a></li>
+<li><a href="#orge6cdaae">3.3. Equivalence relation</a></li>
 </ul>
 </li>
 <li><a href="#org3e5f8cc">4. Bi-invertible maps</a>
 <ul>
-<li><a href="#orgfaf1971">4.1. Relation to qinv</a></li>
-<li><a href="#org2fde313">4.2. Equivalence relation</a></li>
+<li><a href="#orgd3b6d1f">4.1. Relation to qinv</a></li>
+<li><a href="#orge8c7505">4.2. Equivalence relation</a></li>
 </ul>
 </li>
 <li><a href="#org285b6d3">5. Contractible fibres</a>
 <ul>
-<li><a href="#org1477473">5.1. Definition</a></li>
+<li><a href="#orga299590">5.1. Definition</a></li>
 <li><a href="#org2124433">5.2. Relation to isEquiv</a></li>
 <li><a href="#orge851b0a">5.3. Other results</a></li>
 </ul>
@@ -281,8 +285,8 @@ layout: agda
 <h2 id="org6527fe3"><span class="section-number-2">2</span> Quasi-inverses</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org9d2674f" class="outline-3">
-<h3 id="org9d2674f"><span class="section-number-3">2.1</span> Definition</h3>
+<div id="outline-container-org20c6104" class="outline-3">
+<h3 id="org20c6104"><span class="section-number-3">2.1</span> Definition</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 A quasi-inverse is what we would call an isomorphism if we were dealing with sets. It is a map with another map that is a left and right inverse.
@@ -369,8 +373,8 @@ Transitivity:
 <h2 id="orgc3a9120"><span class="section-number-2">3</span> Half adjoint equivalences</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org2f61e1e" class="outline-3">
-<h3 id="org2f61e1e"><span class="section-number-3">3.1</span> Definition</h3>
+<div id="outline-container-orga43435d" class="outline-3">
+<h3 id="orga43435d"><span class="section-number-3">3.1</span> Definition</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Half adjoint equivalences will be our candidate for equivalences.
@@ -419,8 +423,8 @@ We also define the following which will be useful when proving relations between
 </pre>
 </div>
 </div>
-<div id="outline-container-org3aea75e" class="outline-3">
-<h3 id="org3aea75e"><span class="section-number-3">3.2</span> Relation to qinv</h3>
+<div id="outline-container-orge26921e" class="outline-3">
+<h3 id="orge26921e"><span class="section-number-3">3.2</span> Relation to qinv</h3>
 <div class="outline-text-3" id="text-3-2">
 <pre class="Agda">
 <a id="qinv-to-ishae"></a><a id="4011" href="UniAgda.Core.Equivalences.html#4011" class="Function">qinv-to-ishae</a> <a id="4025" class="Symbol">:</a> <a id="4027" class="Symbol">∀</a> <a id="4029" class="Symbol">{</a><a id="4030" href="UniAgda.Core.Equivalences.html#4030" class="Bound">i</a> <a id="4032" href="UniAgda.Core.Equivalences.html#4032" class="Bound">j</a><a id="4033" class="Symbol">}</a> <a id="4035" class="Symbol">{</a><a id="4036" href="UniAgda.Core.Equivalences.html#4036" class="Bound">A</a> <a id="4038" class="Symbol">:</a> <a id="4040" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="4045" href="UniAgda.Core.Equivalences.html#4030" class="Bound">i</a><a id="4046" class="Symbol">}</a> <a id="4048" class="Symbol">{</a><a id="4049" href="UniAgda.Core.Equivalences.html#4049" class="Bound">B</a> <a id="4051" class="Symbol">:</a> <a id="4053" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="4058" href="UniAgda.Core.Equivalences.html#4032" class="Bound">j</a><a id="4059" class="Symbol">}</a> <a id="4061" class="Symbol">{</a><a id="4062" href="UniAgda.Core.Equivalences.html#4062" class="Bound">f</a> <a id="4064" class="Symbol">:</a> <a id="4066" href="UniAgda.Core.Equivalences.html#4036" class="Bound">A</a> <a id="4068" class="Symbol">→</a> <a id="4070" href="UniAgda.Core.Equivalences.html#4049" class="Bound">B</a><a id="4071" class="Symbol">}</a>
@@ -463,8 +467,8 @@ We will use these functions a lot when constructing equivalences, so we give spe
 </pre>
 </div>
 </div>
-<div id="outline-container-org4c7d576" class="outline-3">
-<h3 id="org4c7d576"><span class="section-number-3">3.3</span> Equivalence relation</h3>
+<div id="outline-container-orge6cdaae" class="outline-3">
+<h3 id="orge6cdaae"><span class="section-number-3">3.3</span> Equivalence relation</h3>
 <div class="outline-text-3" id="text-3-3">
 <pre class="Agda">
 <a id="equiv-refl"></a><a id="5804" href="UniAgda.Core.Equivalences.html#5804" class="Function">equiv-refl</a> <a id="5815" class="Symbol">:</a> <a id="5817" class="Symbol">{</a><a id="5818" href="UniAgda.Core.Equivalences.html#5818" class="Bound">i</a> <a id="5820" class="Symbol">:</a> <a id="5822" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="5827" class="Symbol">}</a> <a id="5829" class="Symbol">{</a><a id="5830" href="UniAgda.Core.Equivalences.html#5830" class="Bound">A</a> <a id="5832" class="Symbol">:</a> <a id="5834" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="5839" href="UniAgda.Core.Equivalences.html#5818" class="Bound">i</a><a id="5840" class="Symbol">}</a>
@@ -524,8 +528,8 @@ A bi-invertible map is one with both a left and right inverse.
 <a id="7253" class="Keyword">infix</a> <a id="7259" class="Number">6</a> <a id="7261" href="UniAgda.Core.Equivalences.html#7237" class="Function Operator">_bi≃_</a>
 </pre>
 </div>
-<div id="outline-container-orgfaf1971" class="outline-3">
-<h3 id="orgfaf1971"><span class="section-number-3">4.1</span> Relation to qinv</h3>
+<div id="outline-container-orgd3b6d1f" class="outline-3">
+<h3 id="orgd3b6d1f"><span class="section-number-3">4.1</span> Relation to qinv</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 There are morphisms to and from the type of quasi inverses, which extend to maps between the types of equivalences.
@@ -569,8 +573,8 @@ There are morphisms to and from the type of quasi inverses, which extend to maps
 </div>
 </div>
 
-<div id="outline-container-org2fde313" class="outline-3">
-<h3 id="org2fde313"><span class="section-number-3">4.2</span> Equivalence relation</h3>
+<div id="outline-container-orge8c7505" class="outline-3">
+<h3 id="orge8c7505"><span class="section-number-3">4.2</span> Equivalence relation</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 isBiinv is an equivalence relation.
@@ -614,8 +618,8 @@ isBiinv is an equivalence relation.
 <h2 id="org285b6d3"><span class="section-number-2">5</span> Contractible fibres</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org1477473" class="outline-3">
-<h3 id="org1477473"><span class="section-number-3">5.1</span> Definition</h3>
+<div id="outline-container-orga299590" class="outline-3">
+<h3 id="orga299590"><span class="section-number-3">5.1</span> Definition</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 We first need to define the fibre of a map and a point.
@@ -724,7 +728,7 @@ We want to be able to compare elements of equivalent types. This doesn't really 
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-23 Tue 13:12</p>
+<p class="date">Created: 2021-03-24 Wed 09:50</p>
 </div>
 </body>
 </html>

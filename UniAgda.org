@@ -1,0 +1,7 @@
+#+title: Univalent-Agda
+#+author: James Leslie
+#+STARTUP: showall indent
+#+STARTUP: hidestars
+This is the source code for my [[https://github.com/jeslie0/Univalent-Agda][Univalent-Agda]] project. It is mostly following the [[https://homotopytypetheory.org/book/][HoTT Book]], but I will hopefully add in more results about classical mathematics and algebra. It is on GitHub and is written in literate Agda, using Emacs' org-mode.
+
+This is still a work in progress. To browse the code here, currently, the best thing to do is start [[/UniAgda/UniAgda.Everything][here]]. It should link to every (non-experimental) file in the repository.
