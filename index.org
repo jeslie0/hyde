@@ -47,7 +47,6 @@ Courses I have taken in my PhD program at Western.
 | Fall term 2019   | [[https://www.math.uwo.ca/undergraduate/course_outlines_pdf/2019/calc1000-outline-2019.pdf][Calculus 1000A]]                                                                                                                                        |
 | Semester 2 2019  | [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath08058.htm][Calculus and its Applications]] [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath08075.htm][Mathematics for Engineering 1B]] [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath10069.htm][Honours Algebra]] [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath08059.htm][Proofs and Problem Solving]]                                               |
 | Semester 1 2018  | [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath08057.htm][Introduction to Linear Algebra]]           [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath08074.htm][Mathematics for Engineering 1A]]  [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath08072.htm][Mathematics for Natural Sciences]]                         [[http://www.drps.ed.ac.uk/18-19/dpt/cxmath10017.htm][Commutative Algebra]] |
-|                  |                                                                                                                                                       |
 * Other
 | Date            |                                                                                          |
 |-----------------+------------------------------------------------------------------------------------------|
