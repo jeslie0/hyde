@@ -1,0 +1,20 @@
+#+title: UniAgda Export process
+#+author: James Leslie
+* Generate Everythings
+#+begin_src sh :results none
+cd /home/james/Dropbox/Documents/Agda/programs/
+./Everything
+#+end_src
+* Generate Agda.org files
+#+begin_src sh :results none
+cd /home/james/Dropbox/Documents/Agda/Univalent-Agda/
+agda --html --html-dir=org/ UniAgda/Everything.lagda.org --html-highlight=code
+#+end_src
+* Add jekyll header to org files
+#+begin_src sh :results none
+./agda-html-insert
+#+end_src
+* Export Project to HTML
+Unsure of elisp command. Do by hand for now.
+* Git commit and publish!
+

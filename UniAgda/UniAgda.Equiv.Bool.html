@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-26 Fri 14:45 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniAgda.Equiv.Bool</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="James Leslie" />
+<meta name="description" content="Bool"
+ />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UniAgda.Equiv.Bool</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgea1ee0a">1. Prelude</a></li>
+<li><a href="#orgaa82b96">2. Bool is equivalent to (equiv Bool Bool)</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgea1ee0a" class="outline-2">
+<h2 id="orgea1ee0a"><span class="section-number-2">1</span> Prelude</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="Agda">
+<a id="137" class="Symbol">{-#</a> <a id="141" class="Keyword">OPTIONS</a> <a id="149" class="Pragma">--without-K</a> <a id="161" class="Symbol">#-}</a>
+<a id="165" class="Keyword">module</a> <a id="172" href="UniAgda.Equiv.Bool.html" class="Module">UniAgda.Equiv.Bool</a> <a id="191" class="Keyword">where</a>
+
+<a id="198" class="Keyword">open</a> <a id="203" class="Keyword">import</a> <a id="210" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="239" class="Keyword">open</a> <a id="244" class="Keyword">import</a> <a id="251" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
+<a id="280" class="Keyword">open</a> <a id="285" class="Keyword">import</a> <a id="292" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a>
+<a id="320" class="Keyword">open</a> <a id="325" class="Keyword">import</a> <a id="332" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
+<a id="357" class="Keyword">open</a> <a id="362" class="Keyword">import</a> <a id="369" href="UniAgda.Core.Types.Bool.html" class="Module">UniAgda.Core.Types.Bool</a>
+<a id="393" class="Keyword">open</a> <a id="398" class="Keyword">import</a> <a id="405" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a>
+<a id="434" class="Keyword">open</a> <a id="439" class="Keyword">import</a> <a id="446" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
+<a id="471" class="Keyword">open</a> <a id="476" class="Keyword">import</a> <a id="483" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a>
+
+<a id="508" class="Keyword">open</a> <a id="513" class="Keyword">import</a> <a id="520" href="UniAgda.Core.Homotopy.html" class="Module">UniAgda.Core.Homotopy</a>
+<a id="542" class="Keyword">open</a> <a id="547" class="Keyword">import</a> <a id="554" href="UniAgda.Core.Equivalences.html" class="Module">UniAgda.Core.Equivalences</a>
+<a id="580" class="Keyword">open</a> <a id="585" class="Keyword">import</a> <a id="592" href="UniAgda.Core.Axioms.html" class="Module">UniAgda.Core.Axioms</a>
+
+<a id="613" class="Keyword">open</a> <a id="618" class="Keyword">import</a> <a id="625" href="UniAgda.Core.SetsAndLogic.ContPropSet1Type.html" class="Module">UniAgda.Core.SetsAndLogic.ContPropSet1Type</a>
+<a id="668" class="Keyword">open</a> <a id="673" class="Keyword">import</a> <a id="680" href="UniAgda.Core.SetsAndLogic.Props.html" class="Module">UniAgda.Core.SetsAndLogic.Props</a>
+<a id="712" class="Keyword">open</a> <a id="717" class="Keyword">import</a> <a id="724" href="UniAgda.Core.SetsAndLogic.Equivalences.html" class="Module">UniAgda.Core.SetsAndLogic.Equivalences</a>
+
+<a id="764" class="Keyword">open</a> <a id="769" class="Keyword">import</a> <a id="776" href="UniAgda.Core.PathSpaces.Sigma.html" class="Module">UniAgda.Core.PathSpaces.Sigma</a>
+
+</pre>
+</div>
+</div>
+<div id="outline-container-orgaa82b96" class="outline-2">
+<h2 id="orgaa82b96"><span class="section-number-2">2</span> Bool is equivalent to (equiv Bool Bool)</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+We first need to define functions each way.
+</p>
+<pre class="Agda">
+<a id="921" class="Keyword">private</a>
+  <a id="f"></a><a id="931" href="UniAgda.Equiv.Bool.html#931" class="Function">f</a> <a id="933" class="Symbol">:</a> <a id="935" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="940" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="942" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="947" class="Symbol">→</a> <a id="949" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a>
+  <a id="956" href="UniAgda.Equiv.Bool.html#931" class="Function">f</a> <a id="958" class="Symbol">(</a><a id="959" href="UniAgda.Equiv.Bool.html#959" class="Bound">h</a> <a id="961" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="963" href="UniAgda.Equiv.Bool.html#963" class="Bound">X</a><a id="964" class="Symbol">)</a> <a id="966" class="Symbol">=</a> <a id="968" href="UniAgda.Equiv.Bool.html#959" class="Bound">h</a> <a id="970" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a>
+
+  <a id="g"></a><a id="978" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="980" class="Symbol">:</a> <a id="982" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="987" class="Symbol">→</a> <a id="989" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="994" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="996" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a>
+  <a id="1003" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="1005" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1010" class="Symbol">=</a> <a id="1012" href="UniAgda.Core.Equivalences.html#5719" class="Function">equiv-adjointify</a> <a id="1029" class="Symbol">(</a><a id="1030" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a> <a id="1033" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1035" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a> <a id="1038" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1040" href="UniAgda.Core.Homotopy.html#897" class="Function">hrefl</a> <a id="1046" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1048" href="UniAgda.Core.Homotopy.html#897" class="Function">hrefl</a><a id="1053" class="Symbol">)</a>
+  <a id="1057" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="1059" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="1065" class="Symbol">=</a> <a id="1067" href="UniAgda.Core.Equivalences.html#5719" class="Function">equiv-adjointify</a> <a id="1084" class="Symbol">(</a><a id="1085" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="1090" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1092" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="1097" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+                                   <a id="1134" class="Symbol">(λ</a> <a id="1137" class="Symbol">{</a> <a id="1139" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1144" class="Symbol">→</a> <a id="1146" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+                                      <a id="1189" class="Symbol">;</a> <a id="1191" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="1197" class="Symbol">→</a> <a id="1199" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a><a id="1203" class="Symbol">})</a> <a id="1206" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a>
+                                   <a id="1243" class="Symbol">λ</a> <a id="1245" class="Symbol">{</a> <a id="1247" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1252" class="Symbol">→</a> <a id="1254" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+                                     <a id="1296" class="Symbol">;</a> <a id="1298" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="1304" class="Symbol">→</a> <a id="1306" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a><a id="1310" class="Symbol">})</a>
+</pre>
+
+<p>
+Now we need the required homotopies. The first is easy.
+</p>
+
+<pre class="Agda">
+<a id="1399" class="Keyword">private</a>
+  <a id="η"></a><a id="1409" href="UniAgda.Equiv.Bool.html#1409" class="Function">η</a> <a id="1411" class="Symbol">:</a> <a id="1413" href="UniAgda.Equiv.Bool.html#931" class="Function">f</a> <a id="1415" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="1417" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="1419" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="1421" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
+  <a id="1426" href="UniAgda.Equiv.Bool.html#1409" class="Function">η</a> <a id="1428" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1433" class="Symbol">=</a> <a id="1435" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+  <a id="1442" href="UniAgda.Equiv.Bool.html#1409" class="Function">η</a> <a id="1444" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="1450" class="Symbol">=</a> <a id="1452" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+</pre>
+
+<p>
+For the second, we need the to use three important results regarding Bool. The first is that every \(x\) in Bool is equal to true or false.
+</p>
+<pre class="Agda">
+<a id="eq-T-F-Bool"></a><a id="1626" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="1638" class="Symbol">:</a> <a id="1640" class="Symbol">(</a><a id="1641" href="UniAgda.Equiv.Bool.html#1641" class="Bound">x</a> <a id="1643" class="Symbol">:</a> <a id="1645" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a><a id="1649" class="Symbol">)</a> <a id="1651" class="Symbol">→</a> <a id="1653" class="Symbol">(</a><a id="1654" href="UniAgda.Equiv.Bool.html#1641" class="Bound">x</a> <a id="1656" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1658" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a><a id="1662" class="Symbol">)</a> <a id="1664" href="UniAgda.Core.Types.Coproduct.html#448" class="Datatype Operator">+</a> <a id="1666" class="Symbol">(</a><a id="1667" href="UniAgda.Equiv.Bool.html#1641" class="Bound">x</a> <a id="1669" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1671" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="1676" class="Symbol">)</a>
+<a id="1678" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="1690" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1695" class="Symbol">=</a> <a id="1697" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="1701" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a> 
+<a id="1707" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="1719" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="1725" class="Symbol">=</a> <a id="1727" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="1731" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a> 
+</pre>
+
+<p>
+Next, we show that true cannot equal false.
+</p>
+<pre class="Agda">
+<a id="true-neq-false"></a><a id="1810" href="UniAgda.Equiv.Bool.html#1810" class="Function">true-neq-false</a> <a id="1825" class="Symbol">:</a> <a id="1827" href="UniAgda.Core.Types.Empty.html#688" class="Function">¬</a> <a id="1829" class="Symbol">(</a><a id="1830" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1835" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1837" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="1842" class="Symbol">)</a>
+<a id="1844" href="UniAgda.Equiv.Bool.html#1810" class="Function">true-neq-false</a> <a id="1859" href="UniAgda.Equiv.Bool.html#1859" class="Bound">p</a> <a id="1861" class="Symbol">=</a> <a id="1863" href="UniAgda.Core.Types.Identity.html#1969" class="Function">transport</a> <a id="1873" class="Symbol">(λ</a> <a id="1876" class="Symbol">{</a> <a id="1878" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="1883" class="Symbol">→</a> <a id="1885" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a> <a id="1890" class="Symbol">;</a> <a id="1892" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="1898" class="Symbol">→</a> <a id="1900" href="UniAgda.Core.Types.Empty.html#414" class="Datatype">Empty</a><a id="1905" class="Symbol">})</a> <a id="1908" href="UniAgda.Equiv.Bool.html#1859" class="Bound">p</a> <a id="1910" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a>
+</pre>
+
+<p>
+Finally, we need that every equivalence on Bool commutes with \(\text{swap}\). That is, if \(f: \text{Bool} \to \text{Bool}\) is an equivalence, then \(\text{swap} \circ f = f \circ \text{swap}\). This is just done by a case analysis on both \(h(true), h(false)\) being true or false.
+</p>
+<pre class="Agda">
+<a id="Bool-autoequiv-not-const"></a><a id="2227" href="UniAgda.Equiv.Bool.html#2227" class="Function">Bool-autoequiv-not-const</a> <a id="2252" class="Symbol">:</a> <a id="2254" class="Symbol">(</a><a id="2255" href="UniAgda.Equiv.Bool.html#2255" class="Bound">H</a> <a id="2257" class="Symbol">:</a> <a id="2259" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="2264" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="2266" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a><a id="2270" class="Symbol">)</a> <a id="2272" class="Symbol">→</a> <a id="2274" class="Symbol">(</a><a id="2275" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2279" href="UniAgda.Equiv.Bool.html#2255" class="Bound">H</a> <a id="2281" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="2283" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="2288" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="2290" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="2295" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="2297" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="2301" href="UniAgda.Equiv.Bool.html#2255" class="Bound">H</a><a id="2302" class="Symbol">)</a>
+<a id="2304" href="UniAgda.Equiv.Bool.html#2227" class="Function">Bool-autoequiv-not-const</a> <a id="2329" class="Symbol">(</a><a id="2330" href="UniAgda.Equiv.Bool.html#2330" class="Bound">h</a> <a id="2332" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2334" href="UniAgda.Equiv.Bool.html#2334" class="Bound">h&#39;</a> <a id="2337" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2339" href="UniAgda.Equiv.Bool.html#2339" class="Bound">α</a> <a id="2341" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2343" href="UniAgda.Equiv.Bool.html#2343" class="Bound">β</a> <a id="2345" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2347" href="UniAgda.Equiv.Bool.html#2347" class="Bound">γ</a><a id="2348" class="Symbol">)</a> <a id="2350" class="Keyword">with</a> <a id="2355" class="Symbol">(</a><a id="2356" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="2368" class="Symbol">(</a><a id="2369" href="UniAgda.Equiv.Bool.html#2330" class="Bound">h</a> <a id="2371" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a><a id="2375" class="Symbol">))</a> <a id="2378" class="Symbol">|</a> <a id="2380" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="2392" class="Symbol">(</a><a id="2393" href="UniAgda.Equiv.Bool.html#2330" class="Bound">h</a> <a id="2395" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="2400" class="Symbol">)</a>
+<a id="2402" class="Symbol">...</a> <a id="2406" class="Symbol">|</a> <a id="2408" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="2412" href="UniAgda.Equiv.Bool.html#2412" class="Bound">q</a> <a id="2414" class="Symbol">|</a> <a id="2416" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="2420" href="UniAgda.Equiv.Bool.html#2420" class="Bound">s</a> <a id="2422" class="Symbol">=</a> <a id="2424" class="Symbol">λ</a> <a id="2426" class="Symbol">{</a><a id="2427" href="UniAgda.Equiv.Bool.html#2427" class="Bound">x</a> <a id="2429" class="Symbol">→</a> <a id="2431" href="UniAgda.Core.Types.Empty.html#526" class="Function">Empty-ind</a> <a id="2441" class="Symbol">(</a><a id="2442" href="UniAgda.Equiv.Bool.html#1810" class="Function">true-neq-false</a> <a id="2457" class="Symbol">(</a><a id="2458" class="Bound">α</a> <a id="2460" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="2465" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a> <a id="2467" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2469" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2472" class="Bound">h&#39;</a> <a id="2475" class="Symbol">(</a><a id="2476" href="UniAgda.Equiv.Bool.html#2412" class="Bound">q</a> <a id="2478" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2480" href="UniAgda.Equiv.Bool.html#2420" class="Bound">s</a> <a id="2482" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="2483" class="Symbol">)</a> <a id="2485" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2487" class="Bound">α</a> <a id="2489" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="2494" class="Symbol">))}</a>
+<a id="2498" class="Symbol">...</a> <a id="2502" class="Symbol">|</a> <a id="2504" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="2508" href="UniAgda.Equiv.Bool.html#2508" class="Bound">q</a> <a id="2510" class="Symbol">|</a> <a id="2512" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="2516" href="UniAgda.Equiv.Bool.html#2516" class="Bound">s</a> <a id="2518" class="Symbol">=</a> <a id="2520" class="Symbol">λ</a> <a id="2522" class="Symbol">{</a> <a id="2524" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="2529" class="Symbol">→</a> <a id="2531" href="UniAgda.Equiv.Bool.html#2516" class="Bound">s</a> <a id="2533" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2535" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2538" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="2543" href="UniAgda.Equiv.Bool.html#2508" class="Bound">q</a> <a id="2545" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a>
+                        <a id="2571" class="Symbol">;</a> <a id="2573" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="2579" class="Symbol">→</a> <a id="2581" href="UniAgda.Equiv.Bool.html#2508" class="Bound">q</a> <a id="2583" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2585" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2588" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="2593" href="UniAgda.Equiv.Bool.html#2516" class="Bound">s</a> <a id="2595" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="2596" class="Symbol">}</a>
+<a id="2598" class="Symbol">...</a> <a id="2602" class="Symbol">|</a> <a id="2604" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="2608" href="UniAgda.Equiv.Bool.html#2608" class="Bound">q</a> <a id="2610" class="Symbol">|</a> <a id="2612" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="2616" href="UniAgda.Equiv.Bool.html#2616" class="Bound">s</a> <a id="2618" class="Symbol">=</a> <a id="2620" class="Symbol">λ</a> <a id="2622" class="Symbol">{</a> <a id="2624" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="2629" class="Symbol">→</a> <a id="2631" href="UniAgda.Equiv.Bool.html#2616" class="Bound">s</a> <a id="2633" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2635" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2638" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="2643" href="UniAgda.Equiv.Bool.html#2608" class="Bound">q</a> <a id="2645" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a>
+                        <a id="2671" class="Symbol">;</a> <a id="2673" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="2679" class="Symbol">→</a> <a id="2681" href="UniAgda.Equiv.Bool.html#2608" class="Bound">q</a> <a id="2683" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2685" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2688" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="2693" href="UniAgda.Equiv.Bool.html#2616" class="Bound">s</a> <a id="2695" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="2696" class="Symbol">}</a>
+<a id="2698" class="Symbol">...</a> <a id="2702" class="Symbol">|</a> <a id="2704" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="2708" href="UniAgda.Equiv.Bool.html#2708" class="Bound">q</a> <a id="2710" class="Symbol">|</a> <a id="2712" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="2716" href="UniAgda.Equiv.Bool.html#2716" class="Bound">s</a> <a id="2718" class="Symbol">=</a> <a id="2720" class="Symbol">λ</a> <a id="2722" class="Symbol">{</a><a id="2723" href="UniAgda.Equiv.Bool.html#2723" class="Bound">x</a> <a id="2725" class="Symbol">→</a> <a id="2727" href="UniAgda.Core.Types.Empty.html#526" class="Function">Empty-ind</a> <a id="2737" class="Symbol">(</a><a id="2738" href="UniAgda.Equiv.Bool.html#1810" class="Function">true-neq-false</a> <a id="2753" class="Symbol">(</a><a id="2754" class="Bound">α</a> <a id="2756" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="2761" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a> <a id="2763" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2765" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="2768" class="Bound">h&#39;</a> <a id="2771" class="Symbol">(</a><a id="2772" href="UniAgda.Equiv.Bool.html#2708" class="Bound">q</a> <a id="2774" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2776" href="UniAgda.Equiv.Bool.html#2716" class="Bound">s</a> <a id="2778" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="2779" class="Symbol">)</a> <a id="2781" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="2783" class="Bound">α</a> <a id="2785" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="2790" class="Symbol">))}</a>
+</pre>
+
+<p>
+We are now ready to give the final homotopy.
+</p>
+<pre class="Agda">
+<a id="2868" class="Keyword">private</a>
+  <a id="ϵ"></a><a id="2878" href="UniAgda.Equiv.Bool.html#2878" class="Function">ϵ</a> <a id="2880" class="Symbol">:</a> <a id="2882" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="2884" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="2886" href="UniAgda.Equiv.Bool.html#931" class="Function">f</a> <a id="2888" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="2890" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
+  <a id="2895" href="UniAgda.Equiv.Bool.html#2878" class="Function">ϵ</a> <a id="2897" class="Symbol">(</a><a id="2898" href="UniAgda.Equiv.Bool.html#2898" class="Bound">h</a> <a id="2900" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2902" href="UniAgda.Equiv.Bool.html#2902" class="Bound">h&#39;</a> <a id="2905" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2907" href="UniAgda.Equiv.Bool.html#2907" class="Bound">α</a> <a id="2909" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2911" href="UniAgda.Equiv.Bool.html#2911" class="Bound">β</a> <a id="2913" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2915" href="UniAgda.Equiv.Bool.html#2915" class="Bound">γ</a><a id="2916" class="Symbol">)</a> <a id="2918" class="Keyword">with</a> <a id="2923" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="2935" class="Symbol">(</a><a id="2936" href="UniAgda.Equiv.Bool.html#2898" class="Bound">h</a> <a id="2938" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a><a id="2942" class="Symbol">)</a> <a id="2944" class="Symbol">|</a> <a id="2946" href="UniAgda.Equiv.Bool.html#1626" class="Function">eq-T-F-Bool</a> <a id="2958" class="Symbol">(</a><a id="2959" href="UniAgda.Equiv.Bool.html#2898" class="Bound">h</a> <a id="2961" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="2966" class="Symbol">)</a>
+  <a id="2970" class="Symbol">...</a> <a id="2974" class="Symbol">|</a> <a id="2976" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="2980" href="UniAgda.Equiv.Bool.html#2980" class="Bound">q</a> <a id="2982" class="Symbol">|</a> <a id="2984" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="2988" href="UniAgda.Equiv.Bool.html#2988" class="Bound">s</a> <a id="2990" class="Symbol">=</a> <a id="2992" href="UniAgda.Core.SetsAndLogic.Props.html#3244" class="Function">fibres-props-eq</a>
+                        <a id="3032" href="UniAgda.Core.SetsAndLogic.Equivalences.html#9456" class="Function">isEquiv-is-prop</a> <a id="3048" class="Symbol">_</a> <a id="3050" class="Symbol">_</a>
+                        <a id="3076" class="Symbol">(</a><a id="3077" href="UniAgda.Core.Axioms.html#960" class="Function">funext</a> <a id="3084" class="Symbol">λ</a> <a id="3086" class="Symbol">{</a> <a id="3088" href="UniAgda.Equiv.Bool.html#3088" class="Bound">x</a> <a id="3090" class="Symbol">→</a> <a id="3092" href="UniAgda.Core.Types.Empty.html#526" class="Function">Empty-ind</a> <a id="3102" href="UniAgda.Core.Types.Functions.html#827" class="Function Operator">$</a> <a id="3104" href="UniAgda.Equiv.Bool.html#1810" class="Function">true-neq-false</a>
+                          <a id="3145" class="Symbol">(</a><a id="3146" class="Bound">α</a> <a id="3148" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="3153" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a> <a id="3155" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3157" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3160" class="Bound">h&#39;</a> <a id="3163" class="Symbol">(</a><a id="3164" href="UniAgda.Equiv.Bool.html#2980" class="Bound">q</a> <a id="3166" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3168" href="UniAgda.Equiv.Bool.html#2988" class="Bound">s</a> <a id="3170" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3171" class="Symbol">)</a> <a id="3173" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3175" class="Bound">α</a> <a id="3177" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="3182" class="Symbol">)})</a>
+  <a id="3188" class="Symbol">...</a> <a id="3192" class="Symbol">|</a> <a id="3194" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="3198" href="UniAgda.Equiv.Bool.html#3198" class="Bound">q</a> <a id="3200" class="Symbol">|</a> <a id="3202" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="3206" href="UniAgda.Equiv.Bool.html#3206" class="Bound">s</a> <a id="3208" class="Symbol">=</a> <a id="3210" href="UniAgda.Core.SetsAndLogic.Props.html#3244" class="Function">fibres-props-eq</a>
+                        <a id="3250" href="UniAgda.Core.SetsAndLogic.Equivalences.html#9456" class="Function">isEquiv-is-prop</a> <a id="3266" class="Symbol">_</a> <a id="3268" class="Symbol">_</a>
+                        <a id="3294" class="Symbol">(</a><a id="3295" href="UniAgda.Core.Axioms.html#960" class="Function">funext</a> <a id="3302" class="Symbol">λ</a> <a id="3304" class="Symbol">{</a> <a id="3306" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="3311" class="Symbol">→</a> <a id="3313" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3316" class="Symbol">(λ</a> <a id="3319" href="UniAgda.Equiv.Bool.html#3319" class="Bound">Z</a> <a id="3321" class="Symbol">→</a> <a id="3323" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3327" class="Symbol">(</a><a id="3328" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="3330" href="UniAgda.Equiv.Bool.html#3319" class="Bound">Z</a><a id="3331" class="Symbol">)</a> <a id="3333" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a><a id="3337" class="Symbol">)</a> <a id="3339" href="UniAgda.Equiv.Bool.html#3198" class="Bound">q</a> <a id="3341" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3343" href="UniAgda.Equiv.Bool.html#3198" class="Bound">q</a> <a id="3345" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a>
+                                  <a id="3381" class="Symbol">;</a> <a id="3383" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="3389" class="Symbol">→</a> <a id="3391" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3394" class="Symbol">(λ</a> <a id="3397" href="UniAgda.Equiv.Bool.html#3397" class="Bound">Z</a> <a id="3399" class="Symbol">→</a> <a id="3401" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3405" class="Symbol">(</a><a id="3406" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="3408" href="UniAgda.Equiv.Bool.html#3397" class="Bound">Z</a><a id="3409" class="Symbol">)</a> <a id="3411" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="3416" class="Symbol">)</a> <a id="3418" href="UniAgda.Equiv.Bool.html#3198" class="Bound">q</a> <a id="3420" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3422" href="UniAgda.Equiv.Bool.html#3206" class="Bound">s</a> <a id="3424" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3425" class="Symbol">})</a>
+  <a id="3430" class="Symbol">...</a> <a id="3434" class="Symbol">|</a> <a id="3436" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="3440" href="UniAgda.Equiv.Bool.html#3440" class="Bound">q</a> <a id="3442" class="Symbol">|</a> <a id="3444" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="3448" href="UniAgda.Equiv.Bool.html#3448" class="Bound">s</a> <a id="3450" class="Symbol">=</a> <a id="3452" href="UniAgda.Core.SetsAndLogic.Props.html#3244" class="Function">fibres-props-eq</a>
+                        <a id="3492" href="UniAgda.Core.SetsAndLogic.Equivalences.html#9456" class="Function">isEquiv-is-prop</a> <a id="3508" class="Symbol">_</a> <a id="3510" class="Symbol">_</a>
+                        <a id="3536" class="Symbol">(</a><a id="3537" href="UniAgda.Core.Axioms.html#960" class="Function">funext</a> <a id="3544" class="Symbol">λ</a> <a id="3546" class="Symbol">{</a> <a id="3548" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="3553" class="Symbol">→</a> <a id="3555" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3558" class="Symbol">(λ</a> <a id="3561" href="UniAgda.Equiv.Bool.html#3561" class="Bound">Z</a> <a id="3563" class="Symbol">→</a> <a id="3565" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3569" class="Symbol">(</a><a id="3570" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="3572" href="UniAgda.Equiv.Bool.html#3561" class="Bound">Z</a><a id="3573" class="Symbol">)</a> <a id="3575" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a><a id="3579" class="Symbol">)</a> <a id="3581" href="UniAgda.Equiv.Bool.html#3440" class="Bound">q</a> <a id="3583" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3585" href="UniAgda.Equiv.Bool.html#3440" class="Bound">q</a> <a id="3587" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a>
+                                  <a id="3623" class="Symbol">;</a> <a id="3625" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="3631" class="Symbol">→</a> <a id="3633" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3636" class="Symbol">(λ</a> <a id="3639" href="UniAgda.Equiv.Bool.html#3639" class="Bound">Z</a> <a id="3641" class="Symbol">→</a> <a id="3643" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="3647" class="Symbol">(</a><a id="3648" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="3650" href="UniAgda.Equiv.Bool.html#3639" class="Bound">Z</a><a id="3651" class="Symbol">)</a> <a id="3653" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="3658" class="Symbol">)</a> <a id="3660" href="UniAgda.Equiv.Bool.html#3440" class="Bound">q</a> <a id="3662" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3664" href="UniAgda.Equiv.Bool.html#3448" class="Bound">s</a> <a id="3666" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3667" class="Symbol">})</a>
+  <a id="3672" class="Symbol">...</a> <a id="3676" class="Symbol">|</a> <a id="3678" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="3682" href="UniAgda.Equiv.Bool.html#3682" class="Bound">q</a> <a id="3684" class="Symbol">|</a> <a id="3686" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="3690" href="UniAgda.Equiv.Bool.html#3690" class="Bound">s</a> <a id="3692" class="Symbol">=</a> <a id="3694" href="UniAgda.Core.SetsAndLogic.Props.html#3244" class="Function">fibres-props-eq</a>
+                        <a id="3734" href="UniAgda.Core.SetsAndLogic.Equivalences.html#9456" class="Function">isEquiv-is-prop</a> <a id="3750" class="Symbol">_</a> <a id="3752" class="Symbol">_</a>
+                        <a id="3778" class="Symbol">(</a><a id="3779" href="UniAgda.Core.Axioms.html#960" class="Function">funext</a> <a id="3786" class="Symbol">λ</a> <a id="3788" class="Symbol">{</a> <a id="3790" href="UniAgda.Equiv.Bool.html#3790" class="Bound">x</a> <a id="3792" class="Symbol">→</a> <a id="3794" href="UniAgda.Core.Types.Empty.html#526" class="Function">Empty-ind</a> <a id="3804" href="UniAgda.Core.Types.Functions.html#827" class="Function Operator">$</a> <a id="3806" href="UniAgda.Equiv.Bool.html#1810" class="Function">true-neq-false</a>
+                          <a id="3847" class="Symbol">(</a><a id="3848" class="Bound">α</a> <a id="3850" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="3855" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a> <a id="3857" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3859" href="UniAgda.Core.Types.Identity.html#1757" class="Function">ap</a> <a id="3862" class="Bound">h&#39;</a> <a id="3865" class="Symbol">(</a><a id="3866" href="UniAgda.Equiv.Bool.html#3682" class="Bound">q</a> <a id="3868" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3870" href="UniAgda.Equiv.Bool.html#3690" class="Bound">s</a> <a id="3872" href="UniAgda.Core.Types.Identity.html#1268" class="Function Operator">^</a><a id="3873" class="Symbol">)</a> <a id="3875" href="UniAgda.Core.Types.Identity.html#1474" class="Function Operator">∘</a> <a id="3877" class="Bound">α</a> <a id="3879" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a><a id="3884" class="Symbol">)})</a>
+</pre>
+
+<p>
+We can now prove the desired result.
+</p>
+<pre class="Agda">
+<a id="2≃2-equiv-2"></a><a id="3975" href="UniAgda.Equiv.Bool.html#3975" class="Function">2≃2-equiv-2</a> <a id="3987" class="Symbol">:</a> <a id="3989" class="Symbol">(</a><a id="3990" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="3995" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="3997" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a><a id="4001" class="Symbol">)</a> <a id="4003" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="4005" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a>
+<a id="4010" href="UniAgda.Equiv.Bool.html#3975" class="Function">2≃2-equiv-2</a> <a id="4022" class="Symbol">=</a> <a id="4024" href="UniAgda.Core.Equivalences.html#5719" class="Function">equiv-adjointify</a> <a id="4041" class="Symbol">(</a><a id="4042" href="UniAgda.Equiv.Bool.html#931" class="Function">f</a> <a id="4044" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="4046" href="UniAgda.Equiv.Bool.html#978" class="Function">g</a> <a id="4048" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="4050" href="UniAgda.Equiv.Bool.html#1409" class="Function">η</a> <a id="4052" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="4054" href="UniAgda.Equiv.Bool.html#2878" class="Function">ϵ</a><a id="4055" class="Symbol">)</a>
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: James Leslie</p>
+<p class="date">Created: 2021-03-26 Fri 14:45</p>
+</div>
+</body>
+</html>

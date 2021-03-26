@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-03-26 Fri 14:45 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UniAgda.Categories.Examples.FiniteSets</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="James Leslie" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">UniAgda.Categories.Examples.FiniteSets</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orga2d517f">1. Prelude</a></li>
+<li><a href="#org65fda60">2. The type of finite sets</a></li>
+<li><a href="#org918d6ec">3. The precategory of finite sets</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orga2d517f" class="outline-2">
+<h2 id="orga2d517f"><span class="section-number-2">1</span> Prelude</h2>
+<div class="outline-text-2" id="text-1">
+<pre class="Agda">
+<a id="161" class="Symbol">{-#</a> <a id="165" class="Keyword">OPTIONS</a> <a id="173" class="Pragma">--without-K</a> <a id="185" class="Pragma">--rewriting</a> <a id="197" class="Symbol">#-}</a>
+<a id="201" class="Keyword">module</a> <a id="208" href="UniAgda.Categories.Examples.FiniteSets.html" class="Module">UniAgda.Categories.Examples.FiniteSets</a> <a id="247" class="Keyword">where</a>
+
+<a id="254" class="Keyword">open</a> <a id="259" class="Keyword">import</a> <a id="266" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="295" class="Keyword">open</a> <a id="300" class="Keyword">import</a> <a id="307" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
+<a id="332" class="Keyword">open</a> <a id="337" class="Keyword">import</a> <a id="344" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a>
+<a id="372" class="Keyword">open</a> <a id="377" class="Keyword">import</a> <a id="384" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a>
+<a id="407" class="Keyword">open</a> <a id="412" class="Keyword">import</a> <a id="419" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
+<a id="448" class="Keyword">open</a> <a id="453" class="Keyword">import</a> <a id="460" href="UniAgda.Core.Types.FiniteSets.html" class="Module">UniAgda.Core.Types.FiniteSets</a>
+
+<a id="491" class="Keyword">open</a> <a id="496" class="Keyword">import</a> <a id="503" href="UniAgda.Core.Equivalences.html" class="Module">UniAgda.Core.Equivalences</a>
+
+<a id="530" class="Keyword">open</a> <a id="535" class="Keyword">import</a> <a id="542" href="UniAgda.Core.SetsAndLogic.ContPropSet1Type.html" class="Module">UniAgda.Core.SetsAndLogic.ContPropSet1Type</a>
+<a id="585" class="Keyword">open</a> <a id="590" class="Keyword">import</a> <a id="597" href="UniAgda.Core.SetsAndLogic.Sets.html" class="Module">UniAgda.Core.SetsAndLogic.Sets</a>
+
+<a id="629" class="Keyword">open</a> <a id="634" class="Keyword">import</a> <a id="641" href="UniAgda.HITs.PropTrunc.html" class="Module">UniAgda.HITs.PropTrunc</a>
+
+<a id="665" class="Keyword">open</a> <a id="670" class="Keyword">import</a> <a id="677" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-org65fda60" class="outline-2">
+<h2 id="org65fda60"><span class="section-number-2">2</span> The type of finite sets</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Following <a href="https://homotopytypetheory.org/2016/07/20/combinatorial-species-and-finite-sets-in-hott/">this blog post</a>, we define the property of some type \(A\) being finite as the propositional truncation of there existing some \(n\) such that \(A \simeq \operatorname{Fin} n\).
+</p>
+<pre class="Agda">
+<a id="isFinite"></a><a id="1040" href="UniAgda.Categories.Examples.FiniteSets.html#1040" class="Function">isFinite</a> <a id="1049" class="Symbol">:</a> <a id="1051" class="Symbol">∀</a> <a id="1053" class="Symbol">{</a><a id="1054" href="UniAgda.Categories.Examples.FiniteSets.html#1054" class="Bound">i</a><a id="1055" class="Symbol">}</a>
+           <a id="1068" class="Symbol">(</a><a id="1069" href="UniAgda.Categories.Examples.FiniteSets.html#1069" class="Bound">A</a> <a id="1071" class="Symbol">:</a> <a id="1073" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1078" href="UniAgda.Categories.Examples.FiniteSets.html#1054" class="Bound">i</a><a id="1079" class="Symbol">)</a>
+           <a id="1092" class="Symbol">→</a> <a id="1094" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1099" href="UniAgda.Categories.Examples.FiniteSets.html#1054" class="Bound">i</a>
+<a id="1101" href="UniAgda.Categories.Examples.FiniteSets.html#1040" class="Function">isFinite</a> <a id="1110" href="UniAgda.Categories.Examples.FiniteSets.html#1110" class="Bound">A</a> <a id="1112" class="Symbol">=</a> <a id="1114" href="UniAgda.HITs.PropTrunc.html#524" class="Postulate Operator">∥</a> <a id="1116" class="Symbol">(</a><a id="1117" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">Σ[</a> <a id="1120" href="UniAgda.Categories.Examples.FiniteSets.html#1120" class="Bound">n</a> <a id="1122" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">∈</a> <a id="1124" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="1126" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">]</a> <a id="1128" class="Symbol">(</a><a id="1129" href="UniAgda.Categories.Examples.FiniteSets.html#1110" class="Bound">A</a> <a id="1131" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="1133" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="1137" href="UniAgda.Categories.Examples.FiniteSets.html#1120" class="Bound">n</a><a id="1138" class="Symbol">))</a> <a id="1141" href="UniAgda.HITs.PropTrunc.html#524" class="Postulate Operator">∥</a>
+</pre>
+
+<p>
+We then define the type of finite sets to be the appropriate \(\Sigma\)-type.
+</p>
+<pre class="Agda">
+<a id="Fin-set"></a><a id="1250" href="UniAgda.Categories.Examples.FiniteSets.html#1250" class="Function">Fin-set</a> <a id="1258" class="Symbol">:</a> <a id="1260" class="Symbol">∀</a> <a id="1262" class="Symbol">(</a><a id="1263" href="UniAgda.Categories.Examples.FiniteSets.html#1263" class="Bound">i</a><a id="1264" class="Symbol">)</a>
+          <a id="1276" class="Symbol">→</a> <a id="1278" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1283" class="Symbol">(</a><a id="1284" href="Agda.Primitive.html#780" class="Primitive">lsuc</a> <a id="1289" href="UniAgda.Categories.Examples.FiniteSets.html#1263" class="Bound">i</a><a id="1290" class="Symbol">)</a>
+<a id="1292" href="UniAgda.Categories.Examples.FiniteSets.html#1250" class="Function">Fin-set</a> <a id="1300" href="UniAgda.Categories.Examples.FiniteSets.html#1300" class="Bound">i</a> <a id="1302" class="Symbol">=</a> <a id="1304" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">Σ[</a> <a id="1307" href="UniAgda.Categories.Examples.FiniteSets.html#1307" class="Bound">A</a> <a id="1309" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">∈</a> <a id="1311" class="Symbol">(</a><a id="1312" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1317" href="UniAgda.Categories.Examples.FiniteSets.html#1300" class="Bound">i</a><a id="1318" class="Symbol">)</a> <a id="1320" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">]</a> <a id="1322" href="UniAgda.Categories.Examples.FiniteSets.html#1040" class="Function">isFinite</a> <a id="1331" href="UniAgda.Categories.Examples.FiniteSets.html#1307" class="Bound">A</a>
+</pre>
+
+<p>
+If a type \(A\) is a finite set, then it is indeed a set.
+</p>
+<pre class="Agda">
+<a id="finite-sets-are-sets"></a><a id="1420" href="UniAgda.Categories.Examples.FiniteSets.html#1420" class="Function">finite-sets-are-sets</a> <a id="1441" class="Symbol">:</a> <a id="1443" class="Symbol">∀</a> <a id="1445" class="Symbol">{</a><a id="1446" href="UniAgda.Categories.Examples.FiniteSets.html#1446" class="Bound">i</a><a id="1447" class="Symbol">}</a> <a id="1449" class="Symbol">(</a><a id="1450" href="UniAgda.Categories.Examples.FiniteSets.html#1450" class="Bound">A</a> <a id="1452" class="Symbol">:</a> <a id="1454" href="UniAgda.Categories.Examples.FiniteSets.html#1250" class="Function">Fin-set</a> <a id="1462" href="UniAgda.Categories.Examples.FiniteSets.html#1446" class="Bound">i</a><a id="1463" class="Symbol">)</a>
+                       <a id="1488" class="Symbol">→</a> <a id="1490" href="UniAgda.Core.SetsAndLogic.ContPropSet1Type.html#1240" class="Function">isSet</a> <a id="1496" class="Symbol">(</a><a id="1497" href="UniAgda.Core.Types.Sigma.html#659" class="Function">pr₁</a> <a id="1501" href="UniAgda.Categories.Examples.FiniteSets.html#1450" class="Bound">A</a><a id="1502" class="Symbol">)</a>
+<a id="1504" href="UniAgda.Categories.Examples.FiniteSets.html#1420" class="Function">finite-sets-are-sets</a> <a id="1525" class="Symbol">(</a><a id="1526" href="UniAgda.Categories.Examples.FiniteSets.html#1526" class="Bound">A</a> <a id="1528" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1530" href="UniAgda.Categories.Examples.FiniteSets.html#1530" class="Bound">X</a><a id="1531" class="Symbol">)</a> <a id="1533" class="Symbol">=</a>
+  <a id="1537" href="UniAgda.HITs.PropTrunc.html#687" class="Postulate">Ptrunc-rec</a>
+    <a id="1552" class="Symbol">(</a><a id="1553" href="UniAgda.Core.SetsAndLogic.Sets.html#3819" class="Function">isSet-is-prop</a> <a id="1567" href="UniAgda.Categories.Examples.FiniteSets.html#1526" class="Bound">A</a><a id="1568" class="Symbol">)</a>
+    <a id="1574" class="Symbol">(λ</a> <a id="1577" class="Symbol">{</a> <a id="1579" class="Symbol">(</a><a id="1580" href="UniAgda.Categories.Examples.FiniteSets.html#1580" class="Bound">n</a> <a id="1582" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1584" href="UniAgda.Categories.Examples.FiniteSets.html#1584" class="Bound">f</a><a id="1585" class="Symbol">)</a> <a id="1587" class="Symbol">→</a> <a id="1589" href="UniAgda.Core.SetsAndLogic.Sets.html#4094" class="Function">equiv-with-set</a> <a id="1604" class="Symbol">(</a><a id="1605" href="UniAgda.Categories.Examples.FiniteSets.html#1584" class="Bound">f</a> <a id="1607" href="UniAgda.Core.Equivalences.html#6172" class="Function Operator">^ᵉ</a><a id="1609" class="Symbol">)</a> <a id="1611" class="Symbol">(</a><a id="1612" href="UniAgda.Core.SetsAndLogic.Sets.html#5850" class="Function">Fin-n-is-set</a> <a id="1625" href="UniAgda.Categories.Examples.FiniteSets.html#1580" class="Bound">n</a><a id="1626" class="Symbol">)})</a>
+    <a id="1634" href="UniAgda.Categories.Examples.FiniteSets.html#1530" class="Bound">X</a>
+</pre>
+</div>
+</div>
+<div id="outline-container-org918d6ec" class="outline-2">
+<h2 id="org918d6ec"><span class="section-number-2">3</span> The precategory of finite sets</h2>
+<div class="outline-text-2" id="text-3">
+<pre class="Agda">
+<a id="FIN-SET"></a><a id="1697" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="1705" class="Symbol">:</a> <a id="1707" class="Symbol">(</a><a id="1708" href="UniAgda.Categories.Examples.FiniteSets.html#1708" class="Bound">i</a> <a id="1710" class="Symbol">:</a> <a id="1712" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="1717" class="Symbol">)</a> <a id="1719" class="Symbol">→</a> <a id="1721" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="1733" class="Symbol">(</a><a id="1734" href="Agda.Primitive.html#780" class="Primitive">lsuc</a> <a id="1739" href="UniAgda.Categories.Examples.FiniteSets.html#1708" class="Bound">i</a><a id="1740" class="Symbol">)</a> <a id="1742" href="UniAgda.Categories.Examples.FiniteSets.html#1708" class="Bound">i</a>
+<a id="1744" href="UniAgda.Categories.Category.html#1546" class="Field">Precategory.ob</a> <a id="1759" class="Symbol">(</a><a id="1760" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="1768" href="UniAgda.Categories.Examples.FiniteSets.html#1768" class="Bound">i</a><a id="1769" class="Symbol">)</a> <a id="1771" class="Symbol">=</a> <a id="1773" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">Σ[</a> <a id="1776" href="UniAgda.Categories.Examples.FiniteSets.html#1776" class="Bound">A</a> <a id="1778" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">∈</a> <a id="1780" class="Symbol">(</a><a id="1781" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="1786" href="UniAgda.Categories.Examples.FiniteSets.html#1768" class="Bound">i</a><a id="1787" class="Symbol">)</a> <a id="1789" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">]</a> <a id="1791" href="UniAgda.Categories.Examples.FiniteSets.html#1040" class="Function">isFinite</a> <a id="1800" href="UniAgda.Categories.Examples.FiniteSets.html#1776" class="Bound">A</a>
+<a id="1802" href="UniAgda.Categories.Category.html#1562" class="Field">Precategory.hom</a> <a id="1818" class="Symbol">(</a><a id="1819" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="1827" href="UniAgda.Categories.Examples.FiniteSets.html#1827" class="Bound">i</a><a id="1828" class="Symbol">)</a> <a id="1830" class="Symbol">(</a><a id="1831" href="UniAgda.Categories.Examples.FiniteSets.html#1831" class="Bound">A</a> <a id="1833" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1835" href="UniAgda.Categories.Examples.FiniteSets.html#1835" class="Bound">X</a><a id="1836" class="Symbol">)</a> <a id="1838" class="Symbol">(</a><a id="1839" href="UniAgda.Categories.Examples.FiniteSets.html#1839" class="Bound">B</a> <a id="1841" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1843" href="UniAgda.Categories.Examples.FiniteSets.html#1843" class="Bound">Y</a><a id="1844" class="Symbol">)</a> <a id="1846" class="Symbol">=</a> <a id="1848" href="UniAgda.Categories.Examples.FiniteSets.html#1831" class="Bound">A</a> <a id="1850" class="Symbol">→</a> <a id="1852" href="UniAgda.Categories.Examples.FiniteSets.html#1839" class="Bound">B</a>
+<a id="1854" href="UniAgda.Categories.Category.html#1592" class="Field">Precategory.hom-set</a> <a id="1874" class="Symbol">(</a><a id="1875" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="1883" href="UniAgda.Categories.Examples.FiniteSets.html#1883" class="Bound">i</a><a id="1884" class="Symbol">)</a> <a id="1886" class="Symbol">(</a><a id="1887" href="UniAgda.Categories.Examples.FiniteSets.html#1887" class="Bound">A</a> <a id="1889" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1891" href="UniAgda.Categories.Examples.FiniteSets.html#1891" class="Bound">X</a><a id="1892" class="Symbol">)</a> <a id="1894" class="Symbol">(</a><a id="1895" href="UniAgda.Categories.Examples.FiniteSets.html#1895" class="Bound">B</a> <a id="1897" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1899" href="UniAgda.Categories.Examples.FiniteSets.html#1899" class="Bound">Y</a><a id="1900" class="Symbol">)</a> <a id="1902" class="Symbol">=</a> <a id="1904" href="UniAgda.Core.SetsAndLogic.Sets.html#3031" class="Function">func-of-sets-is-set</a> <a id="1924" class="Symbol">(</a><a id="1925" href="UniAgda.Categories.Examples.FiniteSets.html#1420" class="Function">finite-sets-are-sets</a> <a id="1946" class="Symbol">(</a><a id="1947" href="UniAgda.Categories.Examples.FiniteSets.html#1895" class="Bound">B</a> <a id="1949" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1951" href="UniAgda.Categories.Examples.FiniteSets.html#1899" class="Bound">Y</a><a id="1952" class="Symbol">))</a> 
+<a id="1956" href="UniAgda.Categories.Category.html#1635" class="Field">Precategory.Id</a> <a id="1971" class="Symbol">(</a><a id="1972" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="1980" href="UniAgda.Categories.Examples.FiniteSets.html#1980" class="Bound">i</a><a id="1981" class="Symbol">)</a> <a id="1983" class="Symbol">{</a><a id="1984" class="Argument">a</a> <a id="1986" class="Symbol">=</a> <a id="1988" class="Symbol">(</a><a id="1989" href="UniAgda.Categories.Examples.FiniteSets.html#1989" class="Bound">A</a> <a id="1991" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1993" href="UniAgda.Categories.Examples.FiniteSets.html#1993" class="Bound">X</a><a id="1994" class="Symbol">)}</a> <a id="1997" class="Symbol">=</a> <a id="1999" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
+<a id="2002" href="UniAgda.Categories.Category.html#1665" class="Field">Precategory.comp</a> <a id="2019" class="Symbol">(</a><a id="2020" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="2028" href="UniAgda.Categories.Examples.FiniteSets.html#2028" class="Bound">i</a><a id="2029" class="Symbol">)</a> <a id="2031" class="Symbol">{</a><a id="2032" href="UniAgda.Categories.Examples.FiniteSets.html#2032" class="Bound">a</a> <a id="2034" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2036" href="UniAgda.Categories.Examples.FiniteSets.html#2036" class="Bound">b</a><a id="2037" class="Symbol">}</a> <a id="2039" class="Symbol">{</a><a id="2040" href="UniAgda.Categories.Examples.FiniteSets.html#2040" class="Bound">a₁</a> <a id="2043" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2045" href="UniAgda.Categories.Examples.FiniteSets.html#2045" class="Bound">b₁</a><a id="2047" class="Symbol">}</a> <a id="2049" class="Symbol">{</a><a id="2050" href="UniAgda.Categories.Examples.FiniteSets.html#2050" class="Bound">a₂</a> <a id="2053" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2055" href="UniAgda.Categories.Examples.FiniteSets.html#2055" class="Bound">b₂</a><a id="2057" class="Symbol">}</a> <a id="2059" href="UniAgda.Categories.Examples.FiniteSets.html#2059" class="Bound">g</a> <a id="2061" href="UniAgda.Categories.Examples.FiniteSets.html#2061" class="Bound">f</a> <a id="2063" class="Symbol">=</a> <a id="2065" href="UniAgda.Categories.Examples.FiniteSets.html#2059" class="Bound">g</a> <a id="2067" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="2069" href="UniAgda.Categories.Examples.FiniteSets.html#2061" class="Bound">f</a>
+<a id="2071" href="UniAgda.Categories.Category.html#1721" class="Field">Precategory.IdL</a> <a id="2087" class="Symbol">(</a><a id="2088" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="2096" href="UniAgda.Categories.Examples.FiniteSets.html#2096" class="Bound">i</a><a id="2097" class="Symbol">)</a> <a id="2099" class="Symbol">{</a><a id="2100" href="UniAgda.Categories.Examples.FiniteSets.html#2100" class="Bound">a</a> <a id="2102" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2104" href="UniAgda.Categories.Examples.FiniteSets.html#2104" class="Bound">b</a><a id="2105" class="Symbol">}</a> <a id="2107" class="Symbol">{</a><a id="2108" href="UniAgda.Categories.Examples.FiniteSets.html#2108" class="Bound">a₁</a> <a id="2111" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2113" href="UniAgda.Categories.Examples.FiniteSets.html#2113" class="Bound">b₁</a><a id="2115" class="Symbol">}</a> <a id="2117" href="UniAgda.Categories.Examples.FiniteSets.html#2117" class="Bound">f</a> <a id="2119" class="Symbol">=</a> <a id="2121" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+<a id="2126" href="UniAgda.Categories.Category.html#1772" class="Field">Precategory.IdR</a> <a id="2142" class="Symbol">(</a><a id="2143" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="2151" href="UniAgda.Categories.Examples.FiniteSets.html#2151" class="Bound">i</a><a id="2152" class="Symbol">)</a> <a id="2154" class="Symbol">{</a><a id="2155" href="UniAgda.Categories.Examples.FiniteSets.html#2155" class="Bound">a</a> <a id="2157" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2159" href="UniAgda.Categories.Examples.FiniteSets.html#2159" class="Bound">b</a><a id="2160" class="Symbol">}</a> <a id="2162" class="Symbol">{</a><a id="2163" href="UniAgda.Categories.Examples.FiniteSets.html#2163" class="Bound">a₁</a> <a id="2166" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2168" href="UniAgda.Categories.Examples.FiniteSets.html#2168" class="Bound">b₁</a><a id="2170" class="Symbol">}</a> <a id="2172" href="UniAgda.Categories.Examples.FiniteSets.html#2172" class="Bound">f</a> <a id="2174" class="Symbol">=</a> <a id="2176" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+<a id="2181" href="UniAgda.Categories.Category.html#1823" class="Field">Precategory.Assoc</a> <a id="2199" class="Symbol">(</a><a id="2200" href="UniAgda.Categories.Examples.FiniteSets.html#1697" class="Function">FIN-SET</a> <a id="2208" href="UniAgda.Categories.Examples.FiniteSets.html#2208" class="Bound">i</a><a id="2209" class="Symbol">)</a> <a id="2211" class="Symbol">{</a><a id="2212" href="UniAgda.Categories.Examples.FiniteSets.html#2212" class="Bound">a</a> <a id="2214" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2216" href="UniAgda.Categories.Examples.FiniteSets.html#2216" class="Bound">b</a><a id="2217" class="Symbol">}</a> <a id="2219" class="Symbol">{</a><a id="2220" href="UniAgda.Categories.Examples.FiniteSets.html#2220" class="Bound">a₁</a> <a id="2223" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2225" href="UniAgda.Categories.Examples.FiniteSets.html#2225" class="Bound">b₁</a><a id="2227" class="Symbol">}</a> <a id="2229" class="Symbol">{</a><a id="2230" href="UniAgda.Categories.Examples.FiniteSets.html#2230" class="Bound">a₂</a> <a id="2233" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2235" href="UniAgda.Categories.Examples.FiniteSets.html#2235" class="Bound">b₂</a><a id="2237" class="Symbol">}</a> <a id="2239" class="Symbol">{</a><a id="2240" href="UniAgda.Categories.Examples.FiniteSets.html#2240" class="Bound">a₃</a> <a id="2243" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="2245" href="UniAgda.Categories.Examples.FiniteSets.html#2245" class="Bound">b₃</a><a id="2247" class="Symbol">}</a> <a id="2249" href="UniAgda.Categories.Examples.FiniteSets.html#2249" class="Bound">f</a> <a id="2251" href="UniAgda.Categories.Examples.FiniteSets.html#2251" class="Bound">g</a> <a id="2253" href="UniAgda.Categories.Examples.FiniteSets.html#2253" class="Bound">h</a> <a id="2255" class="Symbol">=</a> <a id="2257" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: James Leslie</p>
+<p class="date">Created: 2021-03-26 Fri 14:45</p>
+</div>
+</body>
+</html>

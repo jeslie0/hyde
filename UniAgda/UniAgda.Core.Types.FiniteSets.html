@@ -6,11 +6,9 @@
 <!-- 2021-03-26 Fri 14:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>UniAgda.Core.PathSpaces.Unit</title>
+<title>UniAgda.Core.Types.FiniteSets</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="James Leslie" />
-<meta name="description" content="Paths in the Unit Type"
- />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -245,62 +243,72 @@
     /*]]>*///-->
 // @license-end
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
-<h1 class="title">UniAgda.Core.PathSpaces.Unit</h1>
+<h1 class="title">UniAgda.Core.Types.FiniteSets</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9548baf">1. Prelude</a></li>
-<li><a href="#orga4054e1">2. Paths in the Unit Type</a></li>
+<li><a href="#org789beca">1. Prelude</a></li>
+<li><a href="#orgcb9d3e8">2. Finite sets</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org9548baf" class="outline-2">
-<h2 id="org9548baf"><span class="section-number-2">1</span> Prelude</h2>
+<div id="outline-container-org789beca" class="outline-2">
+<h2 id="org789beca"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="189" class="Symbol">{-#</a> <a id="193" class="Keyword">OPTIONS</a> <a id="201" class="Pragma">--without-K</a> <a id="213" class="Pragma">--safe</a> <a id="220" class="Symbol">#-}</a>
-<a id="224" class="Keyword">module</a> <a id="231" href="UniAgda.Core.PathSpaces.Unit.html" class="Module">UniAgda.Core.PathSpaces.Unit</a> <a id="260" class="Keyword">where</a>
+<a id="152" class="Symbol">{-#</a> <a id="156" class="Keyword">OPTIONS</a> <a id="164" class="Pragma">--without-K</a> <a id="176" class="Symbol">#-}</a>
+<a id="180" class="Keyword">module</a> <a id="187" href="UniAgda.Core.Types.FiniteSets.html" class="Module">UniAgda.Core.Types.FiniteSets</a> <a id="217" class="Keyword">where</a>
 
-<a id="267" class="Keyword">open</a> <a id="272" class="Keyword">import</a> <a id="279" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
-<a id="308" class="Keyword">open</a> <a id="313" class="Keyword">import</a> <a id="320" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
-<a id="349" class="Keyword">open</a> <a id="354" class="Keyword">import</a> <a id="361" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a>
-<a id="389" class="Keyword">open</a> <a id="394" class="Keyword">import</a> <a id="401" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
-<a id="426" class="Keyword">open</a> <a id="431" class="Keyword">import</a> <a id="438" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a>
-
-<a id="463" class="Keyword">open</a> <a id="468" class="Keyword">import</a> <a id="475" href="UniAgda.Core.Homotopy.html" class="Module">UniAgda.Core.Homotopy</a>
-<a id="497" class="Keyword">open</a> <a id="502" class="Keyword">import</a> <a id="509" href="UniAgda.Core.Equivalences.html" class="Module">UniAgda.Core.Equivalences</a>
+<a id="224" class="Keyword">open</a> <a id="229" class="Keyword">import</a> <a id="236" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="265" class="Keyword">open</a> <a id="270" class="Keyword">import</a> <a id="277" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
+<a id="306" class="Keyword">open</a> <a id="311" class="Keyword">import</a> <a id="318" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a>
+<a id="341" class="Keyword">open</a> <a id="346" class="Keyword">import</a> <a id="353" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
+<a id="378" class="Keyword">open</a> <a id="383" class="Keyword">import</a> <a id="390" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a>
+<a id="414" class="Keyword">open</a> <a id="419" class="Keyword">import</a> <a id="426" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a>
 </pre>
 </div>
 </div>
-<div id="outline-container-orga4054e1" class="outline-2">
-<h2 id="orga4054e1"><span class="section-number-2">2</span> Paths in the Unit Type</h2>
+<div id="outline-container-orgcb9d3e8" class="outline-2">
+<h2 id="orgcb9d3e8"><span class="section-number-2">2</span> Finite sets</h2>
 <div class="outline-text-2" id="text-2">
+<p>
+We give the definition of the \(n\)th ordinal.
+</p>
 <pre class="Agda">
-<a id="thm2-8-1i"></a><a id="588" href="UniAgda.Core.PathSpaces.Unit.html#588" class="Function">thm2-8-1i</a> <a id="598" class="Symbol">:</a> <a id="600" class="Symbol">(</a><a id="601" href="UniAgda.Core.PathSpaces.Unit.html#601" class="Bound">x</a> <a id="603" href="UniAgda.Core.PathSpaces.Unit.html#603" class="Bound">y</a> <a id="605" class="Symbol">:</a> <a id="607" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a><a id="611" class="Symbol">)</a>
-            <a id="625" class="Symbol">→</a> <a id="627" class="Symbol">(</a><a id="628" href="UniAgda.Core.PathSpaces.Unit.html#601" class="Bound">x</a> <a id="630" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="632" href="UniAgda.Core.PathSpaces.Unit.html#603" class="Bound">y</a><a id="633" class="Symbol">)</a> <a id="635" class="Symbol">→</a> <a id="637" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a>
-<a id="642" href="UniAgda.Core.PathSpaces.Unit.html#588" class="Function">thm2-8-1i</a> <a id="652" href="UniAgda.Core.PathSpaces.Unit.html#652" class="Bound">x</a> <a id="654" href="UniAgda.Core.PathSpaces.Unit.html#654" class="Bound">y</a> <a id="656" href="UniAgda.Core.PathSpaces.Unit.html#656" class="Bound">p</a> <a id="658" class="Symbol">=</a> <a id="660" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a>
-
-<a id="thm2-8-1ii"></a><a id="664" href="UniAgda.Core.PathSpaces.Unit.html#664" class="Function">thm2-8-1ii</a> <a id="675" class="Symbol">:</a> <a id="677" class="Symbol">(</a><a id="678" href="UniAgda.Core.PathSpaces.Unit.html#678" class="Bound">x</a> <a id="680" href="UniAgda.Core.PathSpaces.Unit.html#680" class="Bound">y</a> <a id="682" class="Symbol">:</a> <a id="684" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a><a id="688" class="Symbol">)</a>
-            <a id="702" class="Symbol">→</a> <a id="704" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a> <a id="709" class="Symbol">→</a> <a id="711" class="Symbol">(</a><a id="712" href="UniAgda.Core.PathSpaces.Unit.html#678" class="Bound">x</a> <a id="714" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="716" href="UniAgda.Core.PathSpaces.Unit.html#680" class="Bound">y</a><a id="717" class="Symbol">)</a>
-<a id="719" href="UniAgda.Core.PathSpaces.Unit.html#664" class="Function">thm2-8-1ii</a> <a id="730" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="733" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="736" href="UniAgda.Core.PathSpaces.Unit.html#736" class="Bound">X</a> <a id="738" class="Symbol">=</a> <a id="740" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
-
-<a id="746" class="Keyword">private</a>
-  <a id="hom₁-unit"></a><a id="756" href="UniAgda.Core.PathSpaces.Unit.html#756" class="Function">hom₁-unit</a> <a id="766" class="Symbol">:</a> <a id="768" class="Symbol">(</a><a id="769" href="UniAgda.Core.PathSpaces.Unit.html#769" class="Bound">x</a> <a id="771" href="UniAgda.Core.PathSpaces.Unit.html#771" class="Bound">y</a> <a id="773" class="Symbol">:</a> <a id="775" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a><a id="779" class="Symbol">)</a>
-         <a id="790" class="Symbol">→</a> <a id="792" href="UniAgda.Core.PathSpaces.Unit.html#588" class="Function">thm2-8-1i</a> <a id="802" href="UniAgda.Core.PathSpaces.Unit.html#769" class="Bound">x</a> <a id="804" href="UniAgda.Core.PathSpaces.Unit.html#771" class="Bound">y</a> <a id="806" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="808" href="UniAgda.Core.PathSpaces.Unit.html#664" class="Function">thm2-8-1ii</a> <a id="819" href="UniAgda.Core.PathSpaces.Unit.html#769" class="Bound">x</a> <a id="821" href="UniAgda.Core.PathSpaces.Unit.html#771" class="Bound">y</a> <a id="823" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="825" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
-  <a id="830" href="UniAgda.Core.PathSpaces.Unit.html#756" class="Function">hom₁-unit</a> <a id="840" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="843" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="846" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="849" class="Symbol">=</a> <a id="851" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
-
-  <a id="hom₂-unit"></a><a id="859" href="UniAgda.Core.PathSpaces.Unit.html#859" class="Function">hom₂-unit</a> <a id="869" class="Symbol">:</a> <a id="871" class="Symbol">(</a><a id="872" href="UniAgda.Core.PathSpaces.Unit.html#872" class="Bound">x</a> <a id="874" href="UniAgda.Core.PathSpaces.Unit.html#874" class="Bound">y</a> <a id="876" class="Symbol">:</a> <a id="878" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a><a id="882" class="Symbol">)</a>
-         <a id="893" class="Symbol">→</a> <a id="895" href="UniAgda.Core.PathSpaces.Unit.html#664" class="Function">thm2-8-1ii</a> <a id="906" href="UniAgda.Core.PathSpaces.Unit.html#872" class="Bound">x</a> <a id="908" href="UniAgda.Core.PathSpaces.Unit.html#874" class="Bound">y</a> <a id="910" href="UniAgda.Core.Types.Functions.html#530" class="Function Operator">o</a> <a id="912" href="UniAgda.Core.PathSpaces.Unit.html#588" class="Function">thm2-8-1i</a> <a id="922" href="UniAgda.Core.PathSpaces.Unit.html#872" class="Bound">x</a> <a id="924" href="UniAgda.Core.PathSpaces.Unit.html#874" class="Bound">y</a> <a id="926" href="UniAgda.Core.Homotopy.html#592" class="Function Operator">~</a> <a id="928" href="UniAgda.Core.Types.Functions.html#696" class="Function">id</a>
-  <a id="933" href="UniAgda.Core.PathSpaces.Unit.html#859" class="Function">hom₂-unit</a> <a id="943" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="946" class="DottedPattern Symbol">.</a><a id="947" href="UniAgda.Core.Types.Unit.html#438" class="DottedPattern InductiveConstructor">tt</a> <a id="950" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a> <a id="955" class="Symbol">=</a> <a id="957" href="UniAgda.Core.Types.Identity.html#521" class="InductiveConstructor">refl</a>
-
-<a id="thm2-8-1"></a><a id="963" href="UniAgda.Core.PathSpaces.Unit.html#963" class="Function">thm2-8-1</a> <a id="972" class="Symbol">:</a> <a id="974" class="Symbol">(</a><a id="975" href="UniAgda.Core.PathSpaces.Unit.html#975" class="Bound">x</a> <a id="977" href="UniAgda.Core.PathSpaces.Unit.html#977" class="Bound">y</a> <a id="979" class="Symbol">:</a> <a id="981" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a><a id="985" class="Symbol">)</a>
-           <a id="998" class="Symbol">→</a> <a id="1000" class="Symbol">(</a><a id="1001" href="UniAgda.Core.PathSpaces.Unit.html#975" class="Bound">x</a> <a id="1003" href="UniAgda.Core.Types.Identity.html#463" class="Datatype Operator">≡</a> <a id="1005" href="UniAgda.Core.PathSpaces.Unit.html#977" class="Bound">y</a><a id="1006" class="Symbol">)</a> <a id="1008" href="UniAgda.Core.Equivalences.html#3051" class="Function Operator">≃</a> <a id="1010" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a>
-<a id="1015" href="UniAgda.Core.PathSpaces.Unit.html#963" class="Function">thm2-8-1</a> <a id="1024" href="UniAgda.Core.PathSpaces.Unit.html#1024" class="Bound">x</a> <a id="1026" href="UniAgda.Core.PathSpaces.Unit.html#1026" class="Bound">y</a> <a id="1028" class="Symbol">=</a> <a id="1030" href="UniAgda.Core.Equivalences.html#5719" class="Function">equiv-adjointify</a> <a id="1047" class="Symbol">((</a><a id="1049" href="UniAgda.Core.PathSpaces.Unit.html#588" class="Function">thm2-8-1i</a> <a id="1059" href="UniAgda.Core.PathSpaces.Unit.html#1024" class="Bound">x</a> <a id="1061" href="UniAgda.Core.PathSpaces.Unit.html#1026" class="Bound">y</a><a id="1062" class="Symbol">)</a> <a id="1064" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1066" class="Symbol">(</a><a id="1067" href="UniAgda.Core.PathSpaces.Unit.html#664" class="Function">thm2-8-1ii</a> <a id="1078" href="UniAgda.Core.PathSpaces.Unit.html#1024" class="Bound">x</a> <a id="1080" href="UniAgda.Core.PathSpaces.Unit.html#1026" class="Bound">y</a><a id="1081" class="Symbol">)</a> <a id="1083" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1085" href="UniAgda.Core.PathSpaces.Unit.html#756" class="Function">hom₁-unit</a> <a id="1095" href="UniAgda.Core.PathSpaces.Unit.html#1024" class="Bound">x</a> <a id="1097" href="UniAgda.Core.PathSpaces.Unit.html#1026" class="Bound">y</a> <a id="1099" href="UniAgda.Core.Types.Sigma.html#490" class="InductiveConstructor Operator">,</a> <a id="1101" href="UniAgda.Core.PathSpaces.Unit.html#859" class="Function">hom₂-unit</a> <a id="1111" href="UniAgda.Core.PathSpaces.Unit.html#1024" class="Bound">x</a> <a id="1113" href="UniAgda.Core.PathSpaces.Unit.html#1026" class="Bound">y</a><a id="1114" class="Symbol">)</a>
+<a id="Fin"></a><a id="544" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="548" class="Symbol">:</a> <a id="550" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="552" class="Symbol">→</a> <a id="554" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="559" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
+<a id="565" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="569" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="574" class="Symbol">=</a> <a id="576" href="UniAgda.Core.Types.Empty.html#414" class="Datatype">Empty</a>
+<a id="582" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="586" class="Symbol">(</a><a id="587" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="591" href="UniAgda.Core.Types.FiniteSets.html#591" class="Bound">n</a><a id="592" class="Symbol">)</a> <a id="594" class="Symbol">=</a> <a id="596" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="600" href="UniAgda.Core.Types.FiniteSets.html#591" class="Bound">n</a> <a id="602" href="UniAgda.Core.Types.Coproduct.html#448" class="Datatype Operator">+</a> <a id="604" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a>
 </pre>
+
+<p>
+We will prove that these are sets in a different file.
+</p>
 </div>
 </div>
 </div>

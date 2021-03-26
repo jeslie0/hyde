@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-24 Wed 09:50 -->
+<!-- 2021-03-26 Fri 14:45 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Core.Types.Coproduct</title>
@@ -202,6 +202,27 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -235,6 +256,7 @@
 <li><a href="#org295b20d">1. Prelude</a></li>
 <li><a href="#org648bd99">2. Coproduct Types</a></li>
 <li><a href="#org61a0cd7">3. Induction</a></li>
+<li><a href="#orgb332c69">4. Coproduct commutes</a></li>
 </ul>
 </div>
 </div>
@@ -277,10 +299,21 @@ The induction principle can be defined as follows:
 </pre>
 </div>
 </div>
+<div id="outline-container-orgb332c69" class="outline-2">
+<h2 id="orgb332c69"><span class="section-number-2">4</span> Coproduct commutes</h2>
+<div class="outline-text-2" id="text-4">
+<pre class="Agda">
+<a id="coprod-swap"></a><a id="883" href="UniAgda.Core.Types.Coproduct.html#883" class="Function">coprod-swap</a> <a id="895" class="Symbol">:</a> <a id="897" class="Symbol">∀</a> <a id="899" class="Symbol">{</a><a id="900" href="UniAgda.Core.Types.Coproduct.html#900" class="Bound">i</a> <a id="902" href="UniAgda.Core.Types.Coproduct.html#902" class="Bound">j</a><a id="903" class="Symbol">}</a> <a id="905" class="Symbol">{</a><a id="906" href="UniAgda.Core.Types.Coproduct.html#906" class="Bound">A</a> <a id="908" class="Symbol">:</a> <a id="910" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="915" href="UniAgda.Core.Types.Coproduct.html#900" class="Bound">i</a><a id="916" class="Symbol">}</a> <a id="918" class="Symbol">{</a><a id="919" href="UniAgda.Core.Types.Coproduct.html#919" class="Bound">B</a> <a id="921" class="Symbol">:</a> <a id="923" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="928" href="UniAgda.Core.Types.Coproduct.html#902" class="Bound">j</a><a id="929" class="Symbol">}</a>
+              <a id="945" class="Symbol">→</a> <a id="947" href="UniAgda.Core.Types.Coproduct.html#906" class="Bound">A</a> <a id="949" href="UniAgda.Core.Types.Coproduct.html#448" class="Datatype Operator">+</a> <a id="951" href="UniAgda.Core.Types.Coproduct.html#919" class="Bound">B</a> <a id="953" class="Symbol">→</a> <a id="955" href="UniAgda.Core.Types.Coproduct.html#919" class="Bound">B</a> <a id="957" href="UniAgda.Core.Types.Coproduct.html#448" class="Datatype Operator">+</a> <a id="959" href="UniAgda.Core.Types.Coproduct.html#906" class="Bound">A</a>
+<a id="961" href="UniAgda.Core.Types.Coproduct.html#883" class="Function">coprod-swap</a> <a id="973" class="Symbol">(</a><a id="974" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="978" href="UniAgda.Core.Types.Coproduct.html#978" class="Bound">x</a><a id="979" class="Symbol">)</a> <a id="981" class="Symbol">=</a> <a id="983" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="987" href="UniAgda.Core.Types.Coproduct.html#978" class="Bound">x</a>
+<a id="989" href="UniAgda.Core.Types.Coproduct.html#883" class="Function">coprod-swap</a> <a id="1001" class="Symbol">(</a><a id="1002" href="UniAgda.Core.Types.Coproduct.html#533" class="InductiveConstructor">inr</a> <a id="1006" href="UniAgda.Core.Types.Coproduct.html#1006" class="Bound">x</a><a id="1007" class="Symbol">)</a> <a id="1009" class="Symbol">=</a> <a id="1011" href="UniAgda.Core.Types.Coproduct.html#515" class="InductiveConstructor">inl</a> <a id="1015" href="UniAgda.Core.Types.Coproduct.html#1006" class="Bound">x</a>
+</pre>
+</div>
+</div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-24 Wed 09:50</p>
+<p class="date">Created: 2021-03-26 Fri 14:45</p>
 </div>
 </body>
 </html>
