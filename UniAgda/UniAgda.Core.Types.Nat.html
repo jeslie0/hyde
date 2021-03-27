@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Core.Types.Nat</title>
@@ -202,27 +202,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -285,10 +264,10 @@
 <h2 id="org031fa31"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="180" class="Symbol">{-#</a> <a id="184" class="Keyword">OPTIONS</a> <a id="192" class="Pragma">--without-K</a> <a id="204" class="Pragma">--safe</a> <a id="211" class="Symbol">#-}</a>
-<a id="215" class="Keyword">module</a> <a id="222" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a> <a id="245" class="Keyword">where</a>
+<a id="180" class="Symbol">{-#</a> <a id="184" class="Keyword">OPTIONS</a> <a id="192" class="Pragma">--without-K</a> <a id="204" class="Pragma">--safe</a> <a id="211" class="Pragma">--no-import-sorts</a> <a id="229" class="Symbol">#-}</a>
+<a id="233" class="Keyword">module</a> <a id="240" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a> <a id="263" class="Keyword">where</a>
 
-<a id="252" class="Keyword">open</a> <a id="257" class="Keyword">import</a> <a id="264" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="270" class="Keyword">open</a> <a id="275" class="Keyword">import</a> <a id="282" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
 </pre>
 </div>
 </div>
@@ -299,10 +278,10 @@
 The natural numbers are defined inductively by zero and the successor function.
 </p>
 <pre class="Agda">
-<a id="423" class="Keyword">data</a> <a id="ℕ"></a><a id="428" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>  <a id="431" class="Symbol">:</a> <a id="433" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="438" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="444" class="Keyword">where</a>
-  <a id="ℕ.zero"></a><a id="452" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="457" class="Symbol">:</a> <a id="459" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>
-  <a id="ℕ.suc"></a><a id="463" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="467" class="Symbol">:</a> <a id="469" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="471" class="Symbol">-&gt;</a> <a id="474" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>
-<a id="476" class="Symbol">{-#</a> <a id="480" class="Keyword">BUILTIN</a> <a id="488" class="Keyword">NATURAL</a> <a id="496" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="498" class="Symbol">#-}</a>
+<a id="441" class="Keyword">data</a> <a id="ℕ"></a><a id="446" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>  <a id="449" class="Symbol">:</a> <a id="451" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="456" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="462" class="Keyword">where</a>
+  <a id="ℕ.zero"></a><a id="470" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="475" class="Symbol">:</a> <a id="477" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>
+  <a id="ℕ.suc"></a><a id="481" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="485" class="Symbol">:</a> <a id="487" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="489" class="Symbol">-&gt;</a> <a id="492" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>
+<a id="494" class="Symbol">{-#</a> <a id="498" class="Keyword">BUILTIN</a> <a id="506" class="Keyword">NATURAL</a> <a id="514" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="516" class="Symbol">#-}</a>
 </pre>
 </div>
 </div>
@@ -313,35 +292,35 @@ The natural numbers are defined inductively by zero and the successor function.
 The standard functions on \(\mathbb N\) are defined recursively.
 </p>
 <pre class="Agda">
-<a id="plus"></a><a id="654" href="UniAgda.Core.Types.Nat.html#654" class="Function">plus</a> <a id="659" class="Symbol">:</a> <a id="661" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="663" class="Symbol">→</a> <a id="665" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="667" class="Symbol">→</a> <a id="669" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>
-<a id="671" href="UniAgda.Core.Types.Nat.html#654" class="Function">plus</a> <a id="676" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="681" href="UniAgda.Core.Types.Nat.html#681" class="Bound">m</a> <a id="683" class="Symbol">=</a> <a id="685" href="UniAgda.Core.Types.Nat.html#681" class="Bound">m</a>
-<a id="687" href="UniAgda.Core.Types.Nat.html#654" class="Function">plus</a> <a id="692" class="Symbol">(</a><a id="693" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="697" href="UniAgda.Core.Types.Nat.html#697" class="Bound">n</a><a id="698" class="Symbol">)</a> <a id="700" href="UniAgda.Core.Types.Nat.html#700" class="Bound">m</a> <a id="702" class="Symbol">=</a> <a id="704" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="708" class="Symbol">(</a><a id="709" href="UniAgda.Core.Types.Nat.html#654" class="Function">plus</a> <a id="714" href="UniAgda.Core.Types.Nat.html#697" class="Bound">n</a> <a id="716" href="UniAgda.Core.Types.Nat.html#700" class="Bound">m</a><a id="717" class="Symbol">)</a>
-<a id="719" class="Symbol">{-#</a> <a id="723" class="Keyword">BUILTIN</a> <a id="731" class="Keyword">NATPLUS</a> <a id="739" href="UniAgda.Core.Types.Nat.html#654" class="Primitive">plus</a> <a id="744" class="Symbol">#-}</a>
+<a id="plus"></a><a id="672" href="UniAgda.Core.Types.Nat.html#672" class="Function">plus</a> <a id="677" class="Symbol">:</a> <a id="679" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="681" class="Symbol">→</a> <a id="683" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="685" class="Symbol">→</a> <a id="687" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>
+<a id="689" href="UniAgda.Core.Types.Nat.html#672" class="Function">plus</a> <a id="694" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="699" href="UniAgda.Core.Types.Nat.html#699" class="Bound">m</a> <a id="701" class="Symbol">=</a> <a id="703" href="UniAgda.Core.Types.Nat.html#699" class="Bound">m</a>
+<a id="705" href="UniAgda.Core.Types.Nat.html#672" class="Function">plus</a> <a id="710" class="Symbol">(</a><a id="711" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="715" href="UniAgda.Core.Types.Nat.html#715" class="Bound">n</a><a id="716" class="Symbol">)</a> <a id="718" href="UniAgda.Core.Types.Nat.html#718" class="Bound">m</a> <a id="720" class="Symbol">=</a> <a id="722" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="726" class="Symbol">(</a><a id="727" href="UniAgda.Core.Types.Nat.html#672" class="Function">plus</a> <a id="732" href="UniAgda.Core.Types.Nat.html#715" class="Bound">n</a> <a id="734" href="UniAgda.Core.Types.Nat.html#718" class="Bound">m</a><a id="735" class="Symbol">)</a>
+<a id="737" class="Symbol">{-#</a> <a id="741" class="Keyword">BUILTIN</a> <a id="749" class="Keyword">NATPLUS</a> <a id="757" href="UniAgda.Core.Types.Nat.html#672" class="Primitive">plus</a> <a id="762" class="Symbol">#-}</a>
 </pre>
 <pre class="Agda">
-<a id="minus"></a><a id="778" href="UniAgda.Core.Types.Nat.html#778" class="Function">minus</a> <a id="784" class="Symbol">:</a> <a id="786" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="788" class="Symbol">→</a> <a id="790" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="792" class="Symbol">→</a> <a id="794" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>
-<a id="796" href="UniAgda.Core.Types.Nat.html#778" class="Function">minus</a> <a id="802" href="UniAgda.Core.Types.Nat.html#802" class="Bound">n</a> <a id="804" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="809" class="Symbol">=</a> <a id="811" href="UniAgda.Core.Types.Nat.html#802" class="Bound">n</a>
-<a id="813" href="UniAgda.Core.Types.Nat.html#778" class="Function">minus</a> <a id="819" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="824" class="Symbol">(</a><a id="825" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="829" href="UniAgda.Core.Types.Nat.html#829" class="Bound">m</a><a id="830" class="Symbol">)</a> <a id="832" class="Symbol">=</a> <a id="834" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a>
-<a id="839" href="UniAgda.Core.Types.Nat.html#778" class="Function">minus</a> <a id="845" class="Symbol">(</a><a id="846" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="850" href="UniAgda.Core.Types.Nat.html#850" class="Bound">n</a><a id="851" class="Symbol">)</a> <a id="853" class="Symbol">(</a><a id="854" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="858" href="UniAgda.Core.Types.Nat.html#858" class="Bound">m</a><a id="859" class="Symbol">)</a> <a id="861" class="Symbol">=</a> <a id="863" href="UniAgda.Core.Types.Nat.html#778" class="Function">minus</a> <a id="869" href="UniAgda.Core.Types.Nat.html#850" class="Bound">n</a> <a id="871" href="UniAgda.Core.Types.Nat.html#858" class="Bound">m</a>
-<a id="873" class="Symbol">{-#</a> <a id="877" class="Keyword">BUILTIN</a> <a id="885" class="Keyword">NATMINUS</a> <a id="894" href="UniAgda.Core.Types.Nat.html#778" class="Primitive">minus</a> <a id="900" class="Symbol">#-}</a>
+<a id="minus"></a><a id="796" href="UniAgda.Core.Types.Nat.html#796" class="Function">minus</a> <a id="802" class="Symbol">:</a> <a id="804" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="806" class="Symbol">→</a> <a id="808" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="810" class="Symbol">→</a> <a id="812" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>
+<a id="814" href="UniAgda.Core.Types.Nat.html#796" class="Function">minus</a> <a id="820" href="UniAgda.Core.Types.Nat.html#820" class="Bound">n</a> <a id="822" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="827" class="Symbol">=</a> <a id="829" href="UniAgda.Core.Types.Nat.html#820" class="Bound">n</a>
+<a id="831" href="UniAgda.Core.Types.Nat.html#796" class="Function">minus</a> <a id="837" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="842" class="Symbol">(</a><a id="843" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="847" href="UniAgda.Core.Types.Nat.html#847" class="Bound">m</a><a id="848" class="Symbol">)</a> <a id="850" class="Symbol">=</a> <a id="852" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a>
+<a id="857" href="UniAgda.Core.Types.Nat.html#796" class="Function">minus</a> <a id="863" class="Symbol">(</a><a id="864" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="868" href="UniAgda.Core.Types.Nat.html#868" class="Bound">n</a><a id="869" class="Symbol">)</a> <a id="871" class="Symbol">(</a><a id="872" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="876" href="UniAgda.Core.Types.Nat.html#876" class="Bound">m</a><a id="877" class="Symbol">)</a> <a id="879" class="Symbol">=</a> <a id="881" href="UniAgda.Core.Types.Nat.html#796" class="Function">minus</a> <a id="887" href="UniAgda.Core.Types.Nat.html#868" class="Bound">n</a> <a id="889" href="UniAgda.Core.Types.Nat.html#876" class="Bound">m</a>
+<a id="891" class="Symbol">{-#</a> <a id="895" class="Keyword">BUILTIN</a> <a id="903" class="Keyword">NATMINUS</a> <a id="912" href="UniAgda.Core.Types.Nat.html#796" class="Primitive">minus</a> <a id="918" class="Symbol">#-}</a>
 </pre>
 <pre class="Agda">
-<a id="times"></a><a id="932" href="UniAgda.Core.Types.Nat.html#932" class="Function">times</a> <a id="938" class="Symbol">:</a> <a id="940" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="942" class="Symbol">→</a> <a id="944" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="946" class="Symbol">→</a> <a id="948" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>
-<a id="950" href="UniAgda.Core.Types.Nat.html#932" class="Function">times</a> <a id="956" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="961" href="UniAgda.Core.Types.Nat.html#961" class="Bound">m</a> <a id="963" class="Symbol">=</a> <a id="965" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a>
-<a id="970" href="UniAgda.Core.Types.Nat.html#932" class="Function">times</a> <a id="976" class="Symbol">(</a><a id="977" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="981" href="UniAgda.Core.Types.Nat.html#981" class="Bound">n</a><a id="982" class="Symbol">)</a> <a id="984" href="UniAgda.Core.Types.Nat.html#984" class="Bound">m</a> <a id="986" class="Symbol">=</a> <a id="988" href="UniAgda.Core.Types.Nat.html#654" class="Primitive">plus</a> <a id="993" class="Symbol">(</a><a id="994" href="UniAgda.Core.Types.Nat.html#932" class="Function">times</a> <a id="1000" href="UniAgda.Core.Types.Nat.html#981" class="Bound">n</a> <a id="1002" href="UniAgda.Core.Types.Nat.html#984" class="Bound">m</a><a id="1003" class="Symbol">)</a> <a id="1005" href="UniAgda.Core.Types.Nat.html#984" class="Bound">m</a>
-<a id="1007" class="Symbol">{-#</a> <a id="1011" class="Keyword">BUILTIN</a> <a id="1019" class="Keyword">NATTIMES</a> <a id="1028" href="UniAgda.Core.Types.Nat.html#932" class="Primitive">times</a> <a id="1034" class="Symbol">#-}</a>
+<a id="times"></a><a id="950" href="UniAgda.Core.Types.Nat.html#950" class="Function">times</a> <a id="956" class="Symbol">:</a> <a id="958" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="960" class="Symbol">→</a> <a id="962" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="964" class="Symbol">→</a> <a id="966" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>
+<a id="968" href="UniAgda.Core.Types.Nat.html#950" class="Function">times</a> <a id="974" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="979" href="UniAgda.Core.Types.Nat.html#979" class="Bound">m</a> <a id="981" class="Symbol">=</a> <a id="983" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a>
+<a id="988" href="UniAgda.Core.Types.Nat.html#950" class="Function">times</a> <a id="994" class="Symbol">(</a><a id="995" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="999" href="UniAgda.Core.Types.Nat.html#999" class="Bound">n</a><a id="1000" class="Symbol">)</a> <a id="1002" href="UniAgda.Core.Types.Nat.html#1002" class="Bound">m</a> <a id="1004" class="Symbol">=</a> <a id="1006" href="UniAgda.Core.Types.Nat.html#672" class="Primitive">plus</a> <a id="1011" class="Symbol">(</a><a id="1012" href="UniAgda.Core.Types.Nat.html#950" class="Function">times</a> <a id="1018" href="UniAgda.Core.Types.Nat.html#999" class="Bound">n</a> <a id="1020" href="UniAgda.Core.Types.Nat.html#1002" class="Bound">m</a><a id="1021" class="Symbol">)</a> <a id="1023" href="UniAgda.Core.Types.Nat.html#1002" class="Bound">m</a>
+<a id="1025" class="Symbol">{-#</a> <a id="1029" class="Keyword">BUILTIN</a> <a id="1037" class="Keyword">NATTIMES</a> <a id="1046" href="UniAgda.Core.Types.Nat.html#950" class="Primitive">times</a> <a id="1052" class="Symbol">#-}</a>
 </pre>
 <pre class="Agda">
-<a id="power"></a><a id="1066" href="UniAgda.Core.Types.Nat.html#1066" class="Function">power</a> <a id="1072" class="Symbol">:</a> <a id="1074" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="1076" class="Symbol">→</a> <a id="1078" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="1080" class="Symbol">→</a> <a id="1082" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a>
-<a id="1084" href="UniAgda.Core.Types.Nat.html#1066" class="Function">power</a> <a id="1090" href="UniAgda.Core.Types.Nat.html#1090" class="Bound">n</a> <a id="1092" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="1097" class="Symbol">=</a> <a id="1099" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1103" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a>
-<a id="1108" href="UniAgda.Core.Types.Nat.html#1066" class="Function">power</a> <a id="1114" href="UniAgda.Core.Types.Nat.html#1114" class="Bound">n</a> <a id="1116" class="Symbol">(</a><a id="1117" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="1121" href="UniAgda.Core.Types.Nat.html#1121" class="Bound">m</a><a id="1122" class="Symbol">)</a> <a id="1124" class="Symbol">=</a> <a id="1126" href="UniAgda.Core.Types.Nat.html#932" class="Primitive">times</a> <a id="1132" class="Symbol">(</a><a id="1133" href="UniAgda.Core.Types.Nat.html#1066" class="Function">power</a> <a id="1139" href="UniAgda.Core.Types.Nat.html#1114" class="Bound">n</a> <a id="1141" href="UniAgda.Core.Types.Nat.html#1121" class="Bound">m</a><a id="1142" class="Symbol">)</a> <a id="1144" href="UniAgda.Core.Types.Nat.html#1114" class="Bound">n</a>
+<a id="power"></a><a id="1084" href="UniAgda.Core.Types.Nat.html#1084" class="Function">power</a> <a id="1090" class="Symbol">:</a> <a id="1092" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="1094" class="Symbol">→</a> <a id="1096" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="1098" class="Symbol">→</a> <a id="1100" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a>
+<a id="1102" href="UniAgda.Core.Types.Nat.html#1084" class="Function">power</a> <a id="1108" href="UniAgda.Core.Types.Nat.html#1108" class="Bound">n</a> <a id="1110" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="1115" class="Symbol">=</a> <a id="1117" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="1121" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a>
+<a id="1126" href="UniAgda.Core.Types.Nat.html#1084" class="Function">power</a> <a id="1132" href="UniAgda.Core.Types.Nat.html#1132" class="Bound">n</a> <a id="1134" class="Symbol">(</a><a id="1135" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="1139" href="UniAgda.Core.Types.Nat.html#1139" class="Bound">m</a><a id="1140" class="Symbol">)</a> <a id="1142" class="Symbol">=</a> <a id="1144" href="UniAgda.Core.Types.Nat.html#950" class="Primitive">times</a> <a id="1150" class="Symbol">(</a><a id="1151" href="UniAgda.Core.Types.Nat.html#1084" class="Function">power</a> <a id="1157" href="UniAgda.Core.Types.Nat.html#1132" class="Bound">n</a> <a id="1159" href="UniAgda.Core.Types.Nat.html#1139" class="Bound">m</a><a id="1160" class="Symbol">)</a> <a id="1162" href="UniAgda.Core.Types.Nat.html#1132" class="Bound">n</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

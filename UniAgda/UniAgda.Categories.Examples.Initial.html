@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Categories.Examples.Initial</title>
@@ -202,27 +202,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -262,15 +241,15 @@
 <h2 id="org0b89027"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="194" class="Symbol">{-#</a> <a id="198" class="Keyword">OPTIONS</a> <a id="206" class="Pragma">--without-K</a>  <a id="219" class="Symbol">#-}</a>
-<a id="223" class="Keyword">module</a> <a id="230" href="UniAgda.Categories.Examples.Initial.html" class="Module">UniAgda.Categories.Examples.Initial</a> <a id="266" class="Keyword">where</a>
+<a id="194" class="Symbol">{-#</a> <a id="198" class="Keyword">OPTIONS</a> <a id="206" class="Pragma">--without-K</a>  <a id="219" class="Pragma">--no-import-sorts</a> <a id="237" class="Symbol">#-}</a>
+<a id="241" class="Keyword">module</a> <a id="248" href="UniAgda.Categories.Examples.Initial.html" class="Module">UniAgda.Categories.Examples.Initial</a> <a id="284" class="Keyword">where</a>
 
-<a id="273" class="Keyword">open</a> <a id="278" class="Keyword">import</a> <a id="285" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
-<a id="314" class="Keyword">open</a> <a id="319" class="Keyword">import</a> <a id="326" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
+<a id="291" class="Keyword">open</a> <a id="296" class="Keyword">import</a> <a id="303" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="332" class="Keyword">open</a> <a id="337" class="Keyword">import</a> <a id="344" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
 
-<a id="352" class="Keyword">open</a> <a id="357" class="Keyword">import</a> <a id="364" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a>
-<a id="392" class="Keyword">open</a> <a id="397" href="UniAgda.Categories.Category.html#1465" class="Module">Precategory</a>
-<a id="409" class="Keyword">open</a> <a id="414" href="UniAgda.Categories.Category.html#8265" class="Module">Category</a>
+<a id="370" class="Keyword">open</a> <a id="375" class="Keyword">import</a> <a id="382" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a>
+<a id="410" class="Keyword">open</a> <a id="415" href="UniAgda.Categories.Category.html#1484" class="Module">Precategory</a>
+<a id="427" class="Keyword">open</a> <a id="432" href="UniAgda.Categories.Category.html#8284" class="Module">Category</a>
 </pre>
 </div>
 </div>
@@ -281,34 +260,34 @@
 The initial precategory is a category with no objects. It is defined as follows.
 </p>
 <pre class="Agda">
-<a id="𝟘"></a><a id="545" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="547" class="Symbol">:</a> <a id="549" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="561" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="567" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
-<a id="573" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a> <a id="576" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="578" class="Symbol">=</a> <a id="580" href="UniAgda.Core.Types.Empty.html#414" class="Datatype">Empty</a>
-<a id="586" href="UniAgda.Categories.Category.html#1562" class="Field">hom</a> <a id="590" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="592" class="Symbol">()</a> <a id="595" href="UniAgda.Categories.Examples.Initial.html#595" class="Bound">b</a>
-<a id="597" href="UniAgda.Categories.Category.html#1592" class="Field">hom-set</a> <a id="605" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="607" class="Symbol">()</a> <a id="610" href="UniAgda.Categories.Examples.Initial.html#610" class="Bound">b</a>
-<a id="612" href="UniAgda.Categories.Category.html#1635" class="Field">Id</a> <a id="615" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="617" class="Symbol">{()}</a>
-<a id="622" href="UniAgda.Categories.Category.html#1665" class="Field">comp</a> <a id="627" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="629" class="Symbol">{()}</a> <a id="634" href="UniAgda.Categories.Examples.Initial.html#634" class="Bound">f</a> <a id="636" href="UniAgda.Categories.Examples.Initial.html#636" class="Bound">g</a>
-<a id="638" href="UniAgda.Categories.Category.html#1721" class="Field">IdL</a> <a id="642" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="644" class="Symbol">{()}</a> <a id="649" href="UniAgda.Categories.Examples.Initial.html#649" class="Bound">f</a>
-<a id="651" href="UniAgda.Categories.Category.html#1772" class="Field">IdR</a> <a id="655" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="657" class="Symbol">{()}</a> <a id="662" href="UniAgda.Categories.Examples.Initial.html#662" class="Bound">f</a>
-<a id="664" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="670" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a> <a id="672" class="Symbol">{()}</a> <a id="677" href="UniAgda.Categories.Examples.Initial.html#677" class="Bound">f</a> <a id="679" href="UniAgda.Categories.Examples.Initial.html#679" class="Bound">g</a> <a id="681" href="UniAgda.Categories.Examples.Initial.html#681" class="Bound">h</a>
+<a id="𝟘"></a><a id="563" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="565" class="Symbol">:</a> <a id="567" href="UniAgda.Categories.Category.html#1484" class="Record">Precategory</a> <a id="579" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="585" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
+<a id="591" href="UniAgda.Categories.Category.html#1565" class="Field">ob</a> <a id="594" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="596" class="Symbol">=</a> <a id="598" href="UniAgda.Core.Types.Empty.html#432" class="Datatype">Empty</a>
+<a id="604" href="UniAgda.Categories.Category.html#1581" class="Field">hom</a> <a id="608" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="610" class="Symbol">()</a> <a id="613" href="UniAgda.Categories.Examples.Initial.html#613" class="Bound">b</a>
+<a id="615" href="UniAgda.Categories.Category.html#1611" class="Field">hom-set</a> <a id="623" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="625" class="Symbol">()</a> <a id="628" href="UniAgda.Categories.Examples.Initial.html#628" class="Bound">b</a>
+<a id="630" href="UniAgda.Categories.Category.html#1654" class="Field">Id</a> <a id="633" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="635" class="Symbol">{()}</a>
+<a id="640" href="UniAgda.Categories.Category.html#1684" class="Field">comp</a> <a id="645" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="647" class="Symbol">{()}</a> <a id="652" href="UniAgda.Categories.Examples.Initial.html#652" class="Bound">f</a> <a id="654" href="UniAgda.Categories.Examples.Initial.html#654" class="Bound">g</a>
+<a id="656" href="UniAgda.Categories.Category.html#1740" class="Field">IdL</a> <a id="660" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="662" class="Symbol">{()}</a> <a id="667" href="UniAgda.Categories.Examples.Initial.html#667" class="Bound">f</a>
+<a id="669" href="UniAgda.Categories.Category.html#1791" class="Field">IdR</a> <a id="673" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="675" class="Symbol">{()}</a> <a id="680" href="UniAgda.Categories.Examples.Initial.html#680" class="Bound">f</a>
+<a id="682" href="UniAgda.Categories.Category.html#1842" class="Field">Assoc</a> <a id="688" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a> <a id="690" class="Symbol">{()}</a> <a id="695" href="UniAgda.Categories.Examples.Initial.html#695" class="Bound">f</a> <a id="697" href="UniAgda.Categories.Examples.Initial.html#697" class="Bound">g</a> <a id="699" href="UniAgda.Categories.Examples.Initial.html#699" class="Bound">h</a>
 </pre>
 
 <p>
 It is immediate that it is a category.
 </p>
 <pre class="Agda">
-<a id="𝟘-is-category"></a><a id="751" href="UniAgda.Categories.Examples.Initial.html#751" class="Function">𝟘-is-category</a> <a id="765" class="Symbol">:</a> <a id="767" href="UniAgda.Categories.Category.html#7986" class="Function">isCategory</a> <a id="778" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a>
-<a id="780" href="UniAgda.Categories.Examples.Initial.html#751" class="Function">𝟘-is-category</a> <a id="794" class="Symbol">()</a> <a id="797" href="UniAgda.Categories.Examples.Initial.html#797" class="Bound">b</a>
+<a id="𝟘-is-category"></a><a id="769" href="UniAgda.Categories.Examples.Initial.html#769" class="Function">𝟘-is-category</a> <a id="783" class="Symbol">:</a> <a id="785" href="UniAgda.Categories.Category.html#8005" class="Function">isCategory</a> <a id="796" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a>
+<a id="798" href="UniAgda.Categories.Examples.Initial.html#769" class="Function">𝟘-is-category</a> <a id="812" class="Symbol">()</a> <a id="815" href="UniAgda.Categories.Examples.Initial.html#815" class="Bound">b</a>
 
-<a id="𝟘-Cat"></a><a id="800" href="UniAgda.Categories.Examples.Initial.html#800" class="Function">𝟘-Cat</a> <a id="806" class="Symbol">:</a> <a id="808" href="UniAgda.Categories.Category.html#8265" class="Record">Category</a> <a id="817" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="823" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
-<a id="829" href="UniAgda.Categories.Category.html#8362" class="Field">∁</a> <a id="831" href="UniAgda.Categories.Examples.Initial.html#800" class="Function">𝟘-Cat</a> <a id="837" class="Symbol">=</a> <a id="839" href="UniAgda.Categories.Examples.Initial.html#545" class="Function">𝟘</a>
-<a id="841" href="UniAgda.Categories.Category.html#8386" class="Field">univ</a> <a id="846" href="UniAgda.Categories.Examples.Initial.html#800" class="Function">𝟘-Cat</a> <a id="852" class="Symbol">=</a> <a id="854" href="UniAgda.Categories.Examples.Initial.html#751" class="Function">𝟘-is-category</a>
+<a id="𝟘-Cat"></a><a id="818" href="UniAgda.Categories.Examples.Initial.html#818" class="Function">𝟘-Cat</a> <a id="824" class="Symbol">:</a> <a id="826" href="UniAgda.Categories.Category.html#8284" class="Record">Category</a> <a id="835" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="841" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
+<a id="847" href="UniAgda.Categories.Category.html#8381" class="Field">∁</a> <a id="849" href="UniAgda.Categories.Examples.Initial.html#818" class="Function">𝟘-Cat</a> <a id="855" class="Symbol">=</a> <a id="857" href="UniAgda.Categories.Examples.Initial.html#563" class="Function">𝟘</a>
+<a id="859" href="UniAgda.Categories.Category.html#8405" class="Field">univ</a> <a id="864" href="UniAgda.Categories.Examples.Initial.html#818" class="Function">𝟘-Cat</a> <a id="870" class="Symbol">=</a> <a id="872" href="UniAgda.Categories.Examples.Initial.html#769" class="Function">𝟘-is-category</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

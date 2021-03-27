@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Core.Types.Unit</title>
@@ -202,27 +202,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -262,10 +241,10 @@
 <h2 id="org4507876"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="171" class="Symbol">{-#</a> <a id="175" class="Keyword">OPTIONS</a> <a id="183" class="Pragma">--without-K</a> <a id="195" class="Pragma">--no-import-sorts</a> <a id="213" class="Pragma">--safe</a> <a id="220" class="Symbol">#-}</a>
-<a id="224" class="Keyword">module</a> <a id="231" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a> <a id="255" class="Keyword">where</a>
+<a id="171" class="Symbol">{-#</a> <a id="175" class="Keyword">OPTIONS</a> <a id="183" class="Pragma">--without-K</a> <a id="195" class="Pragma">--no-import-sorts</a> <a id="213" class="Pragma">--safe</a> <a id="220" class="Pragma">--no-import-sorts</a> <a id="238" class="Symbol">#-}</a>
+<a id="242" class="Keyword">module</a> <a id="249" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a> <a id="273" class="Keyword">where</a>
 
-<a id="262" class="Keyword">open</a> <a id="267" class="Keyword">import</a> <a id="274" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="280" class="Keyword">open</a> <a id="285" class="Keyword">import</a> <a id="292" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
 </pre>
 </div>
 </div>
@@ -277,15 +256,15 @@ The unit type is an inductive type with only one term defined.
 </p>
 
 <pre class="Agda">
-<a id="407" class="Keyword">data</a> <a id="Unit"></a><a id="412" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a> <a id="417" class="Symbol">:</a> <a id="419" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="424" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="430" class="Keyword">where</a>
-  <a id="Unit.tt"></a><a id="438" href="UniAgda.Core.Types.Unit.html#438" class="InductiveConstructor">tt</a> <a id="441" class="Symbol">:</a> <a id="443" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a>
+<a id="425" class="Keyword">data</a> <a id="Unit"></a><a id="430" href="UniAgda.Core.Types.Unit.html#430" class="Datatype">Unit</a> <a id="435" class="Symbol">:</a> <a id="437" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="442" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="448" class="Keyword">where</a>
+  <a id="Unit.tt"></a><a id="456" href="UniAgda.Core.Types.Unit.html#456" class="InductiveConstructor">tt</a> <a id="459" class="Symbol">:</a> <a id="461" href="UniAgda.Core.Types.Unit.html#430" class="Datatype">Unit</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

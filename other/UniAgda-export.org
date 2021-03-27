@@ -1,9 +1,10 @@
 #+title: UniAgda Export process
 #+author: James Leslie
-* Generate Everythings
+* Generate Everything files
 #+begin_src sh :results none
-cd /home/james/Dropbox/Documents/Agda/programs/
-./Everything
+cd /home/james/Dropbox/Documents/Agda/Univalent-Agda/
+# ghc --make Everything.hs
+./Everything /home/james/Dropbox/Documents/Agda/Univalent-Agda/UniAgda
 #+end_src
 * Generate Agda.org files
 #+begin_src sh :results none

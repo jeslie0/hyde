@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Categories.Examples.Group</title>
@@ -202,27 +202,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -262,14 +241,14 @@
 <h2 id="org9683db0"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="177" class="Symbol">{-#</a> <a id="181" class="Keyword">OPTIONS</a> <a id="189" class="Pragma">--without-K</a>  <a id="202" class="Symbol">#-}</a>
-<a id="206" class="Keyword">module</a> <a id="213" href="UniAgda.Categories.Examples.Group.html" class="Module">UniAgda.Categories.Examples.Group</a> <a id="247" class="Keyword">where</a>
+<a id="177" class="Symbol">{-#</a> <a id="181" class="Keyword">OPTIONS</a> <a id="189" class="Pragma">--without-K</a>  <a id="202" class="Pragma">--no-import-sorts</a> <a id="220" class="Symbol">#-}</a>
+<a id="224" class="Keyword">module</a> <a id="231" href="UniAgda.Categories.Examples.Group.html" class="Module">UniAgda.Categories.Examples.Group</a> <a id="265" class="Keyword">where</a>
 
-<a id="254" class="Keyword">open</a> <a id="259" class="Keyword">import</a> <a id="266" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="272" class="Keyword">open</a> <a id="277" class="Keyword">import</a> <a id="284" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
 
-<a id="296" class="Keyword">open</a> <a id="301" class="Keyword">import</a> <a id="308" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a>
-<a id="336" class="Keyword">open</a> <a id="341" class="Keyword">import</a> <a id="348" href="UniAgda.Algebra.GroupTheory.basics.html" class="Module">UniAgda.Algebra.GroupTheory.basics</a>
-<a id="383" class="Keyword">open</a> <a id="388" href="UniAgda.Categories.Category.html#1465" class="Module">Precategory</a>
+<a id="314" class="Keyword">open</a> <a id="319" class="Keyword">import</a> <a id="326" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a>
+<a id="354" class="Keyword">open</a> <a id="359" class="Keyword">import</a> <a id="366" href="UniAgda.Algebra.GroupTheory.basics.html" class="Module">UniAgda.Algebra.GroupTheory.basics</a>
+<a id="401" class="Keyword">open</a> <a id="406" href="UniAgda.Categories.Category.html#1484" class="Module">Precategory</a>
 </pre>
 </div>
 </div>
@@ -277,22 +256,22 @@
 <h2 id="orga851a7e"><span class="section-number-2">2</span> Category of groups</h2>
 <div class="outline-text-2" id="text-2">
 <pre class="Agda">
-<a id="GROUP"></a><a id="449" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="455" class="Symbol">:</a> <a id="457" class="Symbol">(</a><a id="458" href="UniAgda.Categories.Examples.Group.html#458" class="Bound">i</a> <a id="460" class="Symbol">:</a> <a id="462" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="467" class="Symbol">)</a> <a id="469" class="Symbol">→</a> <a id="471" href="UniAgda.Categories.Category.html#1465" class="Record">Precategory</a> <a id="483" class="Symbol">(</a><a id="484" href="Agda.Primitive.html#780" class="Primitive">lsuc</a> <a id="489" href="UniAgda.Categories.Examples.Group.html#458" class="Bound">i</a><a id="490" class="Symbol">)</a> <a id="492" href="UniAgda.Categories.Examples.Group.html#458" class="Bound">i</a>
-<a id="494" href="UniAgda.Categories.Category.html#1546" class="Field">ob</a> <a id="497" class="Symbol">(</a><a id="498" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="504" href="UniAgda.Categories.Examples.Group.html#504" class="Bound">i</a><a id="505" class="Symbol">)</a> <a id="507" class="Symbol">=</a> <a id="509" href="UniAgda.Algebra.GroupTheory.basics.html#745" class="Record">Group</a> <a id="515" href="UniAgda.Categories.Examples.Group.html#504" class="Bound">i</a>
-<a id="517" href="UniAgda.Categories.Category.html#1562" class="Field">hom</a> <a id="521" class="Symbol">(</a><a id="522" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="528" href="UniAgda.Categories.Examples.Group.html#528" class="Bound">i</a><a id="529" class="Symbol">)</a> <a id="531" class="Symbol">=</a> <a id="533" href="UniAgda.Algebra.GroupTheory.basics.html#5940" class="Record">Group-hom</a> <a id="543" class="Symbol">{</a><a id="544" href="UniAgda.Categories.Examples.Group.html#528" class="Bound">i</a><a id="545" class="Symbol">}</a> <a id="547" class="Symbol">{</a><a id="548" href="UniAgda.Categories.Examples.Group.html#528" class="Bound">i</a><a id="549" class="Symbol">}</a>
-<a id="551" href="UniAgda.Categories.Category.html#1592" class="Field">hom-set</a> <a id="559" class="Symbol">(</a><a id="560" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="566" href="UniAgda.Categories.Examples.Group.html#566" class="Bound">i</a><a id="567" class="Symbol">)</a> <a id="569" href="UniAgda.Categories.Examples.Group.html#569" class="Bound">G</a> <a id="571" href="UniAgda.Categories.Examples.Group.html#571" class="Bound">H</a> <a id="573" class="Symbol">=</a> <a id="575" href="UniAgda.Algebra.GroupTheory.basics.html#8263" class="Function">Group-hom-is-set</a>
-<a id="592" href="UniAgda.Categories.Category.html#1635" class="Field">Id</a> <a id="595" class="Symbol">(</a><a id="596" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="602" href="UniAgda.Categories.Examples.Group.html#602" class="Bound">i</a><a id="603" class="Symbol">)</a> <a id="605" class="Symbol">=</a> <a id="607" href="UniAgda.Algebra.GroupTheory.basics.html#9316" class="Function">Idᵍ</a>
-<a id="611" href="UniAgda.Categories.Category.html#1665" class="Field">comp</a> <a id="616" class="Symbol">(</a><a id="617" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="623" href="UniAgda.Categories.Examples.Group.html#623" class="Bound">i</a><a id="624" class="Symbol">)</a> <a id="626" class="Symbol">=</a> <a id="628" href="UniAgda.Algebra.GroupTheory.basics.html#8740" class="Function">ghom-comp</a>
-<a id="638" href="UniAgda.Categories.Category.html#1721" class="Field">IdL</a> <a id="642" class="Symbol">(</a><a id="643" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="649" href="UniAgda.Categories.Examples.Group.html#649" class="Bound">i</a><a id="650" class="Symbol">)</a> <a id="652" class="Symbol">=</a> <a id="654" href="UniAgda.Algebra.GroupTheory.basics.html#9535" class="Function">ghom-lId</a>
-<a id="663" href="UniAgda.Categories.Category.html#1772" class="Field">IdR</a> <a id="667" class="Symbol">(</a><a id="668" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="674" href="UniAgda.Categories.Examples.Group.html#674" class="Bound">i</a><a id="675" class="Symbol">)</a> <a id="677" class="Symbol">=</a> <a id="679" href="UniAgda.Algebra.GroupTheory.basics.html#9678" class="Function">ghom-rId</a>
-<a id="688" href="UniAgda.Categories.Category.html#1823" class="Field">Assoc</a> <a id="694" class="Symbol">(</a><a id="695" href="UniAgda.Categories.Examples.Group.html#449" class="Function">GROUP</a> <a id="701" href="UniAgda.Categories.Examples.Group.html#701" class="Bound">i</a><a id="702" class="Symbol">)</a> <a id="704" class="Symbol">=</a> <a id="706" href="UniAgda.Algebra.GroupTheory.basics.html#9888" class="Function">ghom-assoc</a>
+<a id="GROUP"></a><a id="467" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="473" class="Symbol">:</a> <a id="475" class="Symbol">(</a><a id="476" href="UniAgda.Categories.Examples.Group.html#476" class="Bound">i</a> <a id="478" class="Symbol">:</a> <a id="480" href="Agda.Primitive.html#597" class="Postulate">Level</a><a id="485" class="Symbol">)</a> <a id="487" class="Symbol">→</a> <a id="489" href="UniAgda.Categories.Category.html#1484" class="Record">Precategory</a> <a id="501" class="Symbol">(</a><a id="502" href="Agda.Primitive.html#780" class="Primitive">lsuc</a> <a id="507" href="UniAgda.Categories.Examples.Group.html#476" class="Bound">i</a><a id="508" class="Symbol">)</a> <a id="510" href="UniAgda.Categories.Examples.Group.html#476" class="Bound">i</a>
+<a id="512" href="UniAgda.Categories.Category.html#1565" class="Field">ob</a> <a id="515" class="Symbol">(</a><a id="516" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="522" href="UniAgda.Categories.Examples.Group.html#522" class="Bound">i</a><a id="523" class="Symbol">)</a> <a id="525" class="Symbol">=</a> <a id="527" href="UniAgda.Algebra.GroupTheory.basics.html#764" class="Record">Group</a> <a id="533" href="UniAgda.Categories.Examples.Group.html#522" class="Bound">i</a>
+<a id="535" href="UniAgda.Categories.Category.html#1581" class="Field">hom</a> <a id="539" class="Symbol">(</a><a id="540" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="546" href="UniAgda.Categories.Examples.Group.html#546" class="Bound">i</a><a id="547" class="Symbol">)</a> <a id="549" class="Symbol">=</a> <a id="551" href="UniAgda.Algebra.GroupTheory.basics.html#5959" class="Record">Group-hom</a> <a id="561" class="Symbol">{</a><a id="562" href="UniAgda.Categories.Examples.Group.html#546" class="Bound">i</a><a id="563" class="Symbol">}</a> <a id="565" class="Symbol">{</a><a id="566" href="UniAgda.Categories.Examples.Group.html#546" class="Bound">i</a><a id="567" class="Symbol">}</a>
+<a id="569" href="UniAgda.Categories.Category.html#1611" class="Field">hom-set</a> <a id="577" class="Symbol">(</a><a id="578" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="584" href="UniAgda.Categories.Examples.Group.html#584" class="Bound">i</a><a id="585" class="Symbol">)</a> <a id="587" href="UniAgda.Categories.Examples.Group.html#587" class="Bound">G</a> <a id="589" href="UniAgda.Categories.Examples.Group.html#589" class="Bound">H</a> <a id="591" class="Symbol">=</a> <a id="593" href="UniAgda.Algebra.GroupTheory.basics.html#8282" class="Function">Group-hom-is-set</a>
+<a id="610" href="UniAgda.Categories.Category.html#1654" class="Field">Id</a> <a id="613" class="Symbol">(</a><a id="614" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="620" href="UniAgda.Categories.Examples.Group.html#620" class="Bound">i</a><a id="621" class="Symbol">)</a> <a id="623" class="Symbol">=</a> <a id="625" href="UniAgda.Algebra.GroupTheory.basics.html#9335" class="Function">Idᵍ</a>
+<a id="629" href="UniAgda.Categories.Category.html#1684" class="Field">comp</a> <a id="634" class="Symbol">(</a><a id="635" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="641" href="UniAgda.Categories.Examples.Group.html#641" class="Bound">i</a><a id="642" class="Symbol">)</a> <a id="644" class="Symbol">=</a> <a id="646" href="UniAgda.Algebra.GroupTheory.basics.html#8759" class="Function">ghom-comp</a>
+<a id="656" href="UniAgda.Categories.Category.html#1740" class="Field">IdL</a> <a id="660" class="Symbol">(</a><a id="661" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="667" href="UniAgda.Categories.Examples.Group.html#667" class="Bound">i</a><a id="668" class="Symbol">)</a> <a id="670" class="Symbol">=</a> <a id="672" href="UniAgda.Algebra.GroupTheory.basics.html#9554" class="Function">ghom-lId</a>
+<a id="681" href="UniAgda.Categories.Category.html#1791" class="Field">IdR</a> <a id="685" class="Symbol">(</a><a id="686" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="692" href="UniAgda.Categories.Examples.Group.html#692" class="Bound">i</a><a id="693" class="Symbol">)</a> <a id="695" class="Symbol">=</a> <a id="697" href="UniAgda.Algebra.GroupTheory.basics.html#9697" class="Function">ghom-rId</a>
+<a id="706" href="UniAgda.Categories.Category.html#1842" class="Field">Assoc</a> <a id="712" class="Symbol">(</a><a id="713" href="UniAgda.Categories.Examples.Group.html#467" class="Function">GROUP</a> <a id="719" href="UniAgda.Categories.Examples.Group.html#719" class="Bound">i</a><a id="720" class="Symbol">)</a> <a id="722" class="Symbol">=</a> <a id="724" href="UniAgda.Algebra.GroupTheory.basics.html#9907" class="Function">ghom-assoc</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

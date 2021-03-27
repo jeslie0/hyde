@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Logic.Exists</title>
@@ -202,27 +202,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -261,34 +240,34 @@
 <h2 id="org40007d5"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="181" class="Symbol">{-#</a> <a id="185" class="Keyword">OPTIONS</a> <a id="193" class="Pragma">--without-K</a> <a id="205" class="Pragma">--rewriting</a> <a id="217" class="Symbol">#-}</a>
-<a id="221" class="Keyword">module</a> <a id="228" href="UniAgda.Logic.Exists.html" class="Module">UniAgda.Logic.Exists</a> <a id="249" class="Keyword">where</a>
-<a id="255" class="Keyword">open</a> <a id="260" class="Keyword">import</a> <a id="267" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
-<a id="296" class="Keyword">open</a> <a id="301" class="Keyword">import</a> <a id="308" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
-<a id="333" class="Keyword">open</a> <a id="338" class="Keyword">import</a> <a id="345" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a>
+<a id="181" class="Symbol">{-#</a> <a id="185" class="Keyword">OPTIONS</a> <a id="193" class="Pragma">--without-K</a> <a id="205" class="Pragma">--rewriting</a> <a id="217" class="Pragma">--no-import-sorts</a> <a id="235" class="Symbol">#-}</a>
+<a id="239" class="Keyword">module</a> <a id="246" href="UniAgda.Logic.Exists.html" class="Module">UniAgda.Logic.Exists</a> <a id="267" class="Keyword">where</a>
+<a id="273" class="Keyword">open</a> <a id="278" class="Keyword">import</a> <a id="285" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="314" class="Keyword">open</a> <a id="319" class="Keyword">import</a> <a id="326" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a>
+<a id="351" class="Keyword">open</a> <a id="356" class="Keyword">import</a> <a id="363" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a>
 
-<a id="375" class="Keyword">open</a> <a id="380" class="Keyword">import</a> <a id="387" href="UniAgda.HITs.PropTrunc.html" class="Module">UniAgda.HITs.PropTrunc</a>
+<a id="393" class="Keyword">open</a> <a id="398" class="Keyword">import</a> <a id="405" href="UniAgda.HITs.PropTrunc.html" class="Module">UniAgda.HITs.PropTrunc</a>
 
-<a id="411" class="Comment">-- Merely exists</a>
-<a id="∃"></a><a id="428" href="UniAgda.Logic.Exists.html#428" class="Function">∃</a> <a id="430" class="Symbol">:</a> <a id="432" class="Symbol">∀</a> <a id="434" class="Symbol">{</a><a id="435" href="UniAgda.Logic.Exists.html#435" class="Bound">i</a> <a id="437" href="UniAgda.Logic.Exists.html#437" class="Bound">j</a><a id="438" class="Symbol">}</a>
-    <a id="444" class="Symbol">(</a><a id="445" href="UniAgda.Logic.Exists.html#445" class="Bound">A</a> <a id="447" class="Symbol">:</a> <a id="449" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="454" href="UniAgda.Logic.Exists.html#435" class="Bound">i</a><a id="455" class="Symbol">)</a> <a id="457" class="Symbol">(</a><a id="458" href="UniAgda.Logic.Exists.html#458" class="Bound">B</a> <a id="460" class="Symbol">:</a> <a id="462" href="UniAgda.Logic.Exists.html#445" class="Bound">A</a> <a id="464" class="Symbol">→</a> <a id="466" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="471" href="UniAgda.Logic.Exists.html#437" class="Bound">j</a><a id="472" class="Symbol">)</a>
-    <a id="478" class="Symbol">→</a> <a id="480" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="485" class="Symbol">(</a><a id="486" href="UniAgda.Logic.Exists.html#435" class="Bound">i</a> <a id="488" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="490" href="UniAgda.Logic.Exists.html#437" class="Bound">j</a><a id="491" class="Symbol">)</a>
-<a id="493" href="UniAgda.Logic.Exists.html#428" class="Function">∃</a> <a id="495" href="UniAgda.Logic.Exists.html#495" class="Bound">A</a> <a id="497" href="UniAgda.Logic.Exists.html#497" class="Bound">B</a> <a id="499" class="Symbol">=</a> <a id="501" href="UniAgda.HITs.PropTrunc.html#524" class="Postulate Operator">∥</a> <a id="503" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">Σ[</a> <a id="506" href="UniAgda.Logic.Exists.html#506" class="Bound">x</a> <a id="508" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">∈</a> <a id="510" href="UniAgda.Logic.Exists.html#495" class="Bound">A</a> <a id="512" href="UniAgda.Core.Types.Sigma.html#421" class="Datatype">]</a> <a id="514" href="UniAgda.Logic.Exists.html#497" class="Bound">B</a> <a id="516" href="UniAgda.Logic.Exists.html#506" class="Bound">x</a> <a id="518" href="UniAgda.HITs.PropTrunc.html#524" class="Postulate Operator">∥</a>
+<a id="429" class="Comment">-- Merely exists</a>
+<a id="∃"></a><a id="446" href="UniAgda.Logic.Exists.html#446" class="Function">∃</a> <a id="448" class="Symbol">:</a> <a id="450" class="Symbol">∀</a> <a id="452" class="Symbol">{</a><a id="453" href="UniAgda.Logic.Exists.html#453" class="Bound">i</a> <a id="455" href="UniAgda.Logic.Exists.html#455" class="Bound">j</a><a id="456" class="Symbol">}</a>
+    <a id="462" class="Symbol">(</a><a id="463" href="UniAgda.Logic.Exists.html#463" class="Bound">A</a> <a id="465" class="Symbol">:</a> <a id="467" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="472" href="UniAgda.Logic.Exists.html#453" class="Bound">i</a><a id="473" class="Symbol">)</a> <a id="475" class="Symbol">(</a><a id="476" href="UniAgda.Logic.Exists.html#476" class="Bound">B</a> <a id="478" class="Symbol">:</a> <a id="480" href="UniAgda.Logic.Exists.html#463" class="Bound">A</a> <a id="482" class="Symbol">→</a> <a id="484" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="489" href="UniAgda.Logic.Exists.html#455" class="Bound">j</a><a id="490" class="Symbol">)</a>
+    <a id="496" class="Symbol">→</a> <a id="498" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="503" class="Symbol">(</a><a id="504" href="UniAgda.Logic.Exists.html#453" class="Bound">i</a> <a id="506" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="508" href="UniAgda.Logic.Exists.html#455" class="Bound">j</a><a id="509" class="Symbol">)</a>
+<a id="511" href="UniAgda.Logic.Exists.html#446" class="Function">∃</a> <a id="513" href="UniAgda.Logic.Exists.html#513" class="Bound">A</a> <a id="515" href="UniAgda.Logic.Exists.html#515" class="Bound">B</a> <a id="517" class="Symbol">=</a> <a id="519" href="UniAgda.HITs.PropTrunc.html#543" class="Postulate Operator">∥</a> <a id="521" href="UniAgda.Core.Types.Sigma.html#439" class="Datatype">Σ[</a> <a id="524" href="UniAgda.Logic.Exists.html#524" class="Bound">x</a> <a id="526" href="UniAgda.Core.Types.Sigma.html#439" class="Datatype">∈</a> <a id="528" href="UniAgda.Logic.Exists.html#513" class="Bound">A</a> <a id="530" href="UniAgda.Core.Types.Sigma.html#439" class="Datatype">]</a> <a id="532" href="UniAgda.Logic.Exists.html#515" class="Bound">B</a> <a id="534" href="UniAgda.Logic.Exists.html#524" class="Bound">x</a> <a id="536" href="UniAgda.HITs.PropTrunc.html#543" class="Postulate Operator">∥</a>
 
-<a id="521" class="Keyword">syntax</a> <a id="528" href="UniAgda.Logic.Exists.html#428" class="Function">∃</a> <a id="530" class="Bound">A</a> <a id="532" class="Symbol">(λ</a> <a id="535" class="Bound">x</a> <a id="537" class="Symbol">→</a> <a id="539" class="Bound">B</a><a id="540" class="Symbol">)</a> <a id="542" class="Symbol">=</a> <a id="544" class="Function">∃[</a> <a id="547" class="Bound">x</a> <a id="549" class="Function">∈</a> <a id="551" class="Bound">A</a> <a id="553" class="Function">]</a> <a id="555" class="Bound">B</a>
+<a id="539" class="Keyword">syntax</a> <a id="546" href="UniAgda.Logic.Exists.html#446" class="Function">∃</a> <a id="548" class="Bound">A</a> <a id="550" class="Symbol">(λ</a> <a id="553" class="Bound">x</a> <a id="555" class="Symbol">→</a> <a id="557" class="Bound">B</a><a id="558" class="Symbol">)</a> <a id="560" class="Symbol">=</a> <a id="562" class="Function">∃[</a> <a id="565" class="Bound">x</a> <a id="567" class="Function">∈</a> <a id="569" class="Bound">A</a> <a id="571" class="Function">]</a> <a id="573" class="Bound">B</a>
 
-<a id="558" class="Comment">-- Merely or</a>
-<a id="_∨_"></a><a id="571" href="UniAgda.Logic.Exists.html#571" class="Function Operator">_∨_</a> <a id="575" class="Symbol">:</a> <a id="577" class="Symbol">∀</a> <a id="579" class="Symbol">{</a><a id="580" href="UniAgda.Logic.Exists.html#580" class="Bound">i</a> <a id="582" href="UniAgda.Logic.Exists.html#582" class="Bound">j</a><a id="583" class="Symbol">}</a>
-      <a id="591" class="Symbol">(</a><a id="592" href="UniAgda.Logic.Exists.html#592" class="Bound">A</a> <a id="594" class="Symbol">:</a> <a id="596" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="601" href="UniAgda.Logic.Exists.html#580" class="Bound">i</a><a id="602" class="Symbol">)</a> <a id="604" class="Symbol">(</a><a id="605" href="UniAgda.Logic.Exists.html#605" class="Bound">B</a> <a id="607" class="Symbol">:</a> <a id="609" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="614" href="UniAgda.Logic.Exists.html#582" class="Bound">j</a><a id="615" class="Symbol">)</a>
-      <a id="623" class="Symbol">→</a> <a id="625" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="630" class="Symbol">(</a><a id="631" href="UniAgda.Logic.Exists.html#580" class="Bound">i</a> <a id="633" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="635" href="UniAgda.Logic.Exists.html#582" class="Bound">j</a><a id="636" class="Symbol">)</a>
-<a id="638" href="UniAgda.Logic.Exists.html#638" class="Bound">A</a> <a id="640" href="UniAgda.Logic.Exists.html#571" class="Function Operator">∨</a> <a id="642" href="UniAgda.Logic.Exists.html#642" class="Bound">B</a> <a id="644" class="Symbol">=</a> <a id="646" href="UniAgda.HITs.PropTrunc.html#524" class="Postulate Operator">∥</a> <a id="648" href="UniAgda.Logic.Exists.html#638" class="Bound">A</a> <a id="650" href="UniAgda.Core.Types.Coproduct.html#448" class="Datatype Operator">+</a> <a id="652" href="UniAgda.Logic.Exists.html#642" class="Bound">B</a> <a id="654" href="UniAgda.HITs.PropTrunc.html#524" class="Postulate Operator">∥</a>
+<a id="576" class="Comment">-- Merely or</a>
+<a id="_∨_"></a><a id="589" href="UniAgda.Logic.Exists.html#589" class="Function Operator">_∨_</a> <a id="593" class="Symbol">:</a> <a id="595" class="Symbol">∀</a> <a id="597" class="Symbol">{</a><a id="598" href="UniAgda.Logic.Exists.html#598" class="Bound">i</a> <a id="600" href="UniAgda.Logic.Exists.html#600" class="Bound">j</a><a id="601" class="Symbol">}</a>
+      <a id="609" class="Symbol">(</a><a id="610" href="UniAgda.Logic.Exists.html#610" class="Bound">A</a> <a id="612" class="Symbol">:</a> <a id="614" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="619" href="UniAgda.Logic.Exists.html#598" class="Bound">i</a><a id="620" class="Symbol">)</a> <a id="622" class="Symbol">(</a><a id="623" href="UniAgda.Logic.Exists.html#623" class="Bound">B</a> <a id="625" class="Symbol">:</a> <a id="627" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="632" href="UniAgda.Logic.Exists.html#600" class="Bound">j</a><a id="633" class="Symbol">)</a>
+      <a id="641" class="Symbol">→</a> <a id="643" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="648" class="Symbol">(</a><a id="649" href="UniAgda.Logic.Exists.html#598" class="Bound">i</a> <a id="651" href="Agda.Primitive.html#810" class="Primitive Operator">⊔</a> <a id="653" href="UniAgda.Logic.Exists.html#600" class="Bound">j</a><a id="654" class="Symbol">)</a>
+<a id="656" href="UniAgda.Logic.Exists.html#656" class="Bound">A</a> <a id="658" href="UniAgda.Logic.Exists.html#589" class="Function Operator">∨</a> <a id="660" href="UniAgda.Logic.Exists.html#660" class="Bound">B</a> <a id="662" class="Symbol">=</a> <a id="664" href="UniAgda.HITs.PropTrunc.html#543" class="Postulate Operator">∥</a> <a id="666" href="UniAgda.Logic.Exists.html#656" class="Bound">A</a> <a id="668" href="UniAgda.Core.Types.Coproduct.html#466" class="Datatype Operator">+</a> <a id="670" href="UniAgda.Logic.Exists.html#660" class="Bound">B</a> <a id="672" href="UniAgda.HITs.PropTrunc.html#543" class="Postulate Operator">∥</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

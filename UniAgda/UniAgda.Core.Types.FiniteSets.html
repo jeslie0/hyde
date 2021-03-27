@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Core.Types.FiniteSets</title>
@@ -200,27 +200,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -282,15 +261,15 @@
 <h2 id="org789beca"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="152" class="Symbol">{-#</a> <a id="156" class="Keyword">OPTIONS</a> <a id="164" class="Pragma">--without-K</a> <a id="176" class="Symbol">#-}</a>
-<a id="180" class="Keyword">module</a> <a id="187" href="UniAgda.Core.Types.FiniteSets.html" class="Module">UniAgda.Core.Types.FiniteSets</a> <a id="217" class="Keyword">where</a>
+<a id="152" class="Symbol">{-#</a> <a id="156" class="Keyword">OPTIONS</a> <a id="164" class="Pragma">--without-K</a> <a id="176" class="Pragma">--no-import-sorts</a> <a id="194" class="Symbol">#-}</a>
+<a id="198" class="Keyword">module</a> <a id="205" href="UniAgda.Core.Types.FiniteSets.html" class="Module">UniAgda.Core.Types.FiniteSets</a> <a id="235" class="Keyword">where</a>
 
-<a id="224" class="Keyword">open</a> <a id="229" class="Keyword">import</a> <a id="236" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
-<a id="265" class="Keyword">open</a> <a id="270" class="Keyword">import</a> <a id="277" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
-<a id="306" class="Keyword">open</a> <a id="311" class="Keyword">import</a> <a id="318" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a>
-<a id="341" class="Keyword">open</a> <a id="346" class="Keyword">import</a> <a id="353" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
-<a id="378" class="Keyword">open</a> <a id="383" class="Keyword">import</a> <a id="390" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a>
-<a id="414" class="Keyword">open</a> <a id="419" class="Keyword">import</a> <a id="426" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a>
+<a id="242" class="Keyword">open</a> <a id="247" class="Keyword">import</a> <a id="254" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="283" class="Keyword">open</a> <a id="288" class="Keyword">import</a> <a id="295" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a>
+<a id="324" class="Keyword">open</a> <a id="329" class="Keyword">import</a> <a id="336" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a>
+<a id="359" class="Keyword">open</a> <a id="364" class="Keyword">import</a> <a id="371" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a>
+<a id="396" class="Keyword">open</a> <a id="401" class="Keyword">import</a> <a id="408" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a>
+<a id="432" class="Keyword">open</a> <a id="437" class="Keyword">import</a> <a id="444" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a>
 </pre>
 </div>
 </div>
@@ -301,9 +280,9 @@
 We give the definition of the \(n\)th ordinal.
 </p>
 <pre class="Agda">
-<a id="Fin"></a><a id="544" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="548" class="Symbol">:</a> <a id="550" href="UniAgda.Core.Types.Nat.html#428" class="Datatype">ℕ</a> <a id="552" class="Symbol">→</a> <a id="554" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="559" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
-<a id="565" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="569" href="UniAgda.Core.Types.Nat.html#452" class="InductiveConstructor">zero</a> <a id="574" class="Symbol">=</a> <a id="576" href="UniAgda.Core.Types.Empty.html#414" class="Datatype">Empty</a>
-<a id="582" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="586" class="Symbol">(</a><a id="587" href="UniAgda.Core.Types.Nat.html#463" class="InductiveConstructor">suc</a> <a id="591" href="UniAgda.Core.Types.FiniteSets.html#591" class="Bound">n</a><a id="592" class="Symbol">)</a> <a id="594" class="Symbol">=</a> <a id="596" href="UniAgda.Core.Types.FiniteSets.html#544" class="Function">Fin</a> <a id="600" href="UniAgda.Core.Types.FiniteSets.html#591" class="Bound">n</a> <a id="602" href="UniAgda.Core.Types.Coproduct.html#448" class="Datatype Operator">+</a> <a id="604" href="UniAgda.Core.Types.Unit.html#412" class="Datatype">Unit</a>
+<a id="Fin"></a><a id="562" href="UniAgda.Core.Types.FiniteSets.html#562" class="Function">Fin</a> <a id="566" class="Symbol">:</a> <a id="568" href="UniAgda.Core.Types.Nat.html#446" class="Datatype">ℕ</a> <a id="570" class="Symbol">→</a> <a id="572" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="577" href="Agda.Primitive.html#764" class="Primitive">lzero</a>
+<a id="583" href="UniAgda.Core.Types.FiniteSets.html#562" class="Function">Fin</a> <a id="587" href="UniAgda.Core.Types.Nat.html#470" class="InductiveConstructor">zero</a> <a id="592" class="Symbol">=</a> <a id="594" href="UniAgda.Core.Types.Empty.html#432" class="Datatype">Empty</a>
+<a id="600" href="UniAgda.Core.Types.FiniteSets.html#562" class="Function">Fin</a> <a id="604" class="Symbol">(</a><a id="605" href="UniAgda.Core.Types.Nat.html#481" class="InductiveConstructor">suc</a> <a id="609" href="UniAgda.Core.Types.FiniteSets.html#609" class="Bound">n</a><a id="610" class="Symbol">)</a> <a id="612" class="Symbol">=</a> <a id="614" href="UniAgda.Core.Types.FiniteSets.html#562" class="Function">Fin</a> <a id="618" href="UniAgda.Core.Types.FiniteSets.html#609" class="Bound">n</a> <a id="620" href="UniAgda.Core.Types.Coproduct.html#466" class="Datatype Operator">+</a> <a id="622" href="UniAgda.Core.Types.Unit.html#430" class="Datatype">Unit</a>
 </pre>
 
 <p>
@@ -314,7 +293,7 @@ We will prove that these are sets in a different file.
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

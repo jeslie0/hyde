@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Everything</title>
@@ -200,27 +200,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -259,67 +238,67 @@
 <h2 id="org03b0be8"><span class="section-number-2">1</span> Imports</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="124" class="Symbol">{-#</a> <a id="128" class="Keyword">OPTIONS</a> <a id="136" class="Pragma">--without-K</a> <a id="148" class="Pragma">--rewriting</a> <a id="160" class="Symbol">#-}</a>
-<a id="164" class="Keyword">module</a> <a id="171" href="UniAgda.Everything.html" class="Module">UniAgda.Everything</a> <a id="190" class="Keyword">where</a>
+<a id="124" class="Symbol">{-#</a> <a id="128" class="Keyword">OPTIONS</a> <a id="136" class="Pragma">--without-K</a> <a id="148" class="Pragma">--rewriting</a> <a id="160" class="Pragma">--no-import-sorts</a> <a id="178" class="Symbol">#-}</a>
+<a id="182" class="Keyword">module</a> <a id="189" href="UniAgda.Everything.html" class="Module">UniAgda.Everything</a> <a id="208" class="Keyword">where</a>
 
-<a id="197" class="Keyword">open</a> <a id="202" class="Keyword">import</a> <a id="209" href="UniAgda.Equiv.Inj-Surj.html" class="Module">UniAgda.Equiv.Inj-Surj</a> <a id="232" class="Keyword">public</a>
-<a id="239" class="Keyword">open</a> <a id="244" class="Keyword">import</a> <a id="251" href="UniAgda.Equiv.Bool.html" class="Module">UniAgda.Equiv.Bool</a> <a id="270" class="Keyword">public</a>
-<a id="277" class="Keyword">open</a> <a id="282" class="Keyword">import</a> <a id="289" href="UniAgda.Equiv.ClosureProperties.html" class="Module">UniAgda.Equiv.ClosureProperties</a> <a id="321" class="Keyword">public</a>
-<a id="328" class="Keyword">open</a> <a id="333" class="Keyword">import</a> <a id="340" href="UniAgda.Algebra.GroupTheory.basics.html" class="Module">UniAgda.Algebra.GroupTheory.basics</a> <a id="375" class="Keyword">public</a>
-<a id="382" class="Keyword">open</a> <a id="387" class="Keyword">import</a> <a id="394" href="UniAgda.HITs.PropTrunc.html" class="Module">UniAgda.HITs.PropTrunc</a> <a id="417" class="Keyword">public</a>
-<a id="424" class="Keyword">open</a> <a id="429" class="Keyword">import</a> <a id="436" href="UniAgda.HITs.0truncation.html" class="Module">UniAgda.HITs.0truncation</a> <a id="461" class="Keyword">public</a>
-<a id="468" class="Keyword">open</a> <a id="473" class="Keyword">import</a> <a id="480" href="UniAgda.HITs.Suspensions.html" class="Module">UniAgda.HITs.Suspensions</a> <a id="505" class="Keyword">public</a>
-<a id="512" class="Keyword">open</a> <a id="517" class="Keyword">import</a> <a id="524" href="UniAgda.HITs.Circle.html" class="Module">UniAgda.HITs.Circle</a> <a id="544" class="Keyword">public</a>
-<a id="551" class="Keyword">open</a> <a id="556" class="Keyword">import</a> <a id="563" href="UniAgda.HITs.Interval.html" class="Module">UniAgda.HITs.Interval</a> <a id="585" class="Keyword">public</a>
-<a id="592" class="Keyword">open</a> <a id="597" class="Keyword">import</a> <a id="604" href="UniAgda.HITs.Core.html" class="Module">UniAgda.HITs.Core</a> <a id="622" class="Keyword">public</a>
-<a id="629" class="Keyword">open</a> <a id="634" class="Keyword">import</a> <a id="641" href="UniAgda.HITs.Pushouts.html" class="Module">UniAgda.HITs.Pushouts</a> <a id="663" class="Keyword">public</a>
-<a id="670" class="Keyword">open</a> <a id="675" class="Keyword">import</a> <a id="682" href="UniAgda.Core.Axioms.html" class="Module">UniAgda.Core.Axioms</a> <a id="702" class="Keyword">public</a>
-<a id="709" class="Keyword">open</a> <a id="714" class="Keyword">import</a> <a id="721" href="UniAgda.Core.PathAlgebra.html" class="Module">UniAgda.Core.PathAlgebra</a> <a id="746" class="Keyword">public</a>
-<a id="753" class="Keyword">open</a> <a id="758" class="Keyword">import</a> <a id="765" href="UniAgda.Core.Equivalences.html" class="Module">UniAgda.Core.Equivalences</a> <a id="791" class="Keyword">public</a>
-<a id="798" class="Keyword">open</a> <a id="803" class="Keyword">import</a> <a id="810" href="UniAgda.Core.Homotopy.html" class="Module">UniAgda.Core.Homotopy</a> <a id="832" class="Keyword">public</a>
-<a id="839" class="Keyword">open</a> <a id="844" class="Keyword">import</a> <a id="851" href="UniAgda.Core.UniversalProperties.html" class="Module">UniAgda.Core.UniversalProperties</a> <a id="884" class="Keyword">public</a>
-<a id="891" class="Keyword">open</a> <a id="896" class="Keyword">import</a> <a id="903" href="UniAgda.Core.PathSpaces.Unit.html" class="Module">UniAgda.Core.PathSpaces.Unit</a> <a id="932" class="Keyword">public</a>
-<a id="939" class="Keyword">open</a> <a id="944" class="Keyword">import</a> <a id="951" href="UniAgda.Core.PathSpaces.Identity.html" class="Module">UniAgda.Core.PathSpaces.Identity</a> <a id="984" class="Keyword">public</a>
-<a id="991" class="Keyword">open</a> <a id="996" class="Keyword">import</a> <a id="1003" href="UniAgda.Core.PathSpaces.Sigma.html" class="Module">UniAgda.Core.PathSpaces.Sigma</a> <a id="1033" class="Keyword">public</a>
-<a id="1040" class="Keyword">open</a> <a id="1045" class="Keyword">import</a> <a id="1052" href="UniAgda.Core.PathSpaces.Coproduct.html" class="Module">UniAgda.Core.PathSpaces.Coproduct</a> <a id="1086" class="Keyword">public</a>
-<a id="1093" class="Keyword">open</a> <a id="1098" class="Keyword">import</a> <a id="1105" href="UniAgda.Core.PathSpaces.Nat.html" class="Module">UniAgda.Core.PathSpaces.Nat</a> <a id="1133" class="Keyword">public</a>
-<a id="1140" class="Keyword">open</a> <a id="1145" class="Keyword">import</a> <a id="1152" href="UniAgda.Core.SetsAndLogic.ContPropSet1Type.html" class="Module">UniAgda.Core.SetsAndLogic.ContPropSet1Type</a> <a id="1195" class="Keyword">public</a>
-<a id="1202" class="Keyword">open</a> <a id="1207" class="Keyword">import</a> <a id="1214" href="UniAgda.Core.SetsAndLogic.Equivalences.html" class="Module">UniAgda.Core.SetsAndLogic.Equivalences</a> <a id="1253" class="Keyword">public</a>
-<a id="1260" class="Keyword">open</a> <a id="1265" class="Keyword">import</a> <a id="1272" href="UniAgda.Core.SetsAndLogic.Props.html" class="Module">UniAgda.Core.SetsAndLogic.Props</a> <a id="1304" class="Keyword">public</a>
-<a id="1311" class="Keyword">open</a> <a id="1316" class="Keyword">import</a> <a id="1323" href="UniAgda.Core.SetsAndLogic.Contractible.html" class="Module">UniAgda.Core.SetsAndLogic.Contractible</a> <a id="1362" class="Keyword">public</a>
-<a id="1369" class="Keyword">open</a> <a id="1374" class="Keyword">import</a> <a id="1381" href="UniAgda.Core.SetsAndLogic.Sets.html" class="Module">UniAgda.Core.SetsAndLogic.Sets</a> <a id="1412" class="Keyword">public</a>
-<a id="1419" class="Keyword">open</a> <a id="1424" class="Keyword">import</a> <a id="1431" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a> <a id="1455" class="Keyword">public</a>
-<a id="1462" class="Keyword">open</a> <a id="1467" class="Keyword">import</a> <a id="1474" href="UniAgda.Core.Types.Bool.html" class="Module">UniAgda.Core.Types.Bool</a> <a id="1498" class="Keyword">public</a>
-<a id="1505" class="Keyword">open</a> <a id="1510" class="Keyword">import</a> <a id="1517" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a> <a id="1545" class="Keyword">public</a>
-<a id="1552" class="Keyword">open</a> <a id="1557" class="Keyword">import</a> <a id="1564" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a> <a id="1589" class="Keyword">public</a>
-<a id="1596" class="Keyword">open</a> <a id="1601" class="Keyword">import</a> <a id="1608" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a> <a id="1637" class="Keyword">public</a>
-<a id="1644" class="Keyword">open</a> <a id="1649" class="Keyword">import</a> <a id="1656" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a> <a id="1679" class="Keyword">public</a>
-<a id="1686" class="Keyword">open</a> <a id="1691" class="Keyword">import</a> <a id="1698" href="UniAgda.Core.Types.W.html" class="Module">UniAgda.Core.Types.W</a> <a id="1719" class="Keyword">public</a>
-<a id="1726" class="Keyword">open</a> <a id="1731" class="Keyword">import</a> <a id="1738" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a> <a id="1767" class="Keyword">public</a>
-<a id="1774" class="Keyword">open</a> <a id="1779" class="Keyword">import</a> <a id="1786" href="UniAgda.Core.Types.FiniteSets.html" class="Module">UniAgda.Core.Types.FiniteSets</a> <a id="1816" class="Keyword">public</a>
-<a id="1823" class="Keyword">open</a> <a id="1828" class="Keyword">import</a> <a id="1835" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a> <a id="1864" class="Keyword">public</a>
-<a id="1871" class="Keyword">open</a> <a id="1876" class="Keyword">import</a> <a id="1883" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a> <a id="1908" class="Keyword">public</a>
-<a id="1915" class="Keyword">open</a> <a id="1920" class="Keyword">import</a> <a id="1927" href="UniAgda.Categories.Natural-Transformation.html" class="Module">UniAgda.Categories.Natural-Transformation</a> <a id="1969" class="Keyword">public</a>
-<a id="1976" class="Keyword">open</a> <a id="1981" class="Keyword">import</a> <a id="1988" href="UniAgda.Categories.Adjunctions.html" class="Module">UniAgda.Categories.Adjunctions</a> <a id="2019" class="Keyword">public</a>
-<a id="2026" class="Keyword">open</a> <a id="2031" class="Keyword">import</a> <a id="2038" href="UniAgda.Categories.Functor.html" class="Module">UniAgda.Categories.Functor</a> <a id="2065" class="Keyword">public</a>
-<a id="2072" class="Keyword">open</a> <a id="2077" class="Keyword">import</a> <a id="2084" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a> <a id="2112" class="Keyword">public</a>
-<a id="2119" class="Keyword">open</a> <a id="2124" class="Keyword">import</a> <a id="2131" href="UniAgda.Categories.Equivalences.html" class="Module">UniAgda.Categories.Equivalences</a> <a id="2163" class="Keyword">public</a>
-<a id="2170" class="Keyword">open</a> <a id="2175" class="Keyword">import</a> <a id="2182" href="UniAgda.Categories.FunctorCat.html" class="Module">UniAgda.Categories.FunctorCat</a> <a id="2212" class="Keyword">public</a>
-<a id="2219" class="Keyword">open</a> <a id="2224" class="Keyword">import</a> <a id="2231" href="UniAgda.Categories.Examples.FundamentalPregroupoid.html" class="Module">UniAgda.Categories.Examples.FundamentalPregroupoid</a> <a id="2282" class="Keyword">public</a>
-<a id="2289" class="Keyword">open</a> <a id="2294" class="Keyword">import</a> <a id="2301" href="UniAgda.Categories.Examples.Group.html" class="Module">UniAgda.Categories.Examples.Group</a> <a id="2335" class="Keyword">public</a>
-<a id="2342" class="Keyword">open</a> <a id="2347" class="Keyword">import</a> <a id="2354" href="UniAgda.Categories.Examples.HomotopyPrecategory.html" class="Module">UniAgda.Categories.Examples.HomotopyPrecategory</a> <a id="2402" class="Keyword">public</a>
-<a id="2409" class="Keyword">open</a> <a id="2414" class="Keyword">import</a> <a id="2421" href="UniAgda.Categories.Examples.Initial.html" class="Module">UniAgda.Categories.Examples.Initial</a> <a id="2457" class="Keyword">public</a>
-<a id="2464" class="Keyword">open</a> <a id="2469" class="Keyword">import</a> <a id="2476" href="UniAgda.Categories.Examples.Terminal.html" class="Module">UniAgda.Categories.Examples.Terminal</a> <a id="2513" class="Keyword">public</a>
-<a id="2520" class="Keyword">open</a> <a id="2525" class="Keyword">import</a> <a id="2532" href="UniAgda.Categories.Examples.FiniteSets.html" class="Module">UniAgda.Categories.Examples.FiniteSets</a> <a id="2571" class="Keyword">public</a>
-<a id="2578" class="Keyword">open</a> <a id="2583" class="Keyword">import</a> <a id="2590" href="UniAgda.Categories.Examples.Set.html" class="Module">UniAgda.Categories.Examples.Set</a> <a id="2622" class="Keyword">public</a>
-<a id="2629" class="Keyword">open</a> <a id="2634" class="Keyword">import</a> <a id="2641" href="UniAgda.Logic.Exists.html" class="Module">UniAgda.Logic.Exists</a> <a id="2662" class="Keyword">public</a>
+<a id="215" class="Keyword">open</a> <a id="220" class="Keyword">import</a> <a id="227" href="UniAgda.Equiv.Inj-Surj.html" class="Module">UniAgda.Equiv.Inj-Surj</a> <a id="250" class="Keyword">public</a>
+<a id="257" class="Keyword">open</a> <a id="262" class="Keyword">import</a> <a id="269" href="UniAgda.Equiv.Bool.html" class="Module">UniAgda.Equiv.Bool</a> <a id="288" class="Keyword">public</a>
+<a id="295" class="Keyword">open</a> <a id="300" class="Keyword">import</a> <a id="307" href="UniAgda.Equiv.ClosureProperties.html" class="Module">UniAgda.Equiv.ClosureProperties</a> <a id="339" class="Keyword">public</a>
+<a id="346" class="Keyword">open</a> <a id="351" class="Keyword">import</a> <a id="358" href="UniAgda.Algebra.GroupTheory.basics.html" class="Module">UniAgda.Algebra.GroupTheory.basics</a> <a id="393" class="Keyword">public</a>
+<a id="400" class="Keyword">open</a> <a id="405" class="Keyword">import</a> <a id="412" href="UniAgda.HITs.PropTrunc.html" class="Module">UniAgda.HITs.PropTrunc</a> <a id="435" class="Keyword">public</a>
+<a id="442" class="Keyword">open</a> <a id="447" class="Keyword">import</a> <a id="454" href="UniAgda.HITs.0truncation.html" class="Module">UniAgda.HITs.0truncation</a> <a id="479" class="Keyword">public</a>
+<a id="486" class="Keyword">open</a> <a id="491" class="Keyword">import</a> <a id="498" href="UniAgda.HITs.Suspensions.html" class="Module">UniAgda.HITs.Suspensions</a> <a id="523" class="Keyword">public</a>
+<a id="530" class="Keyword">open</a> <a id="535" class="Keyword">import</a> <a id="542" href="UniAgda.HITs.Circle.html" class="Module">UniAgda.HITs.Circle</a> <a id="562" class="Keyword">public</a>
+<a id="569" class="Keyword">open</a> <a id="574" class="Keyword">import</a> <a id="581" href="UniAgda.HITs.Interval.html" class="Module">UniAgda.HITs.Interval</a> <a id="603" class="Keyword">public</a>
+<a id="610" class="Keyword">open</a> <a id="615" class="Keyword">import</a> <a id="622" href="UniAgda.HITs.Core.html" class="Module">UniAgda.HITs.Core</a> <a id="640" class="Keyword">public</a>
+<a id="647" class="Keyword">open</a> <a id="652" class="Keyword">import</a> <a id="659" href="UniAgda.HITs.Pushouts.html" class="Module">UniAgda.HITs.Pushouts</a> <a id="681" class="Keyword">public</a>
+<a id="688" class="Keyword">open</a> <a id="693" class="Keyword">import</a> <a id="700" href="UniAgda.Core.Axioms.html" class="Module">UniAgda.Core.Axioms</a> <a id="720" class="Keyword">public</a>
+<a id="727" class="Keyword">open</a> <a id="732" class="Keyword">import</a> <a id="739" href="UniAgda.Core.PathAlgebra.html" class="Module">UniAgda.Core.PathAlgebra</a> <a id="764" class="Keyword">public</a>
+<a id="771" class="Keyword">open</a> <a id="776" class="Keyword">import</a> <a id="783" href="UniAgda.Core.Equivalences.html" class="Module">UniAgda.Core.Equivalences</a> <a id="809" class="Keyword">public</a>
+<a id="816" class="Keyword">open</a> <a id="821" class="Keyword">import</a> <a id="828" href="UniAgda.Core.Homotopy.html" class="Module">UniAgda.Core.Homotopy</a> <a id="850" class="Keyword">public</a>
+<a id="857" class="Keyword">open</a> <a id="862" class="Keyword">import</a> <a id="869" href="UniAgda.Core.UniversalProperties.html" class="Module">UniAgda.Core.UniversalProperties</a> <a id="902" class="Keyword">public</a>
+<a id="909" class="Keyword">open</a> <a id="914" class="Keyword">import</a> <a id="921" href="UniAgda.Core.PathSpaces.Unit.html" class="Module">UniAgda.Core.PathSpaces.Unit</a> <a id="950" class="Keyword">public</a>
+<a id="957" class="Keyword">open</a> <a id="962" class="Keyword">import</a> <a id="969" href="UniAgda.Core.PathSpaces.Identity.html" class="Module">UniAgda.Core.PathSpaces.Identity</a> <a id="1002" class="Keyword">public</a>
+<a id="1009" class="Keyword">open</a> <a id="1014" class="Keyword">import</a> <a id="1021" href="UniAgda.Core.PathSpaces.Sigma.html" class="Module">UniAgda.Core.PathSpaces.Sigma</a> <a id="1051" class="Keyword">public</a>
+<a id="1058" class="Keyword">open</a> <a id="1063" class="Keyword">import</a> <a id="1070" href="UniAgda.Core.PathSpaces.Coproduct.html" class="Module">UniAgda.Core.PathSpaces.Coproduct</a> <a id="1104" class="Keyword">public</a>
+<a id="1111" class="Keyword">open</a> <a id="1116" class="Keyword">import</a> <a id="1123" href="UniAgda.Core.PathSpaces.Nat.html" class="Module">UniAgda.Core.PathSpaces.Nat</a> <a id="1151" class="Keyword">public</a>
+<a id="1158" class="Keyword">open</a> <a id="1163" class="Keyword">import</a> <a id="1170" href="UniAgda.Core.SetsAndLogic.Equivalences.html" class="Module">UniAgda.Core.SetsAndLogic.Equivalences</a> <a id="1209" class="Keyword">public</a>
+<a id="1216" class="Keyword">open</a> <a id="1221" class="Keyword">import</a> <a id="1228" href="UniAgda.Core.SetsAndLogic.Props.html" class="Module">UniAgda.Core.SetsAndLogic.Props</a> <a id="1260" class="Keyword">public</a>
+<a id="1267" class="Keyword">open</a> <a id="1272" class="Keyword">import</a> <a id="1279" href="UniAgda.Core.SetsAndLogic.Contractible.html" class="Module">UniAgda.Core.SetsAndLogic.Contractible</a> <a id="1318" class="Keyword">public</a>
+<a id="1325" class="Keyword">open</a> <a id="1330" class="Keyword">import</a> <a id="1337" href="UniAgda.Core.SetsAndLogic.ContrPropSet1Type.html" class="Module">UniAgda.Core.SetsAndLogic.ContrPropSet1Type</a> <a id="1381" class="Keyword">public</a>
+<a id="1388" class="Keyword">open</a> <a id="1393" class="Keyword">import</a> <a id="1400" href="UniAgda.Core.SetsAndLogic.Sets.html" class="Module">UniAgda.Core.SetsAndLogic.Sets</a> <a id="1431" class="Keyword">public</a>
+<a id="1438" class="Keyword">open</a> <a id="1443" class="Keyword">import</a> <a id="1450" href="UniAgda.Core.Types.Unit.html" class="Module">UniAgda.Core.Types.Unit</a> <a id="1474" class="Keyword">public</a>
+<a id="1481" class="Keyword">open</a> <a id="1486" class="Keyword">import</a> <a id="1493" href="UniAgda.Core.Types.Bool.html" class="Module">UniAgda.Core.Types.Bool</a> <a id="1517" class="Keyword">public</a>
+<a id="1524" class="Keyword">open</a> <a id="1529" class="Keyword">import</a> <a id="1536" href="UniAgda.Core.Types.Identity.html" class="Module">UniAgda.Core.Types.Identity</a> <a id="1564" class="Keyword">public</a>
+<a id="1571" class="Keyword">open</a> <a id="1576" class="Keyword">import</a> <a id="1583" href="UniAgda.Core.Types.Sigma.html" class="Module">UniAgda.Core.Types.Sigma</a> <a id="1608" class="Keyword">public</a>
+<a id="1615" class="Keyword">open</a> <a id="1620" class="Keyword">import</a> <a id="1627" href="UniAgda.Core.Types.Coproduct.html" class="Module">UniAgda.Core.Types.Coproduct</a> <a id="1656" class="Keyword">public</a>
+<a id="1663" class="Keyword">open</a> <a id="1668" class="Keyword">import</a> <a id="1675" href="UniAgda.Core.Types.Nat.html" class="Module">UniAgda.Core.Types.Nat</a> <a id="1698" class="Keyword">public</a>
+<a id="1705" class="Keyword">open</a> <a id="1710" class="Keyword">import</a> <a id="1717" href="UniAgda.Core.Types.W.html" class="Module">UniAgda.Core.Types.W</a> <a id="1738" class="Keyword">public</a>
+<a id="1745" class="Keyword">open</a> <a id="1750" class="Keyword">import</a> <a id="1757" href="UniAgda.Core.Types.Functions.html" class="Module">UniAgda.Core.Types.Functions</a> <a id="1786" class="Keyword">public</a>
+<a id="1793" class="Keyword">open</a> <a id="1798" class="Keyword">import</a> <a id="1805" href="UniAgda.Core.Types.FiniteSets.html" class="Module">UniAgda.Core.Types.FiniteSets</a> <a id="1835" class="Keyword">public</a>
+<a id="1842" class="Keyword">open</a> <a id="1847" class="Keyword">import</a> <a id="1854" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a> <a id="1883" class="Keyword">public</a>
+<a id="1890" class="Keyword">open</a> <a id="1895" class="Keyword">import</a> <a id="1902" href="UniAgda.Core.Types.Empty.html" class="Module">UniAgda.Core.Types.Empty</a> <a id="1927" class="Keyword">public</a>
+<a id="1934" class="Keyword">open</a> <a id="1939" class="Keyword">import</a> <a id="1946" href="UniAgda.Categories.Natural-Transformation.html" class="Module">UniAgda.Categories.Natural-Transformation</a> <a id="1988" class="Keyword">public</a>
+<a id="1995" class="Keyword">open</a> <a id="2000" class="Keyword">import</a> <a id="2007" href="UniAgda.Categories.Adjunctions.html" class="Module">UniAgda.Categories.Adjunctions</a> <a id="2038" class="Keyword">public</a>
+<a id="2045" class="Keyword">open</a> <a id="2050" class="Keyword">import</a> <a id="2057" href="UniAgda.Categories.Functor.html" class="Module">UniAgda.Categories.Functor</a> <a id="2084" class="Keyword">public</a>
+<a id="2091" class="Keyword">open</a> <a id="2096" class="Keyword">import</a> <a id="2103" href="UniAgda.Categories.Category.html" class="Module">UniAgda.Categories.Category</a> <a id="2131" class="Keyword">public</a>
+<a id="2138" class="Keyword">open</a> <a id="2143" class="Keyword">import</a> <a id="2150" href="UniAgda.Categories.Equivalences.html" class="Module">UniAgda.Categories.Equivalences</a> <a id="2182" class="Keyword">public</a>
+<a id="2189" class="Keyword">open</a> <a id="2194" class="Keyword">import</a> <a id="2201" href="UniAgda.Categories.FunctorCat.html" class="Module">UniAgda.Categories.FunctorCat</a> <a id="2231" class="Keyword">public</a>
+<a id="2238" class="Keyword">open</a> <a id="2243" class="Keyword">import</a> <a id="2250" href="UniAgda.Categories.Examples.FundamentalPregroupoid.html" class="Module">UniAgda.Categories.Examples.FundamentalPregroupoid</a> <a id="2301" class="Keyword">public</a>
+<a id="2308" class="Keyword">open</a> <a id="2313" class="Keyword">import</a> <a id="2320" href="UniAgda.Categories.Examples.Group.html" class="Module">UniAgda.Categories.Examples.Group</a> <a id="2354" class="Keyword">public</a>
+<a id="2361" class="Keyword">open</a> <a id="2366" class="Keyword">import</a> <a id="2373" href="UniAgda.Categories.Examples.HomotopyPrecategory.html" class="Module">UniAgda.Categories.Examples.HomotopyPrecategory</a> <a id="2421" class="Keyword">public</a>
+<a id="2428" class="Keyword">open</a> <a id="2433" class="Keyword">import</a> <a id="2440" href="UniAgda.Categories.Examples.Initial.html" class="Module">UniAgda.Categories.Examples.Initial</a> <a id="2476" class="Keyword">public</a>
+<a id="2483" class="Keyword">open</a> <a id="2488" class="Keyword">import</a> <a id="2495" href="UniAgda.Categories.Examples.Terminal.html" class="Module">UniAgda.Categories.Examples.Terminal</a> <a id="2532" class="Keyword">public</a>
+<a id="2539" class="Keyword">open</a> <a id="2544" class="Keyword">import</a> <a id="2551" href="UniAgda.Categories.Examples.FiniteSets.html" class="Module">UniAgda.Categories.Examples.FiniteSets</a> <a id="2590" class="Keyword">public</a>
+<a id="2597" class="Keyword">open</a> <a id="2602" class="Keyword">import</a> <a id="2609" href="UniAgda.Categories.Examples.Set.html" class="Module">UniAgda.Categories.Examples.Set</a> <a id="2641" class="Keyword">public</a>
+<a id="2648" class="Keyword">open</a> <a id="2653" class="Keyword">import</a> <a id="2660" href="UniAgda.Logic.Exists.html" class="Module">UniAgda.Logic.Exists</a> <a id="2681" class="Keyword">public</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>

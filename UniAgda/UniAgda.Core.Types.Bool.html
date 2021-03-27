@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2021-03-26 Fri 14:45 -->
+<!-- 2021-03-27 Sat 10:47 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>UniAgda.Core.Types.Bool</title>
@@ -202,27 +202,6 @@
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
 <script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
-<link rel="stylesheet" type="text/css" href="/public/css/Agda.css"/>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
-<script type="text/javascript" src="/public/css/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -262,10 +241,10 @@
 <h2 id="orgd06c5f6"><span class="section-number-2">1</span> Prelude</h2>
 <div class="outline-text-2" id="text-1">
 <pre class="Agda">
-<a id="174" class="Symbol">{-#</a> <a id="178" class="Keyword">OPTIONS</a> <a id="186" class="Pragma">--without-K</a> <a id="198" class="Pragma">--no-import-sorts</a> <a id="216" class="Pragma">--safe</a> <a id="223" class="Symbol">#-}</a>
-<a id="227" class="Keyword">module</a> <a id="234" href="UniAgda.Core.Types.Bool.html" class="Module">UniAgda.Core.Types.Bool</a> <a id="258" class="Keyword">where</a>
+<a id="174" class="Symbol">{-#</a> <a id="178" class="Keyword">OPTIONS</a> <a id="186" class="Pragma">--without-K</a> <a id="198" class="Pragma">--no-import-sorts</a> <a id="216" class="Pragma">--safe</a> <a id="223" class="Pragma">--no-import-sorts</a> <a id="241" class="Symbol">#-}</a>
+<a id="245" class="Keyword">module</a> <a id="252" href="UniAgda.Core.Types.Bool.html" class="Module">UniAgda.Core.Types.Bool</a> <a id="276" class="Keyword">where</a>
 
-<a id="265" class="Keyword">open</a> <a id="270" class="Keyword">import</a> <a id="277" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
+<a id="283" class="Keyword">open</a> <a id="288" class="Keyword">import</a> <a id="295" href="UniAgda.Core.Types.Universes.html" class="Module">UniAgda.Core.Types.Universes</a>
 </pre>
 </div>
 </div>
@@ -277,29 +256,29 @@ The type of Booleans is inductively defined by two terms that we call "true" and
 </p>
 
 <pre class="Agda">
-<a id="444" class="Keyword">data</a> <a id="Bool"></a><a id="449" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="454" class="Symbol">:</a> <a id="456" href="UniAgda.Core.Types.Universes.html#474" class="Primitive">Type</a> <a id="461" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="467" class="Keyword">where</a>
-  <a id="Bool.true"></a><a id="475" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="480" class="Symbol">:</a> <a id="482" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a>
-  <a id="Bool.false"></a><a id="489" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="495" class="Symbol">:</a> <a id="497" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a>
+<a id="462" class="Keyword">data</a> <a id="Bool"></a><a id="467" href="UniAgda.Core.Types.Bool.html#467" class="Datatype">Bool</a> <a id="472" class="Symbol">:</a> <a id="474" href="UniAgda.Core.Types.Universes.html#492" class="Primitive">Type</a> <a id="479" href="Agda.Primitive.html#764" class="Primitive">lzero</a> <a id="485" class="Keyword">where</a>
+  <a id="Bool.true"></a><a id="493" href="UniAgda.Core.Types.Bool.html#493" class="InductiveConstructor">true</a> <a id="498" class="Symbol">:</a> <a id="500" href="UniAgda.Core.Types.Bool.html#467" class="Datatype">Bool</a>
+  <a id="Bool.false"></a><a id="507" href="UniAgda.Core.Types.Bool.html#507" class="InductiveConstructor">false</a> <a id="513" class="Symbol">:</a> <a id="515" href="UniAgda.Core.Types.Bool.html#467" class="Datatype">Bool</a>
 
-<a id="503" class="Symbol">{-#</a> <a id="507" class="Keyword">BUILTIN</a> <a id="515" class="Keyword">BOOL</a> <a id="520" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="525" class="Symbol">#-}</a>
-<a id="529" class="Symbol">{-#</a> <a id="533" class="Keyword">BUILTIN</a> <a id="541" class="Keyword">TRUE</a> <a id="546" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="551" class="Symbol">#-}</a>
-<a id="555" class="Symbol">{-#</a> <a id="559" class="Keyword">BUILTIN</a> <a id="567" class="Keyword">FALSE</a> <a id="573" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="579" class="Symbol">#-}</a>
+<a id="521" class="Symbol">{-#</a> <a id="525" class="Keyword">BUILTIN</a> <a id="533" class="Keyword">BOOL</a> <a id="538" href="UniAgda.Core.Types.Bool.html#467" class="Datatype">Bool</a> <a id="543" class="Symbol">#-}</a>
+<a id="547" class="Symbol">{-#</a> <a id="551" class="Keyword">BUILTIN</a> <a id="559" class="Keyword">TRUE</a> <a id="564" href="UniAgda.Core.Types.Bool.html#493" class="InductiveConstructor">true</a> <a id="569" class="Symbol">#-}</a>
+<a id="573" class="Symbol">{-#</a> <a id="577" class="Keyword">BUILTIN</a> <a id="585" class="Keyword">FALSE</a> <a id="591" href="UniAgda.Core.Types.Bool.html#507" class="InductiveConstructor">false</a> <a id="597" class="Symbol">#-}</a>
 </pre>
 
 <p>
 We also define the "swap" function, which permutes the values of "true" and "false".
 </p>
 <pre class="Agda">
-<a id="swap"></a><a id="697" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="702" class="Symbol">:</a> <a id="704" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a> <a id="709" class="Symbol">→</a> <a id="711" href="UniAgda.Core.Types.Bool.html#449" class="Datatype">Bool</a>
-<a id="716" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="721" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a> <a id="726" class="Symbol">=</a> <a id="728" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a>
-<a id="734" href="UniAgda.Core.Types.Bool.html#697" class="Function">swap</a> <a id="739" href="UniAgda.Core.Types.Bool.html#489" class="InductiveConstructor">false</a> <a id="745" class="Symbol">=</a> <a id="747" href="UniAgda.Core.Types.Bool.html#475" class="InductiveConstructor">true</a>
+<a id="swap"></a><a id="715" href="UniAgda.Core.Types.Bool.html#715" class="Function">swap</a> <a id="720" class="Symbol">:</a> <a id="722" href="UniAgda.Core.Types.Bool.html#467" class="Datatype">Bool</a> <a id="727" class="Symbol">→</a> <a id="729" href="UniAgda.Core.Types.Bool.html#467" class="Datatype">Bool</a>
+<a id="734" href="UniAgda.Core.Types.Bool.html#715" class="Function">swap</a> <a id="739" href="UniAgda.Core.Types.Bool.html#493" class="InductiveConstructor">true</a> <a id="744" class="Symbol">=</a> <a id="746" href="UniAgda.Core.Types.Bool.html#507" class="InductiveConstructor">false</a>
+<a id="752" href="UniAgda.Core.Types.Bool.html#715" class="Function">swap</a> <a id="757" href="UniAgda.Core.Types.Bool.html#507" class="InductiveConstructor">false</a> <a id="763" class="Symbol">=</a> <a id="765" href="UniAgda.Core.Types.Bool.html#493" class="InductiveConstructor">true</a>
 </pre>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: James Leslie</p>
-<p class="date">Created: 2021-03-26 Fri 14:45</p>
+<p class="date">Created: 2021-03-27 Sat 10:47</p>
 </div>
 </body>
 </html>
